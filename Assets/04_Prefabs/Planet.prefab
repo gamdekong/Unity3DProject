@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3390354}
   - 135: {fileID: 13595364}
   - 23: {fileID: 2318072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Planet
   m_TagString: Planet
   m_Icon: {fileID: 0}

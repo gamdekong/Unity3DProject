@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csPlayerMove : MonoBehaviour {
-
-	public float speed = 10.0f;
+public class csPlayerStatus : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,13 +11,5 @@ public class csPlayerMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-	void CheckMobile()
-	{
-	}
-
-	void CheckKeyboard()
-	{
 	}
 }
