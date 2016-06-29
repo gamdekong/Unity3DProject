@@ -21,31 +21,28 @@ public class csFireManager : MonoBehaviour {
         Quaternion missileAng = Player.transform.rotation;
         missilePos.x += Random.Range(-5.0f, 5.0f);
         missileAng.x += 90.0f;
-        missileObj.transform.position = missilePos;
         missileObj.transform.rotation = missileAng;
-
         int range = Random.Range(0, 3);
         switch (range)
         {
             case 0:
-                missileObj.transform.Rotate(Vector3.right, Random.Range(60, 90));
+                missilePos.x += Random.Range(0.0f, -3.0f);
+                missileObj.transform.Rotate(Vector3.down, Random.Range(80, 120));
                 break;
             case 1:
-                missileObj.transform.Rotate(Vector3.left, Random.Range(60, 90));
+                missilePos.x += Random.Range(0.0f, 3.0f);
+                missileObj.transform.Rotate(Vector3.right, Random.Range(60, 80));
                 break;
             case 2:
-                missileObj.transform.Rotate(Vector3.up, Random.Range(60, 90));
-                break;
-            case 3:
-                missileObj.transform.Rotate(Vector3.down, Random.Range(60, 90));
+                missilePos.x += Random.Range(-3.0f, 3.0f);
+                missileObj.transform.Rotate(Vector3.up, Random.Range(80, 120));
                 break;
         }
+        missileObj.transform.position = missilePos;
         missileObj.GetComponent<csMissile>().target = Target;
     }
     // Update is called once per frame
     void Update () {
-
-
 
     }
 }
