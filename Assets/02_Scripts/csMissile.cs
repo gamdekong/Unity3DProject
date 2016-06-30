@@ -5,11 +5,12 @@ public class csMissile : MonoBehaviour {
 
     public GameObject target;
     public float Speed;
+    public int damage;
     float delay = 0;
    
     // Use this for initialization
     void Start () {
-
+        transform.FindChild("missile").GetComponent<csMissileCollider>().damage = damage;
     }
 	
 	// Update is called once per frame

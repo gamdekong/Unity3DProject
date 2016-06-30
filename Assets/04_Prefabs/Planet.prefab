@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3390354}
   - 135: {fileID: 13595364}
   - 23: {fileID: 2318072}
+  - 114: {fileID: 11429540}
   m_Layer: 8
   m_Name: Planet
   m_TagString: Planet
@@ -64,6 +65,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124648}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11429540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5f48bc9a6933240aad128d80349ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!135 &13595364
 SphereCollider:
   m_ObjectHideFlags: 1

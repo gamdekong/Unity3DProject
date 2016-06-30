@@ -3,9 +3,11 @@ using System.Collections;
 
 public class csMissileCollider : MonoBehaviour {
 
+    public int damage;
+
     void OnTriggerEnter(Collider col)
     {
-        Destroy(col.gameObject);
+        col.SendMessage("DamageToObject", damage, SendMessageOptions.DontRequireReceiver);
         Destroy(gameObject);
     }
 }

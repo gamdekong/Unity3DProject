@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Aim: {fileID: 160796, guid: e8591c909c435754590156897b8fdce3, type: 2}
+  auto: 1
 --- !u!4 &669973969
 Transform:
   m_ObjectHideFlags: 0

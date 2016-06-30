@@ -19,23 +19,24 @@ public class csFireManager : MonoBehaviour {
         GameObject missileObj = Instantiate(missile) as GameObject;
         Vector3 missilePos = Player.transform.position;
         Quaternion missileAng = Player.transform.rotation;
-        missilePos.x += Random.Range(-5.0f, 5.0f);
         missileAng.x += 90.0f;
         missileObj.transform.rotation = missileAng;
-        int range = Random.Range(0, 3);
+        int range = Random.Range(0, 4);
         switch (range)
         {
             case 0:
-                missilePos.x += Random.Range(0.0f, -3.0f);
+                missilePos.y += Random.Range(0, 1.0f);
                 missileObj.transform.Rotate(Vector3.down, Random.Range(80, 120));
                 break;
             case 1:
-                missilePos.x += Random.Range(0.0f, 3.0f);
+                missilePos.y += Random.Range(0, 1.0f);
                 missileObj.transform.Rotate(Vector3.right, Random.Range(60, 80));
                 break;
             case 2:
-                missilePos.x += Random.Range(-3.0f, 3.0f);
-                missileObj.transform.Rotate(Vector3.up, Random.Range(80, 120));
+                missileObj.transform.Rotate(new Vector3(1,1,0) , Random.Range(80, 120));
+                break;
+            case 3:
+                missileObj.transform.Rotate(new Vector3(-1,-1,0), Random.Range(80, 120));
                 break;
         }
         missileObj.transform.position = missilePos;
