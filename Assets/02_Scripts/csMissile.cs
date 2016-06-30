@@ -4,6 +4,9 @@ using System.Collections;
 public class csMissile : MonoBehaviour {
 
     public GameObject target;
+    public AudioClip shotSound;
+    public AudioClip explosionSound;
+
     public float Speed;
     public int damage;
     float delay = 0;
@@ -11,6 +14,8 @@ public class csMissile : MonoBehaviour {
     // Use this for initialization
     void Start () {
         transform.FindChild("missile").GetComponent<csMissileCollider>().damage = damage;
+        transform.FindChild("missile").GetComponent<csMissileCollider>().expSFX = explosionSound;
+        AudioManager.Instance().PlaySfx(shotSound);
     }
 	
 	// Update is called once per frame
