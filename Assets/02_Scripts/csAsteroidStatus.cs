@@ -4,7 +4,7 @@ using System.Collections;
 public class csAsteroidStatus : MonoBehaviour {
 
     GameObject player;
-    public int health = 4;
+    public int health = 10;
 
     void Start()
     {
