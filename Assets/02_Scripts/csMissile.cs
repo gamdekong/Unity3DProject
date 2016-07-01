@@ -9,7 +9,7 @@ public class csMissile : MonoBehaviour {
 
     public float Speed;
     public int damage;
-    float delay = 0;
+    public float delay = 5;
    
     // Use this for initialization
     void Start () {
@@ -20,10 +20,10 @@ public class csMissile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        delay = delay + Time.deltaTime;
+        delay -= Time.deltaTime;
         MissileControl3();
 
-        if (delay > 10)
+        if (delay <= 0)
             Destroy(gameObject);	
 	}
 
