@@ -18,9 +18,10 @@ public class csPlanetStatus : MonoBehaviour {
     public void DamageToObject(int damage)
     {
         health -= damage;
-        Debug.Log(name + " : " + health);
+        //Debug.Log(name + " : " + health);
 
         if (health <= 0)
             Destroy(gameObject);
     }
+
 }

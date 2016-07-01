@@ -9,9 +9,15 @@ public class TargetingManager : MonoBehaviour {
     GameObject targetPlanet;
 
     public bool auto = false;
-    
-	// Update is called once per frame
-	void Update () {
+
+    public float asteroidAimScaleX = 15;
+    public float asteroidAimScaleY = 15;
+
+    public float planetAimScaleX = 30;
+    public float planetAimScaleY = 30;
+
+    // Update is called once per frame
+    void Update () {
 
         if (auto)
             AutoTargeting();
@@ -48,7 +54,7 @@ public class TargetingManager : MonoBehaviour {
                 if (AimingTarget == asteroid)
                     break;
  
-                if (asteroid.transform.position.z - 15.0f < player.transform.position.z)
+                if (asteroid.transform.position.z - 3.0f < player.transform.position.z)
                     continue;
 
                 if(AimingTarget == null)
@@ -73,15 +79,29 @@ public class TargetingManager : MonoBehaviour {
         if (AimingTarget != null)
         {
             Vector3 targetPos = AimingTarget.transform.position;
-            targetPos.z -= 15.0f;
+            if (AimingTarget.tag == "Asteroid")
+                targetPos.z -= 3.0f;
+            else
+                targetPos.z -= 15.0f;
 
             if (GameObject.FindGameObjectWithTag("Aim"))
             {
+                GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
+
+                if (AimingTarget.tag == "Asteroid")
+                    aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+                else
+                    aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+
                 GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
             }
             else
             {
-                Instantiate(Aim, targetPos, transform.rotation);
+                GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
+                if (AimingTarget.tag == "Asteroid")
+                    aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+                else
+                    aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
             }
             GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
         }
@@ -111,7 +131,11 @@ public class TargetingManager : MonoBehaviour {
                 {
                     //Debug.Log("It's Target");
                     Vector3 targetPos = hit.transform.position;
-                    targetPos.z -= 15.0f;
+                    if (AimingTarget.tag == "Asteroid")
+                        targetPos.z -= 3.0f;
+                    else
+                        targetPos.z -= 15.0f;
+
                     if (targetPos.z < player.transform.position.z)
                     {
                         return;
@@ -121,11 +145,22 @@ public class TargetingManager : MonoBehaviour {
 
                     if (GameObject.FindGameObjectWithTag("Aim"))
                     {
+                        GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
+
+                        if (AimingTarget.tag == "Asteroid")
+                            aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+                        else
+                            aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+
                         GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
                     }
                     else
                     {
-                        Instantiate(Aim, targetPos, transform.rotation);
+                        GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
+                        if (AimingTarget.tag == "Asteroid")
+                            aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+                        else
+                            aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
                     }
                     GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
                 }
@@ -155,11 +190,22 @@ public class TargetingManager : MonoBehaviour {
 
                         if (GameObject.FindGameObjectWithTag("Aim"))
                         {
+                            GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
+
+                            if (AimingTarget.tag == "Asteroid")
+                                aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+                            else
+                                aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+
                             GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
                         }
                         else
                         {
-                            Instantiate(Aim, targetPos, transform.rotation);
+                            GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
+                            if (AimingTarget.tag == "Asteroid")
+                                aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+                            else
+                                aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
                         }
                         GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
                     }
