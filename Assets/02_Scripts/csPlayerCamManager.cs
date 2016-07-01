@@ -11,9 +11,19 @@ public class csPlayerCamManager : MonoBehaviour {
         myLocalPosition = transform.localPosition;
     }
 
-    public void PlayCameraShake()
+    public void PlayCameraShake(float distance)
     {
-        StartCoroutine(CameraShakeProcess(1.0f, 0.2f));
+        Debug.Log(distance);
+        if (distance > 30)
+            return;
+        else if(distance > 25)
+            StartCoroutine(CameraShakeProcess(0.1f, 0.02f));
+        else if (distance > 20)
+            StartCoroutine(CameraShakeProcess(0.15f, 0.04f));
+        else if (distance > 15)
+            StartCoroutine(CameraShakeProcess(0.2f, 0.08f));
+        else
+            StartCoroutine(CameraShakeProcess(0.25f, 0.16f));
     }
 
     IEnumerator CameraShakeProcess(float shakeTime, float shakeSense)
@@ -27,7 +37,7 @@ public class csPlayerCamManager : MonoBehaviour {
             Vector3 pos = Vector3.zero;
             pos.x = Random.Range(-shakeSense, shakeSense);
             pos.y = Random.Range(-shakeSense, shakeSense);
-            pos.z = Random.Range(-shakeSense, shakeSense);
+            //pos.z = Random.Range(-shakeSense, shakeSense);
 
             transform.localPosition += pos;
 

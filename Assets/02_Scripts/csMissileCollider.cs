@@ -8,9 +8,15 @@ public class csMissileCollider : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        GameObject playerCam = GameObject.FindGameObjectWithTag("PlayerCam");
+
         col.SendMessage("DamageToObject", damage, SendMessageOptions.DontRequireReceiver);
-        GameObject.FindGameObjectWithTag("PlayerCam").SendMessage("PlayCameraShake", SendMessageOptions.DontRequireReceiver);
+
+        float distance = Vector3.Distance(col.transform.position, playerCam.transform.position);
+        playerCam.SendMessage("PlayCameraShake", distance, SendMessageOptions.DontRequireReceiver);
+
         AudioManager.Instance().PlaySfx(expSFX);
         Destroy(gameObject);
+
     }
 }
