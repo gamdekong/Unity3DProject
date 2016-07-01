@@ -9,6 +9,7 @@ public class csMissileCollider : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         col.SendMessage("DamageToObject", damage, SendMessageOptions.DontRequireReceiver);
+        GameObject.FindGameObjectWithTag("PlayerCam").SendMessage("PlayCameraShake", SendMessageOptions.DontRequireReceiver);
         AudioManager.Instance().PlaySfx(expSFX);
         Destroy(gameObject);
     }

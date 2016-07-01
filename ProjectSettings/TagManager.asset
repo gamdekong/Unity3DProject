@@ -8,6 +8,8 @@ TagManager:
   - Aim
   - Asteroid
   - Missile
+  - Fire
+  - PlayerCam
   layers:
   - Default
   - TransparentFX
