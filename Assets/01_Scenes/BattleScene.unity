@@ -472,11 +472,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Aim: {fileID: 160796, guid: e8591c909c435754590156897b8fdce3, type: 2}
-  auto: 1
+  btnFire: {fileID: 914093760}
+  auto: 0
   asteroidAimScaleX: 15
   asteroidAimScaleY: 15
   planetAimScaleX: 30
   planetAimScaleY: 30
+  MaxTargetingDistance: 80
 --- !u!4 &669973969
 Transform:
   m_ObjectHideFlags: 0
@@ -671,7 +673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &914093761
 RectTransform:
   m_ObjectHideFlags: 0

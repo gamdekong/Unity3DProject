@@ -4,6 +4,7 @@ using System.Collections;
 public class TargetingManager : MonoBehaviour {
 
     public GameObject Aim;
+    public GameObject btnFire;
     GameObject AimingTarget;
     GameObject[] targetAsteroids;
     GameObject targetPlanet;
@@ -16,8 +17,14 @@ public class TargetingManager : MonoBehaviour {
     public float planetAimScaleX = 30;
     public float planetAimScaleY = 30;
 
+    public float MaxTargetingDistance = 80;
+
     // Update is called once per frame
     void Update () {
+        if (AimingTarget == null)
+            btnFire.SetActive(false);
+        else
+            btnFire.SetActive(true);
 
         if (auto)
             AutoTargeting();
@@ -51,10 +58,14 @@ public class TargetingManager : MonoBehaviour {
         {
             foreach(GameObject asteroid in targetAsteroids)
             {
+                float asteroidDis = Vector3.Distance(asteroid.transform.position, player.transform.position);
+                Debug.Log(asteroidDis);
+
                 if (AimingTarget == asteroid)
                     break;
  
-                if (asteroid.transform.position.z - 3.0f < player.transform.position.z)
+                if (asteroid.transform.position.z - 3.0f < player.transform.position.z ||
+                    asteroidDis > MaxTargetingDistance)
                     continue;
 
                 if(AimingTarget == null)
@@ -70,9 +81,12 @@ public class TargetingManager : MonoBehaviour {
                }
             }
 
-            if(targetPlanet != null && AimingTarget == null)
+            float planetDis = Vector3.Distance(targetPlanet.transform.position, player.transform.position);
+
+            if (targetPlanet != null && AimingTarget == null)
             {
-                AimingTarget = targetPlanet;
+                if (planetDis < MaxTargetingDistance)
+                    AimingTarget = targetPlanet;
             }
         }
 
@@ -129,14 +143,15 @@ public class TargetingManager : MonoBehaviour {
             {
                 if (hit.transform.gameObject.layer == 8)
                 {
-                    //Debug.Log("It's Target");
+                    float targetDis = Vector3.Distance(hit.transform.position, player.transform.position);
                     Vector3 targetPos = hit.transform.position;
-                    if (AimingTarget.tag == "Asteroid")
+
+                    if (hit.transform.tag == "Asteroid")
                         targetPos.z -= 3.0f;
                     else
                         targetPos.z -= 15.0f;
 
-                    if (targetPos.z < player.transform.position.z)
+                    if (targetPos.z < player.transform.position.z || targetDis > MaxTargetingDistance)
                     {
                         return;
                     }
@@ -178,10 +193,15 @@ public class TargetingManager : MonoBehaviour {
                 {
                     if (hit.transform.gameObject.layer == 8)
                     {
-                        //Debug.Log("It's Target");
+                        float targetDis = Vector3.Distance(hit.transform.position, player.transform.position);
                         Vector3 targetPos = hit.transform.position;
-                        targetPos.z -= 15.0f;
-                        if (targetPos.z < player.transform.position.z)
+
+                        if (hit.transform.tag == "Asteroid")
+                            targetPos.z -= 3.0f;
+                        else
+                            targetPos.z -= 15.0f;
+
+                        if (targetPos.z < player.transform.position.z || targetDis > MaxTargetingDistance)
                         {
                             return;
                         }
