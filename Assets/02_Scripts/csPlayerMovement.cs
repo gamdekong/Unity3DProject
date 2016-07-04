@@ -42,4 +42,11 @@ public class csPlayerMovement : MonoBehaviour {
 
     }
 
+    void playerDead()
+    {
+        if (!isDead)
+            isDead = true;
+        else
+            return;
+    }
 }

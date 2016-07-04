@@ -32,7 +32,7 @@ public class csPlayerStatus : MonoBehaviour {
             }
             else
             {
-                return;
+                SendMessage("playerDead", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
