@@ -13,7 +13,7 @@ public class csPlayerCamManager : MonoBehaviour {
 
     public void PlayCameraShake(float distance)
     {
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (distance > 30)
             return;
         else if(distance > 25)
