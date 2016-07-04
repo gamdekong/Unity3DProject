@@ -49,4 +49,12 @@ public class csPlayerMovement : MonoBehaviour {
         else
             return;
     }
+
+    void playerMove()
+    {
+        if (canMove)
+            canMove = false;
+        else
+            canMove = true;
+    }
 }
