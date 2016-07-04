@@ -36,4 +36,11 @@ public class csPlayerStatus : MonoBehaviour {
             }
         }
     }
+
+    void PlayerHealthRestore(int amount)
+    {
+        health += amount;
+        if (health > playerHealth)
+            health = playerHealth;
+    }
 }

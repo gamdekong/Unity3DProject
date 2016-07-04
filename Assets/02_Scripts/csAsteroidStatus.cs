@@ -5,6 +5,7 @@ public class csAsteroidStatus : MonoBehaviour {
 
     GameObject player;
     public int health = 10;
+    public int restorationMount = 10;
 
     void Start()
     {
@@ -23,6 +24,9 @@ public class csAsteroidStatus : MonoBehaviour {
         //Debug.Log(name + " : " + health);
 
         if (health <= 0)
+        {
+            player.SendMessage("PlayerHealthRestore", restorationMount, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
+        }
     }
 }
