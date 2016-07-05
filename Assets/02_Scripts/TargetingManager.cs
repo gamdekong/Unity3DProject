@@ -18,6 +18,8 @@ public class TargetingManager : MonoBehaviour {
     public float planetAimScaleY = 30;
 
     public float MaxTargetingDistance = 80;
+    float planetDis;
+    float asteroidDis;
 
     // Update is called once per frame
     void Update () {
@@ -37,7 +39,7 @@ public class TargetingManager : MonoBehaviour {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject aim = GameObject.FindGameObjectWithTag("Aim");
         GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
-        GameObject planet = GameObject.FindGameObjectWithTag("Planet");
+        GameObject planet = GameObject.FindGameObjectWithTag("Planet");     
 
         if (aim)
         {
@@ -58,7 +60,7 @@ public class TargetingManager : MonoBehaviour {
         {
             foreach(GameObject asteroid in targetAsteroids)
             {
-                float asteroidDis = Vector3.Distance(asteroid.transform.position, player.transform.position);
+                Vector3.Distance(asteroid.transform.position, player.transform.position);
                 Debug.Log(asteroidDis);
 
                 if (AimingTarget == asteroid)
@@ -80,8 +82,9 @@ public class TargetingManager : MonoBehaviour {
                     }
                }
             }
-
-            float planetDis = Vector3.Distance(targetPlanet.transform.position, player.transform.position);
+            
+            if (targetPlanet)
+                planetDis = Vector3.Distance(targetPlanet.transform.position, player.transform.position);
 
             if (targetPlanet != null && AimingTarget == null)
             {

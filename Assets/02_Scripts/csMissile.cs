@@ -43,7 +43,7 @@ public class csMissile : MonoBehaviour {
         Vector3 Dir = transform.position - target.transform.position;
         Vector3 Axis = Vector3.Cross(Dir, transform.forward);
 
-        Quaternion NewRotation = Quaternion.AngleAxis(Time.deltaTime * Speed * 10, Axis) * transform.rotation;
+        Quaternion NewRotation = Quaternion.AngleAxis(Time.deltaTime * Speed * 5.0f, Axis) * transform.rotation;
         transform.rotation = Quaternion.Lerp(transform.rotation, NewRotation, 50.0f * Time.deltaTime);
         Pos = Vector3.forward * Time.deltaTime * Speed;           
 
