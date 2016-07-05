@@ -9,8 +9,8 @@ public class iTweenPath : MonoBehaviour
 	public Color pathColor = Color.cyan;
 	public List<Vector3> nodes = new List<Vector3>(){Vector3.zero, Vector3.zero};
 	public int nodeCount;
-	public static Dictionary<string, iTweenPath> paths = new Dictionary<string, iTweenPath>();
-	public bool initialized = false;
+    public static Dictionary<string, iTweenPath> paths = new Dictionary<string, iTweenPath>();
+    public bool initialized = false;
 	public string initialName = "";
 	
 	void OnEnable(){
@@ -34,5 +34,10 @@ public class iTweenPath : MonoBehaviour
 			return null;
 		}
 	}
+
+    public static void RemovePath()
+    {
+        paths.Clear();
+    }
 }
 

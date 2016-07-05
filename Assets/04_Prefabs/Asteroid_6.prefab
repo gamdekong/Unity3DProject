@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 65: {fileID: 6527192}
+  - 114: {fileID: 11489406}
   m_Layer: 8
   m_Name: Asteroid_6
   m_TagString: Asteroid
@@ -71,11 +72,24 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.48, y: 1.89, z: 3.14}
   m_Center: {x: 0.41456348, y: 0.509955, z: 0.0076652765}
+--- !u!114 &11489406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddfa7b620a2f7a4087efef3672f1796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  restorationAmount: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

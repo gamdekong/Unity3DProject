@@ -6,6 +6,7 @@ public class csPlayerStatus : MonoBehaviour {
     public int playerHealth = 100;
     public float healthDmgDelay = 3.0f;
     public int healthDmg = 1;
+    public bool untouchable = false;
     int health;
     int damage;
     float delay;
@@ -18,6 +19,9 @@ public class csPlayerStatus : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (untouchable)
+            return;
+
         if(delay > 0)
         {
             delay -= Time.deltaTime;

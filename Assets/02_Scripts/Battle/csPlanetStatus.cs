@@ -21,7 +21,9 @@ public class csPlanetStatus : MonoBehaviour {
         //Debug.Log(name + " : " + health);
 
         if (health <= 0)
+        {
+            GameObject.Find("UIManager").SendMessage("StageClear", SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
+        }
     }
-
 }
