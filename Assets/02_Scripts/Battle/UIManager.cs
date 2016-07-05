@@ -71,9 +71,14 @@ public class UIManager : MonoBehaviour {
         player.GetComponent<iTweenEvent>().Stop();
         player.GetComponent<csPlayerStatus>().untouchable = true;
         GameObject[] missiles = GameObject.FindGameObjectsWithTag("Missile");
+        GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
         foreach (GameObject missile in missiles)
         {
             GameObject.Destroy(missile);
+        }
+        foreach (GameObject asteroid in asteroids)
+        {
+            GameObject.Destroy(asteroid);
         }
 
         yield return new WaitForSeconds(1.5f);

@@ -14,7 +14,7 @@ public class csAsteroidStatus : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (player != null && transform.position.z + 10.0f < player.transform.position.z)
+        if (!player)
             Destroy(gameObject);
 	}
 

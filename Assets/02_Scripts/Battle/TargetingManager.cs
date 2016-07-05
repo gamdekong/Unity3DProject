@@ -60,7 +60,7 @@ public class TargetingManager : MonoBehaviour {
         {
             foreach(GameObject asteroid in targetAsteroids)
             {
-                Vector3.Distance(asteroid.transform.position, player.transform.position);
+                asteroidDis = Vector3.Distance(asteroid.transform.position, player.transform.position);
 
                 if (AimingTarget == asteroid)
                     break;
@@ -75,7 +75,8 @@ public class TargetingManager : MonoBehaviour {
                 }
                 else
                 {
-                    if (asteroid.transform.position.z < AimingTarget.transform.position.z)
+                    float aimingTargetDis = Vector3.Distance(AimingTarget.transform.position, player.transform.position);
+                    if (asteroidDis < aimingTargetDis)
                     {
                         AimingTarget = asteroid;
                     }
