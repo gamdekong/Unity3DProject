@@ -18,8 +18,8 @@ public class TargetingManager : MonoBehaviour {
     public float planetAimScaleY = 30;
 
     public float MaxTargetingDistance = 80;
-    float planetDis;
-    float asteroidDis;
+    float planetDis = 0;
+    float asteroidDis = 0;
 
     // Update is called once per frame
     void Update () {
@@ -61,7 +61,6 @@ public class TargetingManager : MonoBehaviour {
             foreach(GameObject asteroid in targetAsteroids)
             {
                 Vector3.Distance(asteroid.transform.position, player.transform.position);
-                Debug.Log(asteroidDis);
 
                 if (AimingTarget == asteroid)
                     break;

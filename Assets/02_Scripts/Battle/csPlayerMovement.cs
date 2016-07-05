@@ -36,8 +36,6 @@ public class csPlayerMovement : MonoBehaviour {
             
             moveDir = new Vector3(dirX * sideSpeed, 0, speed);
             moveDir = transform.TransformDirection(moveDir);
-
-            GetComponent<CharacterController>().Move(moveDir * Time.deltaTime);
         }
 
     }
