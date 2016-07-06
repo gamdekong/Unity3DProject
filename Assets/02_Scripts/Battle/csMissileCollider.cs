@@ -9,21 +9,25 @@ public class csMissileCollider : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        GameObject playerCam = GameObject.FindGameObjectWithTag("PlayerCam");
 
-        col.SendMessage("DamageToObject", damage, SendMessageOptions.DontRequireReceiver);
+        // 파괴가능한 타겟인지 확인
+        if (col.gameObject.layer == 8)
+        {
+            GameObject playerCam = GameObject.FindGameObjectWithTag("PlayerCam");
 
-        GameObject particleObj = Instantiate(myParticle) as GameObject;
-        particleObj.transform.position = transform.position;
+            col.SendMessage("DamageToObject", damage, SendMessageOptions.DontRequireReceiver);
 
-        Destroy(particleObj, 1.8f);
+            GameObject particleObj = Instantiate(myParticle) as GameObject;
+            particleObj.transform.position = transform.position;
 
-        float distance = Vector3.Distance(col.transform.position, playerCam.transform.position);
-        playerCam.SendMessage("PlayCameraShake", distance, SendMessageOptions.DontRequireReceiver);
+            Destroy(particleObj, 1.8f);
 
-        AudioManager.Instance().PlaySfx(expSFX);
-        Destroy(gameObject);
+            float distance = Vector3.Distance(col.transform.position, playerCam.transform.position);
+            playerCam.SendMessage("PlayCameraShake", distance, SendMessageOptions.DontRequireReceiver);
 
+            AudioManager.Instance().PlaySfx(expSFX);
+            Destroy(gameObject);
+        }
     }
 
 }
