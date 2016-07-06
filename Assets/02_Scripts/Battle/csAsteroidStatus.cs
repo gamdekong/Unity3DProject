@@ -4,8 +4,8 @@ using System.Collections;
 public class csAsteroidStatus : MonoBehaviour {
 
     GameObject player;
+    public GameObject root;
     public int health = 10;
-    public int restorationAmount = 10;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class csAsteroidStatus : MonoBehaviour {
 
         if (health <= 0)
         {
-            player.SendMessage("PlayerHealthRestore", restorationAmount, SendMessageOptions.DontRequireReceiver);
+            Instantiate(root, transform.position, Quaternion.Euler(0, 0, 0));
             Destroy(gameObject);
         }
     }

@@ -11,6 +11,7 @@ TagManager:
   - Fire
   - PlayerCam
   - Path
+  - Root
   layers:
   - Default
   - TransparentFX

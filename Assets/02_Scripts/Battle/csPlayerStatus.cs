@@ -3,18 +3,18 @@ using System.Collections;
 
 public class csPlayerStatus : MonoBehaviour {
 
-    public int playerHealth = 100;
-    public float healthDmgDelay = 3.0f;
-    public int healthDmg = 1;
+    public int playerFuel = 100;
+    public float fuelConsumeDelay = 3.0f;
+    public int consumeAmount = 1;
     public bool untouchable = false;
-    int health;
-    int damage;
+    int fuel;
+    int consume;
     float delay;
 	// Use this for initialization
 	void Start () {
-        delay = healthDmgDelay;
-        health = playerHealth;
-        damage = healthDmg;
+        delay = fuelConsumeDelay;
+        fuel = playerFuel;
+        consume = consumeAmount;
     }
 	
 	// Update is called once per frame
@@ -28,11 +28,11 @@ public class csPlayerStatus : MonoBehaviour {
         }
         else
         {
-            delay = healthDmgDelay;
-            if (health > 0)
+            delay = fuelConsumeDelay;
+            if (fuel > 0)
             {
-                health -= damage;
-                Debug.Log("PlayerHP : " + health);
+                fuel -= consume;
+                Debug.Log("Fuel : " + fuel);
             }
             else
             {
@@ -41,10 +41,10 @@ public class csPlayerStatus : MonoBehaviour {
         }
     }
 
-    void PlayerHealthRestore(int amount)
+    void GetFuel(int amount)
     {
-        health += amount;
-        if (health > playerHealth)
-            health = playerHealth;
+        fuel += amount;
+        if (fuel > playerFuel)
+            fuel = playerFuel;
     }
 }

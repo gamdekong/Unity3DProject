@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddfa7b620a2f7a4087efef3672f1796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 171564, guid: a9c37b8ff25ad11469fbc626ae8be2a4, type: 2}
   health: 10
-  restorationAmount: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
