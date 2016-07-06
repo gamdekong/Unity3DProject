@@ -147,7 +147,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!1001 &116781439
 Prefab:
   m_ObjectHideFlags: 0
@@ -810,6 +810,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 474773582}
+--- !u!1 &562398174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 562398175}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &562398175
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 562398174}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &636210120
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +878,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
 --- !u!82 &636210123
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1013,7 +1041,7 @@ RectTransform:
   - {fileID: 1291096993}
   - {fileID: 1377298550}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1108,7 +1136,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &777101618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1668,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!1 &966507465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,6 +2037,7 @@ GameObject:
   - 143: {fileID: 1073655807}
   - 114: {fileID: 1073655809}
   - 114: {fileID: 1073655808}
+  - 114: {fileID: 1073655810}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2023,13 +2052,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1073655805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.327}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1190868439}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 6
 --- !u!143 &1073655807
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2053,12 +2082,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1073655805}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0401554a0e6f9466db3c1a798d358b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tweenName: 
+  tweenName: playerMovement
   playAutomatically: 1
   delay: 0
   type: 17
@@ -2083,14 +2112,14 @@ MonoBehaviour:
   ints: 
   floats:
   - 5
-  - 15
+  - 20
   bools: 0101
   strings:
   - Path1
   vector3s: []
   colors: []
   spaces: 
-  easeTypes: 07000000
+  easeTypes: 15000000
   loopTypes: 00000000
   gameObjects: []
   transforms: []
@@ -2110,10 +2139,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3fba4018b576e4a84524b829f843cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
-  healthDmgDelay: 3
-  healthDmg: 1
+  playerFuel: 100
+  fuelConsumeDelay: 3
+  consumeAmount: 1
   untouchable: 0
+--- !u!114 &1073655810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1073655805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d999058c818694db70df896205a544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 20
+  accelerateSpeed: 2
+  breakingSpeed: 1
+  restoreSpeedDelay: 2
+  whileAttack: 0
 --- !u!1001 &1091769923
 Prefab:
   m_ObjectHideFlags: 0
@@ -2516,7 +2561,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1377298549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2748,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!114 &1464599471
 MonoBehaviour:
   m_ObjectHideFlags: 0

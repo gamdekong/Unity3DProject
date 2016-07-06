@@ -39,6 +39,7 @@ public class csPlayerStatus : MonoBehaviour {
                 SendMessage("playerDead", SendMessageOptions.DontRequireReceiver);
             }
         }
+       
     }
 
     void GetFuel(int amount)

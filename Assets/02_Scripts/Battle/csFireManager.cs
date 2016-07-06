@@ -43,6 +43,9 @@ public class csFireManager : MonoBehaviour {
         }
         missileObj.transform.position = missilePos;
         missileObj.GetComponent<csMissile>().target = Target;
+
+        // 플레이어 이속 저하
+        Player.GetComponent<csPlayerMovement>().WhileAttacking();
     }
     // Update is called once per frame
     void Update () {
