@@ -13,9 +13,11 @@ public class csFireManager : MonoBehaviour {
 	}
     public void FireMissile()
     {
+        // 타겟이 있을때만 발사
         if (Target == null)
             return;
 
+        // 미사일 생성
         GameObject missileObj = Instantiate(missile) as GameObject;
         Vector3 missilePos = Player.transform.position;
         Quaternion missileAng = Player.transform.rotation;

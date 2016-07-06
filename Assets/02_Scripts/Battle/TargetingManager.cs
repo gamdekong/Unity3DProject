@@ -33,7 +33,9 @@ public class TargetingManager : MonoBehaviour {
         else
             TouchTargeting();                   
     }
-
+    // ===============================================================================
+    // 오토 타겟팅
+    // ===============================================================================
     void AutoTargeting()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -123,7 +125,9 @@ public class TargetingManager : MonoBehaviour {
             GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
         }
     }
-
+    // ===============================================================================
+    // 터치 / 마우스 타겟팅
+    // ===============================================================================
     void TouchTargeting()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
