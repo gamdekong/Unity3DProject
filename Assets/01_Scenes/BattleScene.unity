@@ -621,7 +621,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumAsteroids: 10
-  minimumAsteroids: 0
   minimumDistance: 20
   maximumDistance: 60
   separationDistance: 6
@@ -1720,6 +1719,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1190868439}
+  - {fileID: 1494625951}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!143 &1073655807
@@ -1817,10 +1817,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d999058c818694db70df896205a544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookatTarget: {fileID: 1494625950}
   maxSpeed: 20
   accelerateSpeed: 2
   breakingSpeed: 1
   restoreSpeedDelay: 2
+  pathName: Path1
   whileAttack: 0
 --- !u!1 &1190868435
 GameObject:
@@ -2236,6 +2238,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1494625950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1494625951}
+  - 114: {fileID: 1494625952}
+  m_Layer: 0
+  m_Name: LookatTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1494625951
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494625950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1073655806}
+  m_RootOrder: 1
+--- !u!114 &1494625952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494625950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daddd6a90f8090b43895ba35dd2c43e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1514703947
 GameObject:
   m_ObjectHideFlags: 0
