@@ -5,17 +5,18 @@ public class csPlayerCamManager : MonoBehaviour {
 
     public GameObject player;
     public GameObject target;
+    public GameObject lookatPos;
     public float followSpeed = 5.0f;
     public float rotateSpeed = 5.0f;
     int rotateCount;
-    Vector3 myLocalPosition = Vector3.zero;
-    Quaternion myLocalAngle;
+    Vector3 myLocalPosition;
+    Quaternion myLocalRotation;
 
     // Use this for initialization
     void Start()
     {
         myLocalPosition = transform.localPosition;
-        myLocalAngle = transform.rotation;
+        myLocalRotation = transform.localRotation;
     }
 
     void Update()
@@ -25,10 +26,15 @@ public class csPlayerCamManager : MonoBehaviour {
         else
             target = null;
 
-        if(target != null)
+        if(target != null && player.GetComponent<csPlayerMovement>().whileAttack)
         {
-
+            lookatPos.transform.LookAt(target.transform);
         }
+        else
+        {
+            lookatPos.transform.localRotation = myLocalRotation;
+        }
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, lookatPos.transform.localRotation, 0.8f * Time.deltaTime);
     }
 
     public void PlayCameraShake(float distance)

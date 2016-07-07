@@ -14,6 +14,7 @@ public class csLookatTargetMovement : MonoBehaviour {
     float distance;
     public Vector3[] thePath;
     public float pathLength;
+    public int lastPathNum;
 
     // Use this for initialization
     void Start()
@@ -29,6 +30,9 @@ public class csLookatTargetMovement : MonoBehaviour {
 
     void Movement()
     {
+        if (transform.position.z > thePath[lastPathNum-1].z)
+            return;
+
         if (delay > 0)
         {
             delay -= Time.deltaTime;

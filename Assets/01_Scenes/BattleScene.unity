@@ -187,6 +187,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11429540, guid: 9cdf8f423eac00243be29fb8644ca607, type: 2}
+      propertyPath: health
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cdf8f423eac00243be29fb8644ca607, type: 2}
   m_IsPrefabParent: 0
@@ -458,6 +462,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 272670839}
+--- !u!1 &425260757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 425260758}
+  m_Layer: 0
+  m_Name: LookatPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425260758
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 425260757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1973314418}
+  m_RootOrder: 2
 --- !u!1 &474773582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1451,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1073655805}
-  speed: 10
+  target: {fileID: 0}
+  lookatPos: {fileID: 425260757}
+  followSpeed: 5
+  rotateSpeed: 5
 --- !u!1 &973364270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3fba4018b576e4a84524b829f843cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFuel: 200
+  playerFuel: 20
   fuelConsumeDelay: 1
   consumeAmount: 1
   untouchable: 0
@@ -2195,6 +2230,7 @@ MonoBehaviour:
   whileAttack: 0
   thePath: []
   pathLength: 0
+  lastPathNum: 0
 --- !u!1 &1514703947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,6 +2960,7 @@ Transform:
   m_Children:
   - {fileID: 966507466}
   - {fileID: 1494625951}
+  - {fileID: 425260758}
   m_Father: {fileID: 1073655806}
   m_RootOrder: 0
 --- !u!65 &1973314419

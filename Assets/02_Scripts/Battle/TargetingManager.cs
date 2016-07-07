@@ -31,7 +31,7 @@ public class TargetingManager : MonoBehaviour {
         if (auto)
             AutoTargeting();
         else
-            TouchTargeting();                   
+            TouchTargeting();
     }
     // ===============================================================================
     // 오토 타겟팅
