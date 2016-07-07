@@ -11,9 +11,9 @@ public class csRoot : MonoBehaviour {
 
     void Start()
     {
-        if (GameObject.FindGameObjectWithTag("Player") != null)
+        if (GameObject.Find("Player") != null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.Find("Player");
         }
         else
         {
@@ -37,7 +37,7 @@ public class csRoot : MonoBehaviour {
     {
         if (col.transform.tag == "Player")
         {
-            col.SendMessage("GetFuel", fuel, SendMessageOptions.DontRequireReceiver);
+            player.SendMessage("GetFuel", fuel, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
         }
     }

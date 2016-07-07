@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  fuel: 10
+  fuel: 20
   plasma: 0
   player: {fileID: 0}
 --- !u!135 &13525380

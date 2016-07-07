@@ -165,7 +165,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 481760, guid: 9cdf8f423eac00243be29fb8644ca607, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 600
+      value: 3850
       objectReference: {fileID: 0}
     - target: {fileID: 481760, guid: 9cdf8f423eac00243be29fb8644ca607, type: 2}
       propertyPath: m_LocalRotation.x
@@ -621,9 +621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumAsteroids: 10
-  minimumDistance: 20
-  maximumDistance: 60
-  separationDistance: 6
+  minimumDistance: 40
+  maximumDistance: 120
+  separationDistance: 40
   pathName: Path1
   asteroids:
   - {fileID: 100000, guid: 0f1e1518a80e562458930d8b2d0670d9, type: 2}
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1073655805}
-  speed: 15
+  speed: 10
 --- !u!1 &973364270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,8 +1785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3fba4018b576e4a84524b829f843cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFuel: 100
-  fuelConsumeDelay: 3
+  playerFuel: 200
+  fuelConsumeDelay: 1
   consumeAmount: 1
   untouchable: 0
 --- !u!114 &1073655810
@@ -1801,10 +1801,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookatTarget: {fileID: 1494625950}
-  maxSpeed: 20
-  accelerateSpeed: 2
-  breakingSpeed: 1
-  restoreSpeedDelay: 2
+  maxSpeed: 150
+  accelerateSpeed: 100
+  breakingSpeed: 8
+  restoreSpeedDelay: 1
   pathName: Path1
   whileAttack: 0
 --- !u!1 &1291096992
@@ -2074,11 +2074,15 @@ MonoBehaviour:
   pathColor: {r: 0.44852942, g: 0.9771804, b: 1, a: 1}
   nodes:
   - {x: 0, y: 0, z: 0}
-  - {x: 24.048462, y: -60.51848, z: 150}
-  - {x: -78.1929, y: 36.282272, z: 280}
-  - {x: 80.27976, y: -45.010437, z: 395.3803}
-  - {x: 0, y: 0, z: 580}
-  nodeCount: 5
+  - {x: 24.048462, y: -60.51848, z: 300}
+  - {x: -78.1929, y: 36.282272, z: 800}
+  - {x: 80.27976, y: -45.010437, z: 1300}
+  - {x: -40, y: 70, z: 1800}
+  - {x: 50, y: -80, z: 2300}
+  - {x: -70, y: 37, z: 2800}
+  - {x: 40, y: -80, z: 3300}
+  - {x: 0, y: 0, z: 3800}
+  nodeCount: 9
   initialized: 1
   initialName: New Path 1
 --- !u!1 &1464657227
@@ -2900,7 +2904,6 @@ GameObject:
   - 33: {fileID: 1973314421}
   - 23: {fileID: 1973314420}
   - 65: {fileID: 1973314419}
-  - 54: {fileID: 1973314422}
   m_Layer: 0
   m_Name: FlakDestroyerHullWhite
   m_TagString: Player
@@ -2970,18 +2973,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1973314417}
   m_Mesh: {fileID: 4300000, guid: 3c6c902668b81db4d91dd70e68328080, type: 3}
---- !u!54 &1973314422
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1973314417}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

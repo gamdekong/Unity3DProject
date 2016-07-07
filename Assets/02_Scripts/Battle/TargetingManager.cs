@@ -240,4 +240,17 @@ public class TargetingManager : MonoBehaviour {
             }
         }
     }
+
+    public bool IsHaveTarget()
+    {
+        if (AimingTarget != null)
+            return true;
+        else
+            return false;
+    }
+
+    public GameObject GetTarget()
+    {
+        return AimingTarget;
+    }
 }

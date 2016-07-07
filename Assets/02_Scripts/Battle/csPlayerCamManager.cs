@@ -4,7 +4,9 @@ using System.Collections;
 public class csPlayerCamManager : MonoBehaviour {
 
     public GameObject player;
-    public float speed = 5.0f;
+    public GameObject target;
+    public float followSpeed = 5.0f;
+    public float rotateSpeed = 5.0f;
     int rotateCount;
     Vector3 myLocalPosition = Vector3.zero;
     Quaternion myLocalAngle;
@@ -18,22 +20,14 @@ public class csPlayerCamManager : MonoBehaviour {
 
     void Update()
     {
-        if(player.transform.position.z > 100 && player.transform.position.z < 150)
-        {
-            if (rotateCount < 100)
-            {
-                transform.Rotate(Vector3.up, speed * Time.deltaTime);
-                rotateCount += 1;
-            }
-        }
+        if (GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().IsHaveTarget())
+            target = GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().GetTarget();
+        else
+            target = null;
 
-        if (player.transform.position.z > 150)
+        if(target != null)
         {
-            if (rotateCount > 0)
-            {
-                transform.Rotate(Vector3.up, -speed * Time.deltaTime);
-                rotateCount -= 1;
-            }
+
         }
     }
 
