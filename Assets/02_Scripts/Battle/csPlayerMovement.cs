@@ -31,6 +31,8 @@ public class csPlayerMovement : MonoBehaviour {
         target.pathLength = pathLength;
         target.thePath = thePath;
         target.whileAttack = whileAttack;
+
+        delay = 1.0f;
     }
 	
 	// Update is called once per frame

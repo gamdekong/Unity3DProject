@@ -35,7 +35,7 @@ public class csRoot : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "Player")
+        if (col.transform.tag == "Player")
         {
             col.SendMessage("GetFuel", fuel, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);

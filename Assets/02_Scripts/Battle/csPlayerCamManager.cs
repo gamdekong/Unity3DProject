@@ -3,12 +3,38 @@ using System.Collections;
 
 public class csPlayerCamManager : MonoBehaviour {
 
+    public GameObject player;
+    public float speed = 5.0f;
+    int rotateCount;
     Vector3 myLocalPosition = Vector3.zero;
+    Quaternion myLocalAngle;
 
     // Use this for initialization
     void Start()
     {
         myLocalPosition = transform.localPosition;
+        myLocalAngle = transform.rotation;
+    }
+
+    void Update()
+    {
+        if(player.transform.position.z > 100 && player.transform.position.z < 150)
+        {
+            if (rotateCount < 100)
+            {
+                transform.Rotate(Vector3.up, speed * Time.deltaTime);
+                rotateCount += 1;
+            }
+        }
+
+        if (player.transform.position.z > 150)
+        {
+            if (rotateCount > 0)
+            {
+                transform.Rotate(Vector3.up, -speed * Time.deltaTime);
+                rotateCount -= 1;
+            }
+        }
     }
 
     public void PlayCameraShake(float distance)
