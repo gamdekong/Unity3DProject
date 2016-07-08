@@ -5,6 +5,7 @@ public class csAsteroidStatus : MonoBehaviour {
 
     GameObject player;
     public GameObject root;
+    public GameObject asteroidExpEffect;
     public int health = 10;
     float targetingDis;
 
@@ -20,7 +21,7 @@ public class csAsteroidStatus : MonoBehaviour {
             Destroy(gameObject);
 
         float dis = Vector3.Distance(player.transform.position, transform.position);
-        if (dis > targetingDis && player.transform.position.z > transform.position.z)
+        if (dis > 20 && player.transform.position.z > transform.position.z)
             Destroy(gameObject);
 	}
 
@@ -31,6 +32,12 @@ public class csAsteroidStatus : MonoBehaviour {
 
         if (health <= 0)
         {
+            gameObject.SetActive(false);
+
+            GameObject particleObj = Instantiate(asteroidExpEffect) as GameObject;
+            particleObj.transform.position = transform.position;
+            Destroy(particleObj, 1.0f);
+
             Instantiate(root, transform.position, Quaternion.Euler(0, 0, 0));
             Destroy(gameObject);
         }

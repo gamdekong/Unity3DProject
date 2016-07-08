@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class csPlayerStatus : MonoBehaviour {
 
@@ -7,6 +8,7 @@ public class csPlayerStatus : MonoBehaviour {
     public float fuelConsumeDelay = 3.0f;
     public int consumeAmount = 1;
     public bool untouchable = false;
+    public GameObject fuelBar;
     int fuel;
     int consume;
     float delay;
@@ -39,7 +41,8 @@ public class csPlayerStatus : MonoBehaviour {
                 SendMessage("playerDead", SendMessageOptions.DontRequireReceiver);
             }
         }
-       
+
+        fuelBar.GetComponent<Slider>().value = fuel;
     }
 
     void GetFuel(int amount)

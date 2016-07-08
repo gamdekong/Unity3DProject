@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour {
             GameObject.Destroy(asteroid);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(5.0f);
 
         Time.timeScale = 0;
 

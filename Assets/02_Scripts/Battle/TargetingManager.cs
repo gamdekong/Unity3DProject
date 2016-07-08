@@ -78,6 +78,7 @@ public class TargetingManager : MonoBehaviour {
                 else
                 {
                     float aimingTargetDis = Vector3.Distance(AimingTarget.transform.position, player.transform.position);
+                    Debug.Log(aimingTargetDis);
                     if (asteroidDis < aimingTargetDis)
                     {
                         AimingTarget = asteroid;

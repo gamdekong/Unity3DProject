@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,8 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddfa7b620a2f7a4087efef3672f1796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 171564, guid: a9c37b8ff25ad11469fbc626ae8be2a4, type: 2}
-  health: 10
+  root: {fileID: 176856, guid: a9c37b8ff25ad11469fbc626ae8be2a4, type: 2}
+  asteroidExpEffect: {fileID: 100010, guid: 5167fbcc7fffc42f08772d76479e90b4, type: 2}
+  health: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

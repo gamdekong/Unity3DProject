@@ -4,6 +4,7 @@ using System.Collections;
 public class csPlanetStatus : MonoBehaviour {
 
     public int health = 100;
+    public GameObject planetExpEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,12 @@ public class csPlanetStatus : MonoBehaviour {
 
         if (health <= 0)
         {
+            gameObject.SetActive(false);
+
+            GameObject particleObj = Instantiate(planetExpEffect) as GameObject;
+            particleObj.transform.position = transform.position;
+            Destroy(particleObj, 5.0f);
+
             GameObject.Find("UIManager").SendMessage("StageClear", SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
         }
