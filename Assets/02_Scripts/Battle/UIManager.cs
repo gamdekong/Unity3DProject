@@ -16,14 +16,14 @@ public class UIManager : MonoBehaviour {
 
     public void pushExit()
     {
-        Time.timeScale = 0;
-
         btnExit.SetActive(false);
         btnFire.SetActive(false);
         btnReset.SetActive(false);
 
         exitTitle.SetActive(true);
         background.SetActive(true);
+
+        Time.timeScale = 0;
     }
 
     public void StageClear()
@@ -74,11 +74,11 @@ public class UIManager : MonoBehaviour {
         GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
         foreach (GameObject missile in missiles)
         {
-            GameObject.Destroy(missile);
+            Destroy(missile);
         }
         foreach (GameObject asteroid in asteroids)
         {
-            GameObject.Destroy(asteroid);
+            Destroy(asteroid);
         }
 
         yield return new WaitForSeconds(5.0f);

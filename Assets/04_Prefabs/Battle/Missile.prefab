@@ -201,7 +201,7 @@ MonoBehaviour:
   explosionSound: {fileID: 8300000, guid: b00177400ce884a1f8777420c5b09e13, type: 3}
   Speed: 160
   damage: 1
-  delay: 5
+  delay: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

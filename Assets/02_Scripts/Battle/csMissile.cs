@@ -15,7 +15,7 @@ public class csMissile : MonoBehaviour {
     void Start () {
         transform.FindChild("missile").GetComponent<csMissileCollider>().damage = damage;
         transform.FindChild("missile").GetComponent<csMissileCollider>().expSFX = explosionSound;
-        AudioManager.Instance().PlaySfx(shotSound);
+        //AudioManager.Instance().PlaySfx(shotSound);
     }
 	
 	// Update is called once per frame

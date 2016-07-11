@@ -5,6 +5,7 @@ public class csPlayerMovement : MonoBehaviour {
 
     public GameObject lookatTarget;
     public GameObject wrapEffect;
+    
     public float maxSpeed = 20.0f;
     public float accelerateSpeed = 2.0f;
     public float breakingSpeed = 1.0f;
@@ -18,6 +19,8 @@ public class csPlayerMovement : MonoBehaviour {
     int lastPathNum;
     float pathLength;
     csLookatTargetMovement target;
+
+    float firstDelay = 1.0f;
 
     // Use this for initialization
     void Start () {
@@ -44,8 +47,16 @@ public class csPlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         playerRotate();
-        playerMove();
-        SetWarpEffect();
+        if (firstDelay > 0)
+        {
+            firstDelay -= Time.deltaTime;
+        }
+        else
+        {
+            firstDelay = 0;
+            playerMove();
+            SetWarpEffect();
+        }
     }
 
     void playerMove()

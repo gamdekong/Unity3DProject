@@ -23,7 +23,7 @@ public class TargetingManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (AimingTarget == null)
+        if (AimingTarget == null || Time.timeScale == 0)
             btnFire.SetActive(false);
         else
             btnFire.SetActive(true);
@@ -80,7 +80,6 @@ public class TargetingManager : MonoBehaviour {
                 else
                 {
                     float aimingTargetDis = Vector3.Distance(AimingTarget.transform.position, player.transform.position);
-                    Debug.Log(aimingTargetDis);
                     if (asteroidDis < aimingTargetDis)
                     {
                         AimingTarget = asteroid;
