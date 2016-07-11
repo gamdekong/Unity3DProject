@@ -4,6 +4,7 @@ using System.Collections;
 public class csPlayerMovement : MonoBehaviour {
 
     public GameObject lookatTarget;
+    public GameObject wrapEffect;
     public float maxSpeed = 20.0f;
     public float accelerateSpeed = 2.0f;
     public float breakingSpeed = 1.0f;
@@ -36,12 +37,15 @@ public class csPlayerMovement : MonoBehaviour {
         target.lastPathNum = lastPathNum;
 
         delay = 1.5f;
+
+        wrapEffect.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
         playerRotate();
         playerMove();
+        SetWarpEffect();
     }
 
     void playerMove()
@@ -69,6 +73,21 @@ public class csPlayerMovement : MonoBehaviour {
         distance += speed * Time.deltaTime;
         float perc = distance / pathLength;
         iTween.PutOnPath(gameObject, thePath, perc);
+    }
+
+    void SetWarpEffect()
+    {   
+        if(speed > breakingSpeed)
+        {
+            wrapEffect.SetActive(true);
+            Vector3 newPos = wrapEffect.transform.localPosition;
+            newPos.z = 5.0f;
+            wrapEffect.transform.localPosition = newPos;
+        }
+        else
+        {
+            wrapEffect.SetActive(false);
+        }
     }
 
     void playerRotate()

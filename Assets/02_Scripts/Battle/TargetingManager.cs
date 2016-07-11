@@ -63,6 +63,8 @@ public class TargetingManager : MonoBehaviour {
             foreach(GameObject asteroid in targetAsteroids)
             {
                 asteroidDis = Vector3.Distance(asteroid.transform.position, player.transform.position);
+                if (asteroid.layer != 8)
+                    continue;
 
                 if (AimingTarget == asteroid)
                     break;

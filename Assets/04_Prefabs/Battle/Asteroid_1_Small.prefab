@@ -10,9 +10,8 @@ GameObject:
   - 4: {fileID: 449442}
   - 33: {fileID: 3352890}
   - 23: {fileID: 2396358}
-  - 65: {fileID: 6545110}
-  - 114: {fileID: 11467110}
-  m_Layer: 8
+  - 114: {fileID: 11436898}
+  m_Layer: 0
   m_Name: Asteroid_1_Small
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -65,19 +64,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171914}
   m_Mesh: {fileID: 4300000, guid: 976e89866374b704f8eff32373bca69c, type: 3}
---- !u!65 &6545110
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171914}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 3, z: 3}
-  m_Center: {x: 0.08517182, y: 0.06445256, z: -0.25906557}
---- !u!114 &11467110
+--- !u!114 &11436898
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -85,12 +72,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 171914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddfa7b620a2f7a4087efef3672f1796, type: 3}
+  m_Script: {fileID: 11500000, guid: c4217d389f212b146b05a82650fb49e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 176856, guid: a9c37b8ff25ad11469fbc626ae8be2a4, type: 2}
-  asteroidExpEffect: {fileID: 100010, guid: 5167fbcc7fffc42f08772d76479e90b4, type: 2}
-  health: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

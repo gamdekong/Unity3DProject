@@ -3,21 +3,45 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour {
 
-    public int maximumAsteroids = 10;
-    public float minimumDistance = 20.0f;
-    public float maximumDistance = 60.0f;
-    public float separationDistance = 6.0f;
+    public int destoryableAsteroid = 4;
+    public float D_asteroid_minDis = 20.0f;
+    public float D_asteroid_maxDis = 60.0f;
+    public float D_asteroid_sepDis = 6.0f;
+
+    public int noneDestroyableAsteroid = 6;
+    public float ND_asteroid_minDis = 20.0f;
+    public float ND_asteroid_maxDis = 60.0f;
+    public float ND_asteroid_sepDis = 6.0f;
     public string pathName;
 
     Vector3[] pathNodes;
-    public GameObject[] asteroids;
+    public GameObject[] destoryableAsteroids;
+    public GameObject[] noneDestoryableAsteroids;
 
 	// Use this for initialization
 	void Start () {
-        SpawnAsteroids();
-	}
+        if (destoryableAsteroid > 0)
+        {
+            SpawnAsteroids(
+                D_asteroid_minDis,
+                D_asteroid_maxDis,
+                D_asteroid_sepDis,
+                destoryableAsteroid,
+                destoryableAsteroids);
+        }
+
+        if (noneDestroyableAsteroid > 0)
+        {
+            SpawnAsteroids(
+                ND_asteroid_minDis,
+                ND_asteroid_maxDis,
+                ND_asteroid_sepDis,
+                noneDestroyableAsteroid,
+                noneDestoryableAsteroids);
+        }
+    }
 	
-	void SpawnAsteroids()
+	void SpawnAsteroids(float minDis, float maxDis, float sepDis, int maxCount, GameObject[] asteroids)
     {
         // Path 설정
         pathNodes = iTweenPath.GetPath(pathName);
@@ -36,13 +60,13 @@ public class SpawnManager : MonoBehaviour {
         {
             // 각 노드마다 위치 설정
             nodePos = pathNodes[i];
-            int j = maximumAsteroids;
-            maxZpos = nodePos.z - maximumDistance;
-            minZpos = nodePos.z - minimumDistance;
-            maxYpos = nodePos.y + (maximumDistance / 2);
-            minYpos = nodePos.y - (maximumDistance / 2);
-            maxXpos = nodePos.x + (maximumDistance / 2);
-            minXpos = nodePos.x - (maximumDistance / 2);
+            int j = maxCount;
+            maxZpos = nodePos.z - maxDis;
+            minZpos = nodePos.z - minDis;
+            maxYpos = nodePos.y + (maxDis / 2);
+            minYpos = nodePos.y - (maxDis / 2);
+            maxXpos = nodePos.x + (maxDis / 2);
+            minXpos = nodePos.x - (maxDis / 2);
 
             while (j != 0)
             {
@@ -60,7 +84,7 @@ public class SpawnManager : MonoBehaviour {
                     foreach (GameObject obstacle in obstacles)
                     {
                         float dis = Vector3.Distance(asteroidPos, obstacle.transform.position);
-                        if (dis < separationDistance)
+                        if (dis < sepDis)
                         {
                             canMake = false;
                             break;

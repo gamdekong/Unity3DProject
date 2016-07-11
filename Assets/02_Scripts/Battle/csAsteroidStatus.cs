@@ -7,12 +7,10 @@ public class csAsteroidStatus : MonoBehaviour {
     public GameObject root;
     public GameObject asteroidExpEffect;
     public int health = 10;
-    float targetingDis;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        targetingDis = GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().MaxTargetingDistance;
     }
 
 	// Update is called once per frame
