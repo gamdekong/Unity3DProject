@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour {
     public GameObject background;
     public GameObject exitTitle;
     public GameObject clearTitle;
+    public GameObject hitEffect;
 
     public GameObject btnFire;
     public GameObject btnExit;
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour {
         btnExit.SetActive(false);
         btnFire.SetActive(false);
         btnReset.SetActive(false);
+        hitEffect.SetActive(false);
 
         exitTitle.SetActive(true);
         background.SetActive(true);
@@ -88,6 +90,7 @@ public class UIManager : MonoBehaviour {
         btnExit.SetActive(false);
         btnFire.SetActive(false);
         btnReset.SetActive(false);
+        hitEffect.SetActive(false);
 
         clearTitle.SetActive(true);
         background.SetActive(true);
