@@ -5,7 +5,7 @@ public class csPlanetStatus : MonoBehaviour {
 
     public int health = 100;
     public GameObject planetExpEffect;
-      
+    public AudioClip expSFX;  
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +31,7 @@ public class csPlanetStatus : MonoBehaviour {
             Destroy(particleObj, 5.0f);
 
             GameObject.Find("UIManager").SendMessage("StageClear", SendMessageOptions.DontRequireReceiver);
+            AudioManager.Instance().PlaySfx(expSFX);
             Destroy(gameObject);
         }
     }

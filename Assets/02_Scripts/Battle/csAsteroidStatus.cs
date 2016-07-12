@@ -21,7 +21,15 @@ public class csAsteroidStatus : MonoBehaviour {
         float dis = Vector3.Distance(player.transform.position, transform.position);
         if (dis > 20 && player.transform.position.z > transform.position.z)
             Destroy(gameObject);
-	}
+
+        RotateAsteroid();
+
+    }
+    
+    void RotateAsteroid()
+    {
+        transform.Rotate(Vector3.up * 25.0f * Time.deltaTime);
+    }
 
     public void DamageToObject(int damage)
     {

@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
     public GameObject player;
 
     public GameObject background;
+    public GameObject txtFuelEmpty;
     public GameObject exitTitle;
     public GameObject clearTitle;
     public GameObject hitEffect;
@@ -14,6 +16,7 @@ public class UIManager : MonoBehaviour {
     public GameObject btnFire;
     public GameObject btnExit;
     public GameObject btnReset;
+    public GameObject btnContinue;
 
     public void pushExit()
     {
@@ -68,6 +71,11 @@ public class UIManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    public void Continue()
+    {
+        Reset();
+    }
+
     IEnumerator WaitForClear()
     {
         player.GetComponent<iTweenEvent>().Stop();
@@ -95,5 +103,29 @@ public class UIManager : MonoBehaviour {
         clearTitle.SetActive(true);
         background.SetActive(true);
 
+    }
+
+    IEnumerator WaitForContinue()
+    {
+        Color color = Color.white;
+        color.a = 0;
+        txtFuelEmpty.GetComponent<Text>().color = color;
+        txtFuelEmpty.SetActive(true);
+        background.SetActive(true);
+
+        btnExit.SetActive(false);
+        btnFire.SetActive(false);
+        btnReset.SetActive(false);
+        hitEffect.SetActive(false);
+
+        for (int i = 0; i<100; i++)
+        {
+            color.a += 0.1f * i * Time.deltaTime;
+            txtFuelEmpty.GetComponent<Text>().color = color;
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return new WaitForSeconds(1.0f);
+        btnContinue.SetActive(true);
     }
 }

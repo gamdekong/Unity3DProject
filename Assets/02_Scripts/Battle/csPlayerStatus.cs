@@ -14,11 +14,14 @@ public class csPlayerStatus : MonoBehaviour {
 
     public GameObject targetingManager;
     public GameObject fireManager;
+    public GameObject uiManager;
 
+    bool playonce = false;
     int fuel;
     int consume;
     float delay;
     float blinkDelay = 0.5f;
+
 	// Use this for initialization
 	void Start () {
         delay = fuelConsumeDelay;
@@ -49,6 +52,12 @@ public class csPlayerStatus : MonoBehaviour {
                 targetingManager.GetComponent<TargetingManager>().isDead = true;
                 fireManager.GetComponent<csFireManager>().isDead = true;
                 fuel = 0;
+
+                if (!playonce)
+                {
+                    playonce = true;
+                    GameObject.Find("UIManager").SendMessage("WaitForContinue", SendMessageOptions.DontRequireReceiver);
+                }
             }
         }
 
