@@ -5,6 +5,7 @@ public class csPlanetStatus : MonoBehaviour {
 
     public int health = 100;
     public GameObject planetExpEffect;
+      
 
 	// Use this for initialization
 	void Start () {

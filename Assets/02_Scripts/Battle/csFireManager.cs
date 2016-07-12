@@ -7,12 +7,17 @@ public class csFireManager : MonoBehaviour {
     public GameObject Player;
     public GameObject Target;
 
-	// Use this for initialization
-	void Start () {
+    public bool isDead = false;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
     public void FireMissile()
     {
+        if (isDead)
+            return;
+
         // 타겟이 있을때만 발사
         if (Target == null)
             return;

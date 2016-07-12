@@ -10,6 +10,10 @@ public class csPlayerStatus : MonoBehaviour {
     public bool untouchable = false;
     public GameObject fuelBar;
     public GameObject hitEffect;
+    public GameObject playerCam;
+
+    public GameObject targetingManager;
+    public GameObject fireManager;
 
     int fuel;
     int consume;
@@ -40,12 +44,22 @@ public class csPlayerStatus : MonoBehaviour {
             }
             else
             {
-                SendMessage("playerDead", SendMessageOptions.DontRequireReceiver);
+                GetComponent<csPlayerMovement>().fuelEmpty = true;
+                playerCam.transform.DetachChildren();
+                targetingManager.GetComponent<TargetingManager>().isDead = true;
+                fireManager.GetComponent<csFireManager>().isDead = true;
+                fuel = 0;
             }
         }
 
         if (fuel < 5 && blinkDelay >= 0.5f)
         {
+            if (fuel == 0)
+            {
+                hitEffect.SetActive(false);
+                return;
+            }
+
             if (hitEffect.activeInHierarchy)
                 hitEffect.SetActive(false);
             else

@@ -10,6 +10,7 @@ public class TargetingManager : MonoBehaviour {
     GameObject targetPlanet;
 
     public bool auto = false;
+    public bool isDead = false;
 
     public float asteroidAimScaleX = 15;
     public float asteroidAimScaleY = 15;
@@ -38,6 +39,9 @@ public class TargetingManager : MonoBehaviour {
     // ===============================================================================
     void AutoTargeting()
     {
+        if (isDead)
+            return;
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject aim = GameObject.FindGameObjectWithTag("Aim");
         GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
