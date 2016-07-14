@@ -12,21 +12,33 @@ public class csPlayerCamManager : MonoBehaviour {
     Vector3 myLocalPosition;
     Quaternion myLocalRotation;
 
+    float playerMaxSpeed;
+    float playerBSpeed;
+
     // Use this for initialization
     void Start()
     {
         myLocalPosition = transform.localPosition;
         myLocalRotation = transform.localRotation;
+
+        playerMaxSpeed = player.GetComponent<csPlayerMovement>().maxSpeed;
+        playerBSpeed = player.GetComponent<csPlayerMovement>().breakingSpeed;
     }
 
     void Update()
+    {
+        Follow();
+        CamMove();
+    }
+
+    void Follow()
     {
         if (GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().IsHaveTarget())
             target = GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().GetTarget();
         else
             target = null;
 
-        if(target != null && player.GetComponent<csPlayerMovement>().whileAttack)
+        if (target != null && player.GetComponent<csPlayerMovement>().whileAttack)
         {
             lookatPos.transform.LookAt(target.transform);
         }
@@ -37,19 +49,31 @@ public class csPlayerCamManager : MonoBehaviour {
         transform.localRotation = Quaternion.Lerp(transform.localRotation, lookatPos.transform.localRotation, 0.8f * Time.deltaTime);
     }
 
-    public void PlayCameraShake(float distance)
+    void CamMove()
     {
-        //Debug.Log(distance);
-        if (distance > 30)
-            return;
-        else if(distance > 25)
-            StartCoroutine(CameraShakeProcess(0.1f, 0.02f));
-        else if (distance > 20)
-            StartCoroutine(CameraShakeProcess(0.15f, 0.04f));
-        else if (distance > 15)
-            StartCoroutine(CameraShakeProcess(0.2f, 0.08f));
-        else
-            StartCoroutine(CameraShakeProcess(0.25f, 0.16f));
+        float speed = player.GetComponent<csPlayerMovement>().GetSpeed();
+        Vector3 localPos = transform.localPosition;
+
+        if(speed > playerBSpeed && localPos.z > -1.5f)
+        {
+            localPos.z -= 0.5f * Time.deltaTime;
+            if (localPos.z < -2.0f)
+                localPos.z = -2.0f;
+            transform.localPosition = localPos;
+        }
+        else if(speed != playerMaxSpeed)
+        {
+            localPos.z += 0.5f * Time.deltaTime;
+            if (localPos.z > 0)
+                localPos.z = 0;
+            transform.localPosition = localPos;
+        }
+
+    }
+
+    public void PlayCameraShake()
+    {
+        StartCoroutine(CameraShakeProcess(0.25f, 0.16f));
     }
 
     IEnumerator CameraShakeProcess(float shakeTime, float shakeSense)

@@ -5,6 +5,7 @@ public class csPlayerMovement : MonoBehaviour {
 
     public GameObject lookatTarget;
     public GameObject wrapEffect;
+    public GameObject[] engines;
     Vector3 startPoint;
     
     public float maxSpeed = 20.0f;
@@ -22,7 +23,7 @@ public class csPlayerMovement : MonoBehaviour {
     int lastPathNum;
     float pathLength;
     csLookatTargetMovement target;
-    float firstDelay = 1.0f;    
+    float firstDelay = 0.5f;    
 
     // Use this for initialization
     void Start () {
@@ -46,6 +47,8 @@ public class csPlayerMovement : MonoBehaviour {
         wrapEffect.SetActive(false);
 
         startPoint = thePath[0];
+
+        engines = GameObject.FindGameObjectsWithTag("Engine");
     }
 	
 	// Update is called once per frame
@@ -63,27 +66,44 @@ public class csPlayerMovement : MonoBehaviour {
         }
     }
 
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
     void playerMove()
     {
+        if(speed <= 0)
+        {
+            foreach(GameObject engine in engines)
+            {
+                engine.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject engine in engines)
+            {
+                engine.SetActive(true);
+            }
+        }
+
         if (fuelEmpty)
         {
             wrapEffect.SetActive(false);
-            speed = 0.0f;
+            speed = maxSpeed / 10;
 
             Vector3 Dir = transform.position - startPoint;
             Vector3 Axis = Vector3.Cross(Dir, transform.forward);
 
             Quaternion NewRotation = Quaternion.AngleAxis(Time.deltaTime * 50.0f * 15.0f, Axis) * transform.rotation;
             transform.rotation = Quaternion.Lerp(transform.rotation, NewRotation, 10.0f * Time.deltaTime);
-            Vector3 Pos = Vector3.forward * Time.deltaTime * 15.0f;
+            Vector3 Pos = Vector3.forward * Time.deltaTime * speed;
 
             transform.Translate(Pos);
 
             return;
         }
-
-        if (transform.position.z > thePath[lastPathNum-1].z)
-            return;
 
         if (delay > 0)
         {
@@ -102,6 +122,12 @@ public class csPlayerMovement : MonoBehaviour {
         if (speed > maxSpeed)
             speed = maxSpeed;
 
+        if (transform.position.z > thePath[lastPathNum - 1].z)
+        {
+            transform.Translate(Vector3.forward * speed / 5.0f * Time.deltaTime);
+            return;
+        }
+                     
         distance += speed * Time.deltaTime;
         float perc = distance / pathLength;
         iTween.PutOnPath(gameObject, thePath, perc);

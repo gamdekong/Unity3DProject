@@ -12,6 +12,7 @@ TagManager:
   - PlayerCam
   - Path
   - Root
+  - Engine
   layers:
   - Default
   - TransparentFX

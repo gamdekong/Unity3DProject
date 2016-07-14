@@ -22,9 +22,6 @@ public class csMissileCollider : MonoBehaviour {
 
             Destroy(particleObj, 1.8f);
 
-            float distance = Vector3.Distance(col.transform.position, playerCam.transform.position);
-            playerCam.SendMessage("PlayCameraShake", distance, SendMessageOptions.DontRequireReceiver);
-
             //AudioManager.Instance().PlaySfx(expSFX);
             Destroy(gameObject);
         }

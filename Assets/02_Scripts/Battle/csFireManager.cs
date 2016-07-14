@@ -5,6 +5,7 @@ public class csFireManager : MonoBehaviour {
 
     public GameObject missile;
     public GameObject Player;
+    public GameObject MissilePosition;
     public GameObject Target;
 
     public bool isDead = false;
@@ -24,26 +25,26 @@ public class csFireManager : MonoBehaviour {
 
         // 미사일 생성
         GameObject missileObj = Instantiate(missile) as GameObject;
-        Vector3 missilePos = Player.transform.position;
-        Quaternion missileAng = Player.transform.rotation;
+        Vector3 missilePos = MissilePosition.transform.position;
+        Quaternion missileAng = MissilePosition.transform.rotation;
         missileAng.x += 90.0f;
         missileObj.transform.rotation = missileAng;
         int range = Random.Range(0, 4);
         switch (range)
         {
             case 0:
-                missilePos.y += Random.Range(0, 1.0f);
-                missileObj.transform.Rotate(Vector3.down, Random.Range(80, 120));
+                //missilePos.y += Random.Range(0, 1.0f);
+                missileObj.transform.Rotate(Vector3.down, Random.Range(70, 120));
                 break;
             case 1:
-                missilePos.y += Random.Range(0, 1.0f);
-                missileObj.transform.Rotate(Vector3.right, Random.Range(60, 80));
+                //missilePos.y += Random.Range(0, 1.0f);
+                missileObj.transform.Rotate(Vector3.right, Random.Range(50, 80));
                 break;
             case 2:
-                missileObj.transform.Rotate(new Vector3(1,1,0) , Random.Range(80, 120));
+                missileObj.transform.Rotate(new Vector3(1,1,0) , Random.Range(70, 120));
                 break;
             case 3:
-                missileObj.transform.Rotate(new Vector3(-1,-1,0), Random.Range(80, 120));
+                missileObj.transform.Rotate(new Vector3(-1,-1,0), Random.Range(70, 120));
                 break;
         }
         missileObj.transform.position = missilePos;

@@ -8,6 +8,7 @@ public class csRoot : MonoBehaviour {
     public int plasma = 0;
 
     public GameObject player;
+    public AudioClip rootSound;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class csRoot : MonoBehaviour {
     {
         if (col.transform.tag == "Player")
         {
+            AudioManager.Instance().PlaySfx(rootSound);
             player.SendMessage("GetFuel", fuel, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
         }

@@ -17,6 +17,7 @@ public class csPlayerStatus : MonoBehaviour {
     public GameObject uiManager;
 
     bool playonce = false;
+    bool whileCorutine = false;
     int fuel;
     int consume;
     float delay;
@@ -60,30 +61,32 @@ public class csPlayerStatus : MonoBehaviour {
                 }
             }
         }
-
-        if (fuel < 5 && blinkDelay >= 0.5f)
+        if (!whileCorutine)
         {
-            if (fuel == 0)
+            if (fuel < 5 && blinkDelay >= 0.5f)
+            {
+                if (fuel == 0)
+                {
+                    hitEffect.SetActive(false);
+                    return;
+                }
+
+                if (hitEffect.activeInHierarchy)
+                    hitEffect.SetActive(false);
+                else
+                    hitEffect.SetActive(true);
+
+                blinkDelay = 0;
+            }
+            else if (fuel > 5)
             {
                 hitEffect.SetActive(false);
-                return;
+                blinkDelay = 0.5f;
             }
-
-            if (hitEffect.activeInHierarchy)
-                hitEffect.SetActive(false);
             else
-                hitEffect.SetActive(true);
-
-            blinkDelay = 0;
-        }
-        else if(fuel > 5)
-        {
-            hitEffect.SetActive(false);
-            blinkDelay = 0.5f;
-        }
-        else
-        {
-            blinkDelay += Time.deltaTime;
+            {
+                blinkDelay += Time.deltaTime;
+            }
         }
 
         fuelBar.GetComponent<Slider>().value = fuel;
@@ -91,8 +94,27 @@ public class csPlayerStatus : MonoBehaviour {
 
     void GetFuel(int amount)
     {
+        if (GetComponent<csPlayerMovement>().fuelEmpty)
+            return;
+
         fuel += amount;
         if (fuel > playerFuel)
             fuel = playerFuel;
+    }
+
+    public void DamageToFuel(int damage)
+    {
+        fuel -= damage;
+    }
+
+    IEnumerator ShowEffect()
+    {
+        whileCorutine = true;
+        hitEffect.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        hitEffect.SetActive(false);
+        whileCorutine = false;
     }
 }

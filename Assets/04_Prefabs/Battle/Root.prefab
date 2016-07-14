@@ -127,10 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8747895faad754385d8ea6ee4dcf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 200
   fuel: 2
   plasma: 0
   player: {fileID: 0}
+  rootSound: {fileID: 8300000, guid: d20686e332dfbe24cb0e975ac9cfa775, type: 3}
 --- !u!135 &13574364
 SphereCollider:
   m_ObjectHideFlags: 1

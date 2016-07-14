@@ -3,21 +3,23 @@ using System.Collections;
 
 public class TargetingManager : MonoBehaviour {
 
-    public GameObject Aim;
+    public GameObject AimUp;
+    public GameObject AimDown;
     public GameObject btnFire;
-    GameObject AimingTarget;
+    public GameObject AimingTarget;
     GameObject[] targetAsteroids;
     GameObject targetPlanet;
 
     public bool auto = false;
     public bool isDead = false;
 
-    public float asteroidAimScaleX = 15;
-    public float asteroidAimScaleY = 15;
+    public float asteroidAimScaleX = 30;
+    public float asteroidAimScaleY = 30;
 
     public float planetAimScaleX = 30;
     public float planetAimScaleY = 30;
 
+    public float MinTargetingDistance = 60;
     public float MaxTargetingDistance = 80;
     float planetDis = 0;
     float asteroidDis = 0;
@@ -31,8 +33,8 @@ public class TargetingManager : MonoBehaviour {
 
         if (auto)
             AutoTargeting();
-        else
-            TouchTargeting();
+        //else
+        //    TouchTargeting();
     }
     // ===============================================================================
     // 오토 타겟팅
@@ -54,6 +56,15 @@ public class TargetingManager : MonoBehaviour {
                 Destroy(aim);
                 AimingTarget = null;
             }
+            else if(AimingTarget)
+            {
+                float targetDis = Vector3.Distance(AimingTarget.transform.position, player.transform.position);
+                if(targetDis < MinTargetingDistance)
+                {
+                    Destroy(aim);
+                    AimingTarget = null;
+                }
+            }
         }
 
         if (targetAsteroids != asteroids)
@@ -73,8 +84,9 @@ public class TargetingManager : MonoBehaviour {
                 if (AimingTarget == asteroid)
                     break;
  
-                if (asteroid.transform.position.z - 3.0f < player.transform.position.z ||
-                    asteroidDis > MaxTargetingDistance)
+                if (asteroid.transform.position.z < player.transform.position.z ||
+                    asteroidDis > MaxTargetingDistance ||
+                    asteroidDis < MinTargetingDistance)
                     continue;
 
                 if(AimingTarget == null)
@@ -104,29 +116,29 @@ public class TargetingManager : MonoBehaviour {
         if (AimingTarget != null)
         {
             Vector3 targetPos = AimingTarget.transform.position;
-            if (AimingTarget.tag == "Asteroid")
-                targetPos.z -= 3.0f;
-            else
-                targetPos.z -= 15.0f;
-
+            GameObject aimObj;
             if (GameObject.FindGameObjectWithTag("Aim"))
             {
-                GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
-
-                if (AimingTarget.tag == "Asteroid")
-                    aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
-                else
-                    aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
-
-                GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
+                aimObj = GameObject.FindGameObjectWithTag("Aim");
+                aimObj.transform.LookAt(player.transform);
+                return;
             }
             else
             {
-                GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
+                if (targetPos.y < player.transform.position.y && AimingTarget.tag == "Asteroid")
+                {
+                    aimObj = Instantiate(AimDown, targetPos, transform.rotation) as GameObject;
+                }
+                else
+                {
+                    aimObj = Instantiate(AimUp, targetPos, transform.rotation) as GameObject;
+                }
                 if (AimingTarget.tag == "Asteroid")
                     aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
                 else
                     aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+
+                aimObj.transform.LookAt(player.transform);
             }
             GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
         }
@@ -134,118 +146,118 @@ public class TargetingManager : MonoBehaviour {
     // ===============================================================================
     // 터치 , 마우스 타겟팅
     // ===============================================================================
-    void TouchTargeting()
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        GameObject aim = GameObject.FindGameObjectWithTag("Aim");
+    //void TouchTargeting()
+    //{
+    //    GameObject player = GameObject.FindGameObjectWithTag("Player");
+    //    GameObject aim = GameObject.FindGameObjectWithTag("Aim");
 
-        if (aim)
-        {
-            if ((aim.transform.position.z < player.transform.position.z) || AimingTarget == null)
-            {
-                Destroy(aim);
-            }
-        }
+    //    if (aim)
+    //    {
+    //        if ((aim.transform.position.z < player.transform.position.z) || AimingTarget == null)
+    //        {
+    //            Destroy(aim);
+    //        }
+    //    }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+    //    if (Input.GetButtonDown("Fire1"))
+    //    {
+    //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.gameObject.layer == 8)
-                {
-                    float targetDis = Vector3.Distance(hit.transform.position, player.transform.position);
-                    Vector3 targetPos = hit.transform.position;
+    //        if (Physics.Raycast(ray, out hit))
+    //        {
+    //            if (hit.transform.gameObject.layer == 8)
+    //            {
+    //                float targetDis = Vector3.Distance(hit.transform.position, player.transform.position);
+    //                Vector3 targetPos = hit.transform.position;
 
-                    if (hit.transform.tag == "Asteroid")
-                        targetPos.z -= 3.0f;
-                    else
-                        targetPos.z -= 15.0f;
+    //                if (hit.transform.tag == "Asteroid")
+    //                    targetPos.z -= 3.0f;
+    //                else
+    //                    targetPos.z -= 15.0f;
 
-                    if (targetPos.z < player.transform.position.z || targetDis > MaxTargetingDistance)
-                    {
-                        return;
-                    }
+    //                if (targetPos.z < player.transform.position.z || targetDis > MaxTargetingDistance)
+    //                {
+    //                    return;
+    //                }
 
-                    AimingTarget = hit.transform.gameObject;
+    //                AimingTarget = hit.transform.gameObject;
 
-                    if (GameObject.FindGameObjectWithTag("Aim"))
-                    {
-                        GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
+    //                if (GameObject.FindGameObjectWithTag("Aim"))
+    //                {
+    //                    GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
 
-                        if (AimingTarget.tag == "Asteroid")
-                            aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
-                        else
-                            aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+    //                    if (AimingTarget.tag == "Asteroid")
+    //                        aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+    //                    else
+    //                        aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
 
-                        GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
-                    }
-                    else
-                    {
-                        GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
-                        if (AimingTarget.tag == "Asteroid")
-                            aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
-                        else
-                            aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
-                    }
-                    GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
-                }
-            }
-        }
+    //                    GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
+    //                }
+    //                else
+    //                {
+    //                    GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
+    //                    if (AimingTarget.tag == "Asteroid")
+    //                        aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+    //                    else
+    //                        aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+    //                }
+    //                GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
+    //            }
+    //        }
+    //    }
 
-        foreach (Touch touch in Input.touches)
-        {
-            if (touch.phase == TouchPhase.Ended)
-            {
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hit;
+    //    foreach (Touch touch in Input.touches)
+    //    {
+    //        if (touch.phase == TouchPhase.Ended)
+    //        {
+    //            Ray ray = Camera.main.ScreenPointToRay(touch.position);
+    //            RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.transform.gameObject.layer == 8)
-                    {
-                        float targetDis = Vector3.Distance(hit.transform.position, player.transform.position);
-                        Vector3 targetPos = hit.transform.position;
+    //            if (Physics.Raycast(ray, out hit))
+    //            {
+    //                if (hit.transform.gameObject.layer == 8)
+    //                {
+    //                    float targetDis = Vector3.Distance(hit.transform.position, player.transform.position);
+    //                    Vector3 targetPos = hit.transform.position;
 
-                        if (hit.transform.tag == "Asteroid")
-                            targetPos.z -= 3.0f;
-                        else
-                            targetPos.z -= 15.0f;
+    //                    if (hit.transform.tag == "Asteroid")
+    //                        targetPos.z -= 3.0f;
+    //                    else
+    //                        targetPos.z -= 15.0f;
 
-                        if (targetPos.z < player.transform.position.z || targetDis > MaxTargetingDistance)
-                        {
-                            return;
-                        }
+    //                    if (targetPos.z < player.transform.position.z || targetDis > MaxTargetingDistance)
+    //                    {
+    //                        return;
+    //                    }
 
-                        AimingTarget = hit.transform.gameObject;
+    //                    AimingTarget = hit.transform.gameObject;
 
-                        if (GameObject.FindGameObjectWithTag("Aim"))
-                        {
-                            GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
+    //                    if (GameObject.FindGameObjectWithTag("Aim"))
+    //                    {
+    //                        GameObject aimObj = GameObject.FindGameObjectWithTag("Aim");
 
-                            if (AimingTarget.tag == "Asteroid")
-                                aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
-                            else
-                                aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+    //                        if (AimingTarget.tag == "Asteroid")
+    //                            aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+    //                        else
+    //                            aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
 
-                            GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
-                        }
-                        else
-                        {
-                            GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
-                            if (AimingTarget.tag == "Asteroid")
-                                aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
-                            else
-                                aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
-                        }
-                        GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
-                    }
-                }
-            }
-        }
-    }
+    //                        GameObject.FindGameObjectWithTag("Aim").transform.position = targetPos;
+    //                    }
+    //                    else
+    //                    {
+    //                        GameObject aimObj = Instantiate(Aim, targetPos, transform.rotation) as GameObject;
+    //                        if (AimingTarget.tag == "Asteroid")
+    //                            aimObj.transform.localScale = new Vector3(asteroidAimScaleX, asteroidAimScaleY, 1);
+    //                        else
+    //                            aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
+    //                    }
+    //                    GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
     public bool IsHaveTarget()
     {

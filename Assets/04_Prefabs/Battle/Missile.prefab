@@ -197,11 +197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  shotSound: {fileID: 8300000, guid: e5ffe5ad56ed84f80b79cf081c6d0209, type: 3}
+  shotSound: {fileID: 8300000, guid: 0f331da756c0a6545ba9d487f9cbae52, type: 3}
   explosionSound: {fileID: 8300000, guid: b00177400ce884a1f8777420c5b09e13, type: 3}
-  Speed: 160
+  Speed: 500
   damage: 1
-  delay: 3
+  delay: 1.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

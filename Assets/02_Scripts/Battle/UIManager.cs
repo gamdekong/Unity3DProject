@@ -18,6 +18,20 @@ public class UIManager : MonoBehaviour {
     public GameObject btnReset;
     public GameObject btnContinue;
 
+    public GameObject txtSpeed;
+    public GameObject txtKill;
+
+    void Update()
+    {
+        showSpeed();
+    }
+
+    void showSpeed()
+    {
+        float speed = player.GetComponent<csPlayerMovement>().GetSpeed();
+        txtSpeed.GetComponent<Text>().text = "SPEED : " + speed + "m/s";
+    }
+
     public void pushExit()
     {
         btnExit.SetActive(false);
@@ -102,7 +116,8 @@ public class UIManager : MonoBehaviour {
 
         clearTitle.SetActive(true);
         background.SetActive(true);
-
+        txtFuelEmpty.SetActive(false);
+        btnContinue.SetActive(false);
     }
 
     IEnumerator WaitForContinue()
