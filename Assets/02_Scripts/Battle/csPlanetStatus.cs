@@ -5,12 +5,13 @@ public class csPlanetStatus : MonoBehaviour {
 
     public int health = 100;
     public GameObject planetExpEffect;
+    GameObject UIManager;
     public AudioClip expSFX;  
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+        UIManager = GameObject.Find("UIManager");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,6 +25,9 @@ public class csPlanetStatus : MonoBehaviour {
 
         if (health <= 0)
         {
+            UIManager.GetComponent<UIManager>().SendMessage("Vibration");
+            //Handheld.Vibrate();
+
             gameObject.SetActive(false);
 
             GameObject particleObj = Instantiate(planetExpEffect) as GameObject;

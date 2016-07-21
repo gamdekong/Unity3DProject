@@ -131,7 +131,7 @@ MonoBehaviour:
   fuel: 2
   plasma: 0
   player: {fileID: 0}
-  rootSound: {fileID: 8300000, guid: d20686e332dfbe24cb0e975ac9cfa775, type: 3}
+  rootSound: {fileID: 8300000, guid: b981cef426f5abe45a52b60aac364b4e, type: 3}
 --- !u!135 &13574364
 SphereCollider:
   m_ObjectHideFlags: 1

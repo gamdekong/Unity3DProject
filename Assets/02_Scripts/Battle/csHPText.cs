@@ -23,6 +23,6 @@ public class csHPText : MonoBehaviour {
                 health = target.GetComponent<csPlanetStatus>().health;
         }
 
-        gameObject.GetComponent<TextMesh>().text = "HP : " + health;
+        gameObject.GetComponent<TextMesh>().text = "hp : " + health;
     }
 }

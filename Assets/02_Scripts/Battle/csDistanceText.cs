@@ -15,6 +15,6 @@ public class csDistanceText : MonoBehaviour {
 	void Update () {
         distance = Vector3.Distance(transform.position, player.transform.position);
         
-        gameObject.GetComponent<TextMesh>().text = distance + " M";
+        gameObject.GetComponent<TextMesh>().text = distance.ToString("0.#") + " m";
 	}
 }

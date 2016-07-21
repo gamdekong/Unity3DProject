@@ -4,6 +4,7 @@ using System.Collections;
 public class csAsteroidStatus : MonoBehaviour {
 
     GameObject player;
+    GameObject UIManager;
     public GameObject root;
     public GameObject asteroidExpEffect;
     public int health = 10;
@@ -11,6 +12,7 @@ public class csAsteroidStatus : MonoBehaviour {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        UIManager = GameObject.Find("UIManager");
     }
 
 	// Update is called once per frame
@@ -38,7 +40,11 @@ public class csAsteroidStatus : MonoBehaviour {
 
         if (health <= 0)
         {
+            //UIManager.GetComponent<UIManager>().SendMessage("Vibration");
+            Handheld.Vibrate();
+
             gameObject.SetActive(false);
+            UIManager.GetComponent<UIManager>().destructionCount += 1;
 
             GameObject particleObj = Instantiate(asteroidExpEffect) as GameObject;
             particleObj.transform.position = transform.position;

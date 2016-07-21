@@ -18,8 +18,16 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] destoryableAsteroids;
     public GameObject[] noneDestoryableAsteroids;
 
-	// Use this for initialization
-	void Start () {
+    public Material skyboxMat;
+    public int Chapter = 1;
+    public GameObject[] planets;
+    public GameObject planetExpEffect;
+    public AudioClip planetExpSound;
+    public int Stage = 1;
+
+    // Use this for initialization
+    void Start()
+    {
         if (destoryableAsteroid > 0)
         {
             SpawnAsteroids(
@@ -39,6 +47,59 @@ public class SpawnManager : MonoBehaviour {
                 noneDestroyableAsteroid,
                 noneDestoryableAsteroids);
         }
+
+        // Chapter
+        switch (Chapter)
+        {
+            case 1:
+                skyboxMat.SetColor("_Tint", Color.white);
+                break;
+            case 2:
+                skyboxMat.SetColor("_Tint", Color.red);
+                break;
+            case 3:
+                skyboxMat.SetColor("_Tint", Color.blue);
+                break;
+            case 4:
+                skyboxMat.SetColor("_Tint", Color.gray);
+                break;
+            case 5:
+                skyboxMat.SetColor("_Tint", Color.green);
+                break;
+        }
+
+        Vector3 planetPos = new Vector3(0, 0, 7800);
+        Quaternion planetRotation = Quaternion.Euler(0, 0, 0);
+        GameObject planetObj;
+        // Stage
+        switch (Stage)
+        {
+            case 1:
+                planetObj = Instantiate(planets[0], planetPos, planetRotation) as GameObject;
+                break;
+            case 2:
+                planetObj = Instantiate(planets[1], planetPos, planetRotation) as GameObject;
+                break;
+            case 3:
+                planetObj = Instantiate(planets[2], planetPos, planetRotation) as GameObject;
+                break;
+            case 4:
+                planetObj = Instantiate(planets[3], planetPos, planetRotation) as GameObject;
+                break;
+            case 5:
+                planetObj = Instantiate(planets[4], planetPos, planetRotation) as GameObject;
+                break;
+            case 6:
+                planetObj = Instantiate(planets[5], planetPos, planetRotation) as GameObject;
+                break;
+            default:
+                planetObj = Instantiate(planets[0], planetPos, planetRotation) as GameObject;
+                break;
+        }
+        planetObj.GetComponent<csPlanetStatus>().expSFX = planetExpSound;
+        planetObj.GetComponent<csPlanetStatus>().planetExpEffect = planetExpEffect;
+
+        RenderSettings.skybox = skyboxMat;
     }
 	
 	void SpawnAsteroids(float minDis, float maxDis, float sepDis, int maxCount, GameObject[] asteroids)

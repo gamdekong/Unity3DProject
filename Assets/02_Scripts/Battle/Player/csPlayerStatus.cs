@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class csPlayerStatus : MonoBehaviour {
 
-    public int playerFuel = 100;
+    public int playerFuel = 20;
     public float fuelConsumeDelay = 3.0f;
     public int consumeAmount = 1;
     public bool untouchable = false;
@@ -25,6 +25,7 @@ public class csPlayerStatus : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        fuelBar.GetComponent<csShowFuel>().maxFuel = (float)playerFuel;
         delay = fuelConsumeDelay;
         fuel = playerFuel;
         consume = consumeAmount;
@@ -89,7 +90,7 @@ public class csPlayerStatus : MonoBehaviour {
             }
         }
 
-        fuelBar.GetComponent<Slider>().value = fuel;
+        fuelBar.GetComponent<csShowFuel>().fuelValue = (float)fuel;
     }
 
     void GetFuel(int amount)

@@ -41,13 +41,19 @@ public class TargetingManager : MonoBehaviour {
     // ===============================================================================
     void AutoTargeting()
     {
-        if (isDead)
-            return;
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject aim = GameObject.FindGameObjectWithTag("Aim");
         GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
-        GameObject planet = GameObject.FindGameObjectWithTag("Planet");     
+        GameObject planet = GameObject.FindGameObjectWithTag("Planet");
+
+        if (isDead)
+        {
+            btnFire.SetActive(false);
+            AimingTarget = null;
+            if (aim)
+                Destroy(aim);
+            return;
+        }
 
         if (aim)
         {
@@ -56,7 +62,7 @@ public class TargetingManager : MonoBehaviour {
                 Destroy(aim);
                 AimingTarget = null;
             }
-            else if(AimingTarget)
+            else if(AimingTarget && AimingTarget.tag == "Asteroid")
             {
                 float targetDis = Vector3.Distance(AimingTarget.transform.position, player.transform.position);
                 if(targetDis < MinTargetingDistance)

@@ -19,17 +19,25 @@ public class UIManager : MonoBehaviour {
     public GameObject btnContinue;
 
     public GameObject txtSpeed;
-    public GameObject txtKill;
+    public GameObject txtDestruction;
+
+    public int destructionCount = 0;
 
     void Update()
     {
         showSpeed();
+        showCount();
     }
 
     void showSpeed()
     {
         float speed = player.GetComponent<csPlayerMovement>().GetSpeed();
-        txtSpeed.GetComponent<Text>().text = "SPEED : " + speed + "m/s";
+        txtSpeed.GetComponent<Text>().text = "Speed : " + speed.ToString("0.#")+ "m/s";
+    }
+
+    void showCount()
+    {
+        txtDestruction.GetComponent<Text>().text = "Destruction : " + destructionCount;
     }
 
     public void pushExit()
@@ -113,6 +121,8 @@ public class UIManager : MonoBehaviour {
         btnFire.SetActive(false);
         btnReset.SetActive(false);
         hitEffect.SetActive(false);
+        txtDestruction.SetActive(false);
+        txtSpeed.SetActive(false);
 
         clearTitle.SetActive(true);
         background.SetActive(true);
@@ -132,6 +142,8 @@ public class UIManager : MonoBehaviour {
         btnFire.SetActive(false);
         btnReset.SetActive(false);
         hitEffect.SetActive(false);
+        txtDestruction.SetActive(false);
+        txtSpeed.SetActive(false);
 
         for (int i = 0; i<100; i++)
         {
@@ -142,5 +154,14 @@ public class UIManager : MonoBehaviour {
 
         yield return new WaitForSeconds(1.0f);
         btnContinue.SetActive(true);
+    }
+
+    IEnumerator Vibration()
+    {
+        for(int i =0; i < 3; i++)
+        {
+            Handheld.Vibrate();
+            yield return new WaitForSeconds(0.6f);
+        }
     }
 }
