@@ -3,19 +3,35 @@ using System.Collections;
 
 public class csMissile : MonoBehaviour {
 
+    public GameObject player;
     public GameObject target;
     public AudioClip shotSound;
     public AudioClip explosionSound;
+    public bool isRight;
 
     public float Speed;
     public int damage;
+    public float criticalRate;
+    public float criticalDamage;
     public float delay = 5;
-   
+    float propelTime = 0.01f;
+    float MaxPropelTime = 0.15f;
+    float rotatePropelTime;
+    float MaxSpeed;
+
     // Use this for initialization
     void Start () {
+        player = GameObject.Find("Player");
+
         transform.FindChild("missile").GetComponent<csMissileCollider>().damage = damage;
+        transform.FindChild("missile").GetComponent<csMissileCollider>().criticalRate = criticalRate;
+        transform.FindChild("missile").GetComponent<csMissileCollider>().criticalDamage = criticalDamage;
         transform.FindChild("missile").GetComponent<csMissileCollider>().expSFX = explosionSound;
         AudioManager.Instance().PlaySfx(shotSound);
+
+        MaxSpeed = Speed;
+        Speed = Speed / 2;
+        rotatePropelTime = MaxPropelTime;
     }
 	
 	// Update is called once per frame
@@ -24,10 +40,10 @@ public class csMissile : MonoBehaviour {
         MissileControl3();
 
         if (delay <= 0)
-            Destroy(gameObject);	
+            Destroy(gameObject);
 	}
 
-    void MissileControl3()
+    public void MissileControl3()
     {
         if (!(transform.FindChild("missile")))
             Destroy(gameObject);
@@ -38,13 +54,68 @@ public class csMissile : MonoBehaviour {
             Pos = Vector3.forward * Time.deltaTime * Speed;
             transform.Translate(Pos);
             return;
-        }    
+        }
 
-        Vector3 Dir = transform.position - target.transform.position;
-        Vector3 Axis = Vector3.Cross(Dir, transform.forward);
+        if (propelTime > 0)
+        {
+            propelTime -= Time.deltaTime;
+        }
+        else
+        {
+            propelTime = 0;
+            if (Speed > MaxSpeed)
+            {
+                Speed = MaxSpeed;
+            }
+            else
+            {
+                if(rotatePropelTime == MaxPropelTime)
+                {
+                    if (isRight)
+                    {
+                        transform.Rotate(Vector3.up, Random.Range(20, 40));
+                        transform.Rotate(Vector3.right, Random.Range(10, 30));
+                    }
+                    else
+                    {
+                        transform.Rotate(Vector3.up, Random.Range(-20, -40));
+                        transform.Rotate(Vector3.right, Random.Range(10, 30));
+                    }
+                }
 
-        Quaternion NewRotation = Quaternion.AngleAxis(Time.deltaTime * Speed * 5.0f, Axis) * transform.rotation;
-        transform.rotation = Quaternion.Lerp(transform.rotation, NewRotation, 50.0f * Time.deltaTime);
+                if(rotatePropelTime > 0)
+                {
+                    rotatePropelTime -= Time.deltaTime;
+                }
+                else
+                {
+                    if(transform.IsChildOf(player.transform))
+                    {
+                        transform.parent = null;
+                    }
+
+                    rotatePropelTime = 0;
+
+                    float distance = Vector3.Distance(transform.position, target.transform.position);
+                    float correctionValue = 2.0f;
+
+                    if (distance < 80)
+                    {
+                        correctionValue = 4.0f;
+                        Speed -= 20.0f;
+                    }
+                    else
+                        Speed += 40.0f;
+
+                    Vector3 Dir = transform.position - target.transform.position;
+                    Vector3 Axis = Vector3.Cross(Dir, transform.forward);
+
+                    Quaternion NewRotation = Quaternion.AngleAxis(Time.deltaTime * Speed * correctionValue, Axis) * transform.rotation;
+                    transform.rotation = Quaternion.Lerp(transform.rotation, NewRotation, 60.0f * Time.deltaTime);
+                }
+            }
+        }
+
         Pos = Vector3.forward * Time.deltaTime * Speed;           
 
         transform.Translate(Pos);

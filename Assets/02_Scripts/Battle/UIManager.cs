@@ -1,29 +1,56 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
     public GameObject player;
 
     public GameObject background;
+    public GameObject txtFuelEmpty;
     public GameObject exitTitle;
     public GameObject clearTitle;
+    public GameObject hitEffect;
 
     public GameObject btnFire;
     public GameObject btnExit;
     public GameObject btnReset;
+    public GameObject btnContinue;
+
+    public GameObject txtSpeed;
+    public GameObject txtDestruction;
+
+    public int destructionCount = 0;
+
+    void Update()
+    {
+        showSpeed();
+        showCount();
+    }
+
+    void showSpeed()
+    {
+        float speed = player.GetComponent<csPlayerMovement>().GetSpeed();
+        txtSpeed.GetComponent<Text>().text = "Speed : " + speed.ToString("0.#")+ "m/s";
+    }
+
+    void showCount()
+    {
+        txtDestruction.GetComponent<Text>().text = "Destruction : " + destructionCount;
+    }
 
     public void pushExit()
     {
-        Time.timeScale = 0;
-
         btnExit.SetActive(false);
         btnFire.SetActive(false);
         btnReset.SetActive(false);
+        hitEffect.SetActive(false);
 
         exitTitle.SetActive(true);
         background.SetActive(true);
+
+        Time.timeScale = 0;
     }
 
     public void StageClear()
@@ -66,6 +93,11 @@ public class UIManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    public void Continue()
+    {
+        Reset();
+    }
+
     IEnumerator WaitForClear()
     {
         player.GetComponent<iTweenEvent>().Stop();
@@ -74,23 +106,62 @@ public class UIManager : MonoBehaviour {
         GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
         foreach (GameObject missile in missiles)
         {
-            GameObject.Destroy(missile);
+            Destroy(missile);
         }
         foreach (GameObject asteroid in asteroids)
         {
-            GameObject.Destroy(asteroid);
+            Destroy(asteroid);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(5.0f);
 
         Time.timeScale = 0;
 
         btnExit.SetActive(false);
         btnFire.SetActive(false);
         btnReset.SetActive(false);
+        hitEffect.SetActive(false);
+        txtDestruction.SetActive(false);
+        txtSpeed.SetActive(false);
 
         clearTitle.SetActive(true);
         background.SetActive(true);
+        txtFuelEmpty.SetActive(false);
+        btnContinue.SetActive(false);
+    }
 
+    IEnumerator WaitForContinue()
+    {
+        Color color = Color.white;
+        color.a = 0;
+        txtFuelEmpty.GetComponent<Text>().color = color;
+        txtFuelEmpty.SetActive(true);
+        background.SetActive(true);
+
+        btnExit.SetActive(false);
+        btnFire.SetActive(false);
+        btnReset.SetActive(false);
+        hitEffect.SetActive(false);
+        txtDestruction.SetActive(false);
+        txtSpeed.SetActive(false);
+
+        for (int i = 0; i<100; i++)
+        {
+            color.a += 0.1f * i * Time.deltaTime;
+            txtFuelEmpty.GetComponent<Text>().color = color;
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return new WaitForSeconds(1.0f);
+        btnContinue.SetActive(true);
+    }
+
+    IEnumerator Vibration()
+    {
+        for(int i =0; i < 3; i++)
+        {
+            Handheld.Vibrate();
+            yield return new WaitForSeconds(0.6f);
+        }
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - PlayerCam
   - Path
   - Root
+  - Engine
   layers:
   - Default
   - TransparentFX
@@ -44,7 +45,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - 3DUI
   m_SortingLayers:
   - name: Default
     uniqueID: 0

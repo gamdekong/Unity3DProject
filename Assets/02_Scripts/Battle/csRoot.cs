@@ -8,12 +8,13 @@ public class csRoot : MonoBehaviour {
     public int plasma = 0;
 
     public GameObject player;
+    public AudioClip rootSound;
 
     void Start()
     {
-        if (GameObject.FindGameObjectWithTag("Player") != null)
+        if (GameObject.Find("Player") != null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.Find("Player");
         }
         else
         {
@@ -35,9 +36,10 @@ public class csRoot : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "Player")
+        if (col.transform.tag == "Player")
         {
-            col.SendMessage("GetFuel", fuel, SendMessageOptions.DontRequireReceiver);
+            AudioManager.Instance().PlaySfx(rootSound);
+            player.SendMessage("GetFuel", fuel, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
         }
     }
