@@ -262,7 +262,42 @@ public class DBManager : Singleton<DBManager> {
 
                     //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
                     reader.Read();
-                    return reader.GetInt32(0);  //에너지
+                    return reader.GetInt32(0);  //level
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlayerStat()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from player";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(7);  //StatPoint
 
 
                     //모두 출력후 디비 닫기
@@ -436,6 +471,143 @@ public class DBManager : Singleton<DBManager> {
                     //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
                     reader.Read();
                     return reader.GetFloat(5);  //에너지
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlayerBasicEnergy()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from basicplayerstat";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(1);  //basicEnergy
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+    public int GetPlayerBasicDamage()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from basicplayerstat";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(2);  //basicDamgae
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+    public float GetPlayerBasicCriticalRate()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from basicplayerstat";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetFloat(3);  //basicCriRate
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+    public float GetPlayerBasicCriticalDamage()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from basicplayerstat";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetFloat(3);  //basicCriDamage
 
 
                     //모두 출력후 디비 닫기

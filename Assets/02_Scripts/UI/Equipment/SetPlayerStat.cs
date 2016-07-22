@@ -22,6 +22,12 @@ public class SetPlayerStat : MonoBehaviour {
     private float criticalRateTmp3;
     private float criticalDamageTmp3;
 
+    private int basicEnergy;
+    private int basicDamage;
+    private float basicCriRate;
+    private float basicCriDamage;
+
+
 
     // Use this for initialization
     void Start () {
@@ -40,6 +46,11 @@ public class SetPlayerStat : MonoBehaviour {
 
     public void SetStat()
     {
+        basicEnergy = DBManager.Instance.GetPlayerBasicEnergy();
+        basicDamage = DBManager.Instance.GetPlayerBasicDamage();
+        basicCriRate = DBManager.Instance.GetPlayerBasicCriticalRate();
+        basicCriDamage = DBManager.Instance.GetPlayerBasicCriticalDamage();
+
         if (slot1.transform.childCount > 0)
         {
             energyTmp1 = slot1.transform.GetChild(0).GetComponent<Card>().energy;
@@ -89,35 +100,35 @@ public class SetPlayerStat : MonoBehaviour {
             criticalDamageTmp3 = 0;
         }
 
-        if (DBManager.Instance.GetPlayerTier() == 1)
-        {
+        //if (DBManager.Instance.GetPlayerTier() == 1)
+        //{
             
-            DBManager.Instance.SetPlayerStat(10 + energyTmp1 + energyTmp2 + energyTmp3 , 10 + damageTmp1 + damageTmp2 + damageTmp3,
-             criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);  
+            DBManager.Instance.SetPlayerStat(basicEnergy + energyTmp1 + energyTmp2 + energyTmp3 , basicDamage + damageTmp1 + damageTmp2 + damageTmp3,
+             basicCriRate+criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, basicCriDamage+criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);  
             
-        }
-        else if (DBManager.Instance.GetPlayerTier() == 2)
-        {
-            DBManager.Instance.SetPlayerStat(30 + energyTmp1 + energyTmp2 + energyTmp3, 30 + damageTmp1 + damageTmp2 + damageTmp3,
-             criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
-        }
-        else if (DBManager.Instance.GetPlayerTier() == 3)
-        {
-            DBManager.Instance.SetPlayerStat(100 + energyTmp1 + energyTmp2 + energyTmp3, 100 + damageTmp1 + damageTmp2 + damageTmp3,
-             criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
-        }
-        else if (DBManager.Instance.GetPlayerTier() == 4)
-        {
-            DBManager.Instance.SetPlayerStat(200 + energyTmp1 + energyTmp2 + energyTmp3, 200 + damageTmp1 + damageTmp2 + damageTmp3,
-             criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
-        }
-        else if (DBManager.Instance.GetPlayerTier() == 5)
-        {
-            DBManager.Instance.SetPlayerStat(400 + energyTmp1 + energyTmp2 + energyTmp3, 400 + damageTmp1 + damageTmp2 + damageTmp3,
-             criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
-        }
-        else
-            Debug.Log("error - Tier");
+        //}
+        //else if (DBManager.Instance.GetPlayerTier() == 2)
+        //{
+        //    DBManager.Instance.SetPlayerStat(30 + energyTmp1 + energyTmp2 + energyTmp3, 30 + damageTmp1 + damageTmp2 + damageTmp3,
+        //     criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
+        //}
+        //else if (DBManager.Instance.GetPlayerTier() == 3)
+        //{
+        //    DBManager.Instance.SetPlayerStat(100 + energyTmp1 + energyTmp2 + energyTmp3, 100 + damageTmp1 + damageTmp2 + damageTmp3,
+        //     criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
+        //}
+        //else if (DBManager.Instance.GetPlayerTier() == 4)
+        //{
+        //    DBManager.Instance.SetPlayerStat(200 + energyTmp1 + energyTmp2 + energyTmp3, 200 + damageTmp1 + damageTmp2 + damageTmp3,
+        //     criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
+        //}
+        //else if (DBManager.Instance.GetPlayerTier() == 5)
+        //{
+        //    DBManager.Instance.SetPlayerStat(400 + energyTmp1 + energyTmp2 + energyTmp3, 400 + damageTmp1 + damageTmp2 + damageTmp3,
+        //     criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
+        //}
+        //else
+        //    Debug.Log("error - Tier");
 
 
 
