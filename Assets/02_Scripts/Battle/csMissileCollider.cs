@@ -10,6 +10,7 @@ public class csMissileCollider : MonoBehaviour {
     public int damage;
     public float criticalRate;
     public float criticalDamage;
+
     bool isCrit = false;
 
     void OnTriggerEnter(Collider col)
@@ -18,6 +19,7 @@ public class csMissileCollider : MonoBehaviour {
         // 파괴가능한 타겟인지 확인
         if (col.gameObject.layer == 8)
         {
+
             GameObject particleObj;
             
             int tmp = (int)(criticalRate * 100);

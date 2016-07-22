@@ -18,12 +18,22 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] destoryableAsteroids;
     public GameObject[] noneDestoryableAsteroids;
 
+    public GameObject StageManager;
+
     public Material skyboxMat;
     public int Chapter = 1;
     public GameObject[] planets;
     public GameObject planetExpEffect;
     public AudioClip planetExpSound;
     public int Stage = 1;
+
+    void Awake()
+    {
+        StageManager = GameObject.Find("StageManager");
+
+        Chapter = StageManager.GetComponent<StageManager>().GetChapter();
+        Stage = StageManager.GetComponent<StageManager>().GetStage();
+    }
 
     // Use this for initialization
     void Start()

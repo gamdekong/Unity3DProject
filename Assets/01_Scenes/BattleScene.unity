@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 2100000, guid: 078c9b1f36b8c424dbf8d4bcca374cde, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1ce746eab45682a42bbeeea21e016bbc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1060,6 +1060,7 @@ MonoBehaviour:
   - {fileID: 100688, guid: fd5e9903599ee3042a638bf594cc195e, type: 2}
   - {fileID: 146720, guid: 4d7e1f129e856ea4c87038ea82074198, type: 2}
   - {fileID: 113530, guid: addc9c361b64b5f44af6585b03cdcb80, type: 2}
+  StageManager: {fileID: 0}
   skyboxMat: {fileID: 2100000, guid: 078c9b1f36b8c424dbf8d4bcca374cde, type: 2}
   Chapter: 4
   planets:
