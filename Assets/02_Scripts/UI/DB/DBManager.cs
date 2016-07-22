@@ -115,7 +115,7 @@ public class DBManager : Singleton<DBManager> {
 
     // Update is called once per frame
     void Update () {
-	
+
 	}
 
     private void InsertScore(int ID, String name, int Tier, String Type)

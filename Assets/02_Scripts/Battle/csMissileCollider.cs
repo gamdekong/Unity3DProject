@@ -22,7 +22,6 @@ public class csMissileCollider : MonoBehaviour {
             
             int tmp = (int)(criticalRate * 100);
             int check = Random.Range(0, 10000);
-            Debug.Log(tmp + " , " + check);
             if (check <= tmp)
             {
                 isCrit = true;

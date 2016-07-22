@@ -1071,7 +1071,7 @@ MonoBehaviour:
   - {fileID: 178760, guid: 52eefa2bfd488134ead531400b2fb0b2, type: 2}
   planetExpEffect: {fileID: 100012, guid: bf2d0b8833ec1440d97c8a40024ea2fe, type: 2}
   planetExpSound: {fileID: 8300000, guid: b00177400ce884a1f8777420c5b09e13, type: 3}
-  Stage: 1
+  Stage: 5
 --- !u!1 &579018842
 GameObject:
   m_ObjectHideFlags: 0

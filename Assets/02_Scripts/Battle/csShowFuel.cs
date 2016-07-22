@@ -19,7 +19,7 @@ public class csShowFuel : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(fuelValue);
+
         if(fuelValue > maxFuel * 0.924f)
         {
             foreach (GameObject fullImage in fullImages)

@@ -13,6 +13,7 @@ public class csFireManager : MonoBehaviour {
     public float crit = 50.0f;
     public float critDmg = 2.0f;
     public bool isDead = false;
+    bool trail = false;
 
     // Use this for initialization
     void Start () {
@@ -33,6 +34,17 @@ public class csFireManager : MonoBehaviour {
         missileObj.GetComponent<csMissile>().damage = dmg;
         missileObj.GetComponent<csMissile>().criticalRate = crit;
         missileObj.GetComponent<csMissile>().criticalDamage = critDmg;
+
+        if(trail)
+        {
+            missileObj.GetComponent<csMissile>().trailSwtich = true;
+            trail = false;
+        }
+        else
+        {
+            missileObj.GetComponent<csMissile>().trailSwtich = false;
+            trail = true;
+        }
 
         missileObj.transform.parent = Player.transform;
         int posRange = Random.Range(0, 4);

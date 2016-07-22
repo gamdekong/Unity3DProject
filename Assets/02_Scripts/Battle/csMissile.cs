@@ -19,6 +19,8 @@ public class csMissile : MonoBehaviour {
     float rotatePropelTime;
     float MaxSpeed;
 
+    public bool trailSwtich = false;
+
     // Use this for initialization
     void Start () {
         player = GameObject.Find("Player");
@@ -32,6 +34,17 @@ public class csMissile : MonoBehaviour {
         MaxSpeed = Speed;
         Speed = Speed / 2;
         rotatePropelTime = MaxPropelTime;
+        
+        if(trailSwtich)
+        {
+            transform.FindChild("missile").GetComponent<TrailRenderer>().enabled = false;
+            transform.FindChild("Trail").GetComponent<TrailRenderer>().enabled = true;
+        }
+        else
+        {
+            transform.FindChild("missile").GetComponent<TrailRenderer>().enabled = true;
+            transform.FindChild("Trail").GetComponent<TrailRenderer>().enabled = false;
+        }
     }
 	
 	// Update is called once per frame
@@ -46,12 +59,15 @@ public class csMissile : MonoBehaviour {
     public void MissileControl3()
     {
         if (!(transform.FindChild("missile")))
+        {
             Destroy(gameObject);
+            return;
+        }
 
         Vector3 Pos;
         if (target == null)
         {
-            Pos = Vector3.forward * Time.deltaTime * Speed;
+            Pos = Vector3.forward * Time.deltaTime * MaxSpeed;
             transform.Translate(Pos);
             return;
         }
@@ -97,15 +113,15 @@ public class csMissile : MonoBehaviour {
                     rotatePropelTime = 0;
 
                     float distance = Vector3.Distance(transform.position, target.transform.position);
-                    float correctionValue = 2.0f;
+                    float correctionValue = 1.5f;
 
-                    if (distance < 80)
+                    if (distance < 100)
                     {
-                        correctionValue = 4.0f;
-                        Speed -= 20.0f;
+                        correctionValue = 3.0f;
+                        Speed = MaxSpeed / 3;
                     }
                     else
-                        Speed += 40.0f;
+                        Speed += 60.0f;
 
                     Vector3 Dir = transform.position - target.transform.position;
                     Vector3 Axis = Vector3.Cross(Dir, transform.forward);
