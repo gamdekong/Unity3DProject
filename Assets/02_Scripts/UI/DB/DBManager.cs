@@ -482,6 +482,145 @@ public class DBManager : Singleton<DBManager> {
         }
     }
 
+    public int GetPlayerTitanium(int tier)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * FROM myresource where resourceid = 11"+tier;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(1);  //자원 수
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlayerUranium(int tier)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * FROM myresource where resourceid = 12" + tier;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(1);  //자원 수
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlayerHydrogen(int tier)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * FROM myresource where resourceid = 13" + tier;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(1);  //자원 수
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+    public int GetPlayerPlutonium(int tier)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * FROM myresource where resourceid = 14" + tier;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(1);  //자원 수
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
     public int GetPlayerPlazma()
     {
         using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
@@ -503,6 +642,75 @@ public class DBManager : Singleton<DBManager> {
                     //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
                     reader.Read();
                     return reader.GetInt32(8);  //플라즈마
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlayerExp()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from player";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(6);  //경험치
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+    public int GetExpData(int level)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT exp FROM expdata where level= "+level;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(0);  //필요경험치
 
 
                     //모두 출력후 디비 닫기

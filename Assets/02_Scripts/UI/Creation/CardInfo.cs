@@ -10,6 +10,7 @@ public class CardInfo : MonoBehaviour {
     public int needHydrogen;
     public int needPlutonium;
     public int needPrice;
+   
 
     private int titaninumId = 115;
     private int UraninumId = 125;
@@ -26,6 +27,7 @@ public class CardInfo : MonoBehaviour {
     public float DmaxF = 0;
     public int tier;
     public int type;
+    
 
     
 
