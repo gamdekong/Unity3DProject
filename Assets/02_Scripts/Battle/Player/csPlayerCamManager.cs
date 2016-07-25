@@ -8,7 +8,7 @@ public class csPlayerCamManager : MonoBehaviour {
     public GameObject lookatPos;
     public float followSpeed = 5.0f;
     public float rotateSpeed = 5.0f;
-    int rotateCount;
+
     Vector3 myLocalPosition;
     Quaternion myLocalRotation;
 

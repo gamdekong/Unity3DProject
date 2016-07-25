@@ -16,7 +16,7 @@ public class csPlayerStatus : MonoBehaviour {
     public GameObject fireManager;
     public GameObject uiManager;
 
-    bool playonce = false;
+    public bool playonce = false;
     bool whileCorutine = false;
     int fuel;
     int consume;
@@ -58,6 +58,8 @@ public class csPlayerStatus : MonoBehaviour {
                 if (!playonce)
                 {
                     playonce = true;
+                    GameObject.Find("Player").GetComponent<csPlayerMovement>().respawnPos = GameObject.Find("Player").transform.position;
+                    GameObject.Find("Player").GetComponent<csPlayerMovement>().respawnRot = GameObject.Find("Player").transform.rotation;
                     GameObject.Find("UIManager").SendMessage("WaitForContinue", SendMessageOptions.DontRequireReceiver);
                 }
             }
@@ -106,6 +108,11 @@ public class csPlayerStatus : MonoBehaviour {
     public void DamageToFuel(int damage)
     {
         fuel -= damage;
+    }
+
+    public void SetFuel(int value)
+    {
+        fuel = value;
     }
 
     IEnumerator ShowEffect()

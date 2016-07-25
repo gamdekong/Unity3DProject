@@ -41,42 +41,42 @@ public class StageManager : Singleton<StageManager>
     {
         Chapter = 4;
         Stage = 1;
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void Stage2()
     {
         Chapter = 4;
         Stage = 2;
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void Stage3()
     {
         Chapter = 4;
         Stage = 3;
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void Stage4()
     {
         Chapter = 4;
         Stage = 4;
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void Stage5()
     {
         Chapter = 4;
         Stage = 5;
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void Stage6()
     {
         Chapter = 4;
         Stage = 6;
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public int GetChapter()

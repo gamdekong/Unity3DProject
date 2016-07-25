@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
 
     public GameObject player;
+    public GameObject playerCam;
+    public GameObject playerCamPos;
+    public GameObject fuelBar;
 
     public GameObject background;
     public GameObject txtFuelEmpty;
@@ -17,6 +20,7 @@ public class UIManager : MonoBehaviour {
     public GameObject btnExit;
     public GameObject btnReset;
     public GameObject btnContinue;
+    public GameObject btnSeeAd;
 
     public GameObject txtSpeed;
     public GameObject txtDestruction;
@@ -76,7 +80,9 @@ public class UIManager : MonoBehaviour {
 
     public void BackToMain()
     {
-
+        iTweenPath.RemovePath();
+        Time.timeScale = 1;
+        SceneManager.LoadScene("LoadingSceneToMain");
     }
 
     public void Reset()
@@ -95,7 +101,42 @@ public class UIManager : MonoBehaviour {
 
     public void Continue()
     {
-        Reset();
+        iTweenPath.RemovePath();
+        Time.timeScale = 1;
+        SceneManager.LoadScene("LoadingSceneToMain");
+    }
+
+    public void SeeAd()
+    {
+        btnExit.SetActive(true);
+        btnFire.SetActive(true);
+        txtDestruction.SetActive(true);
+        txtSpeed.SetActive(true);
+        background.SetActive(false);
+        txtFuelEmpty.SetActive(false);
+        btnContinue.SetActive(false);
+        btnSeeAd.SetActive(false);
+
+        player.GetComponent<csPlayerMovement>().SetSpeed(0.0f);
+        player.transform.position = player.GetComponent<csPlayerMovement>().respawnPos;
+        player.transform.rotation = player.GetComponent<csPlayerMovement>().respawnRot;
+
+        if (player.transform.position.z > player.GetComponent<csPlayerMovement>().LastPos.z)
+            player.transform.position = player.GetComponent<csPlayerMovement>().LastPos;
+
+        playerCam.transform.parent = playerCamPos.transform;
+        playerCamPos.transform.localPosition = new Vector3(0, 0, 0);
+        playerCam.transform.localPosition = new Vector3(0, 2, -5.75f);
+        playerCam.transform.localRotation = Quaternion.Euler(new Vector3(10, 0, 0));
+        GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().isDead = false;
+        GameObject.Find("FireSystem").GetComponent<csFireManager>().isDead = false;
+
+        player.GetComponent<csPlayerStatus>().SetFuel(player.GetComponent<csPlayerStatus>().playerFuel);
+        player.GetComponent<csPlayerMovement>().fuelEmpty = false;
+        player.GetComponent<csPlayerStatus>().playonce = false;
+        player.GetComponent<csPlayerStatus>().untouchable = false;
+
+        Time.timeScale = 1;
     }
 
     IEnumerator WaitForClear()
@@ -128,6 +169,7 @@ public class UIManager : MonoBehaviour {
         background.SetActive(true);
         txtFuelEmpty.SetActive(false);
         btnContinue.SetActive(false);
+        btnSeeAd.SetActive(false);
     }
 
     IEnumerator WaitForContinue()
@@ -154,6 +196,7 @@ public class UIManager : MonoBehaviour {
 
         yield return new WaitForSeconds(1.0f);
         btnContinue.SetActive(true);
+        btnSeeAd.SetActive(true);
     }
 
     IEnumerator Vibration()

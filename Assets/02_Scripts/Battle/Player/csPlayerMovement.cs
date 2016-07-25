@@ -6,6 +6,9 @@ public class csPlayerMovement : MonoBehaviour {
     public GameObject lookatTarget;
     public GameObject wrapEffect;
     public GameObject[] engines;
+    public Vector3 respawnPos;
+    public Quaternion respawnRot;
+    public Vector3 LastPos;
     Vector3 startPoint;
     
     public float maxSpeed = 20.0f;
@@ -41,6 +44,8 @@ public class csPlayerMovement : MonoBehaviour {
         target.thePath = thePath;
         target.whileAttack = whileAttack;
         target.lastPathNum = lastPathNum;
+
+        LastPos = thePath[lastPathNum];
 
         delay = 1.5f;
 
@@ -90,6 +95,7 @@ public class csPlayerMovement : MonoBehaviour {
 
         if (fuelEmpty)
         {
+
             wrapEffect.SetActive(false);
             speed = maxSpeed / 10;
 
@@ -124,11 +130,35 @@ public class csPlayerMovement : MonoBehaviour {
 
         if (transform.position.z > thePath[lastPathNum - 1].z)
         {
-            transform.Translate(Vector3.forward * speed / 5.0f * Time.deltaTime);
+            if(GameObject.FindGameObjectWithTag("Planet"))
+            {
+                GameObject planet = GameObject.FindGameObjectWithTag("Planet");
+                float dis = Vector3.Distance(transform.position, planet.transform.position);
+                
+                if(dis > 300)
+                {
+                    transform.Translate(Vector3.forward * speed / 5.0f * Time.deltaTime);
+                }
+                else if(dis < 300 && dis > 150)
+                {
+                    transform.Translate(Vector3.forward * speed / 10.0f * Time.deltaTime);
+                }
+                else if(dis > 150 && dis > 100)
+                {
+                    transform.Translate(Vector3.forward * speed / 20.0f * Time.deltaTime);
+                }
+                else
+                {
+                    transform.Translate(Vector3.forward * speed / 30.0f * Time.deltaTime);
+                }
+            }
+            else
+                transform.Translate(Vector3.forward * speed / 5.0f * Time.deltaTime);
             return;
         }
                      
         distance += speed * Time.deltaTime;
+
         float perc = distance / pathLength;
         iTween.PutOnPath(gameObject, thePath, perc);
     }
@@ -161,5 +191,10 @@ public class csPlayerMovement : MonoBehaviour {
     {
         delay = restoreSpeedDelay;
         target.WhileAttacking();
+    }
+
+    public void SetSpeed(float value)
+    {
+        speed = value;
     }
 }

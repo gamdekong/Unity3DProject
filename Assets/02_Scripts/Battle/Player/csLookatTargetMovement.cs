@@ -3,6 +3,8 @@ using System.Collections;
 
 public class csLookatTargetMovement : MonoBehaviour {
 
+    public GameObject TargetingManager;
+
     public float maxSpeed;
     public float accelerateSpeed;
     public float breakingSpeed;
@@ -19,7 +21,7 @@ public class csLookatTargetMovement : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        TargetingManager = GameObject.Find("TargetingSystem");
     }
 
     // Update is called once per frame
@@ -31,6 +33,9 @@ public class csLookatTargetMovement : MonoBehaviour {
     void Movement()
     {
         if (transform.position.z > thePath[lastPathNum-1].z)
+            return;
+
+        if (TargetingManager.GetComponent<TargetingManager>().isDead)
             return;
 
         if (delay > 0)

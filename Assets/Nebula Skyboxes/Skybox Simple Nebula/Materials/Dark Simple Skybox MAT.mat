@@ -81,4 +81,4 @@ Material:
       data:
         first:
           name: _Tint
-        second: {r: 0.37254903, g: 0.56078434, b: 0.54901963, a: 1}
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
