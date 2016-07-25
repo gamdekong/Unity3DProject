@@ -115,7 +115,7 @@ public class DBManager : Singleton<DBManager> {
 
     // Update is called once per frame
     void Update () {
-
+	
 	}
 
     private void InsertScore(int ID, String name, int Tier, String Type)
@@ -234,6 +234,42 @@ public class DBManager : Singleton<DBManager> {
         }
     }
 
+    public int GetNumOfResource()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT count(*) from myresource;";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    int a = reader.GetInt32(0);
+                    
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+                    return a;
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
     public IDbConnection GetConnetciont()
     {
         IDbConnection dbConnection = new SqliteConnection(m_ConnectionString);
@@ -274,6 +310,70 @@ public class DBManager : Singleton<DBManager> {
                 }
 
             }
+        }
+    }
+
+    public int GetNumOfResourceOnId(int id)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "select numofresource from myresource where resourceid =" + id;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(0);  //StatPoint
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+
+    public void setResourceOnId(int id,int amount)
+    {
+
+        int pastResource = GetNumOfResourceOnId(id);
+
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.Player SET plazma =" + amount +pastResource;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
         }
     }
 
@@ -333,6 +433,111 @@ public class DBManager : Singleton<DBManager> {
                     //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
                     reader.Read();
                     return reader.GetInt32(1);  //에너지
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlayerStage()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from player";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(9);  //스테이지
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlayerPlazma()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from player";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(8);  //플라즈마
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetPlazmaOnResourceId(int id)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "select * from resourcedata where resourceid ="+ id;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(3);  //플라즈마
 
 
                     //모두 출력후 디비 닫기
@@ -607,7 +812,146 @@ public class DBManager : Singleton<DBManager> {
 
                     //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
                     reader.Read();
-                    return reader.GetFloat(3);  //basicCriDamage
+                    return reader.GetFloat(4);  //basicCriDamage
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public int GetCardSlotEnergy()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from cardslot";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(1);  //cardslot Energy
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+    public int GetCardSlotDamage()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from cardslot";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(2);  //cardslot Damage
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public float GetCardSlotCriRate()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from cardslot";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetFloat(3);  //cardslot cri
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+    public float GetCardSlotCriDamage()
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from cardslot";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetFloat(4);  //cardslot Energy
 
 
                     //모두 출력후 디비 닫기
@@ -656,6 +1000,94 @@ public class DBManager : Singleton<DBManager> {
 
             }
             dbConnection.Close();
+        }
+    }
+
+    public void SetPlayerPlazma(int plazma)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.Player SET plazma =" + plazma;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
+
+    public void DeletePlayerResource(int id)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.myresource SET numofresource = 0 WHERE  resourceID =" + id;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
+
+    public void SetCardSlotStat(int energy, int damage, float rate, float cdamage)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.cardslot SET damage = " + damage;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                sqlQuery = "UPDATE main.cardslot SET energy = " + energy;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                sqlQuery = "UPDATE main.cardslot SET crirate = " + rate;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                sqlQuery = "UPDATE main.cardslot SET cridamage = " + cdamage;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+                
+
+
+
+
+            }
+            
         }
     }
 
@@ -731,6 +1163,29 @@ public class DBManager : Singleton<DBManager> {
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
                 string sqlQuery = "UPDATE main.Player SET damage = " + damageRate;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+    public void IncreaseStage(float damageRate)
+    {
+
+        int nowStage = GetPlayerStage();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.Player SET stage = " + nowStage+1;
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -1629,6 +2084,117 @@ public class DBManager : Singleton<DBManager> {
 
 
 
+    }
+
+    public void SetStatMinus()
+    {
+        int stat = GetPlayerStat();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.player SET stat = " + (stat - 1);
+                Debug.Log("minus1");
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+    public void PlusEnergyStat()
+    {
+        int energy = GetPlayerBasicEnergy();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.basicplayerstat SET energy = " + (energy + 1);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+    public void PlusDamageStat()
+    {
+        int damage = GetPlayerBasicDamage();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.basicplayerstat SET damage = " + (damage + 1);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+    public void PlusCriRateStat()
+    {
+        float criRate = GetPlayerBasicCriticalRate();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.basicplayerstat SET criticalrate = " + (criRate + 0.0003);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+    public void PlusCriDamageStat()
+    {
+        float criDamage = GetPlayerBasicCriticalDamage();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.basicplayerstat SET criticaldamage = " + (criDamage + 0.001);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
     }
 
 

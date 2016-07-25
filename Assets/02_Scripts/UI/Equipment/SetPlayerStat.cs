@@ -46,10 +46,7 @@ public class SetPlayerStat : MonoBehaviour {
 
     public void SetStat()
     {
-        basicEnergy = DBManager.Instance.GetPlayerBasicEnergy();
-        basicDamage = DBManager.Instance.GetPlayerBasicDamage();
-        basicCriRate = DBManager.Instance.GetPlayerBasicCriticalRate();
-        basicCriDamage = DBManager.Instance.GetPlayerBasicCriticalDamage();
+       
 
         if (slot1.transform.childCount > 0)
         {
@@ -103,9 +100,21 @@ public class SetPlayerStat : MonoBehaviour {
         //if (DBManager.Instance.GetPlayerTier() == 1)
         //{
             
-            DBManager.Instance.SetPlayerStat(basicEnergy + energyTmp1 + energyTmp2 + energyTmp3 , basicDamage + damageTmp1 + damageTmp2 + damageTmp3,
-             basicCriRate+criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, basicCriDamage+criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);  
-            
+            DBManager.Instance.SetCardSlotStat( energyTmp1 + energyTmp2 + energyTmp3 , damageTmp1 + damageTmp2 + damageTmp3,
+             criticalRateTmp1 +criticalRateTmp2 + criticalRateTmp3, criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
+
+        basicEnergy = DBManager.Instance.GetPlayerBasicEnergy();
+        basicDamage = DBManager.Instance.GetPlayerBasicDamage();
+        basicCriRate = DBManager.Instance.GetPlayerBasicCriticalRate();
+        basicCriDamage = DBManager.Instance.GetPlayerBasicCriticalDamage();
+
+
+
+        DBManager.Instance.SetPlayerStat(basicEnergy + energyTmp1 + energyTmp2 + energyTmp3, basicDamage + damageTmp1 + damageTmp2 + damageTmp3,
+            basicCriRate + criticalRateTmp1 + criticalRateTmp2 + criticalRateTmp3, basicCriDamage + criticalDamageTmp1 + criticalDamageTmp2 + criticalDamageTmp3);
+
+
+
         //}
         //else if (DBManager.Instance.GetPlayerTier() == 2)
         //{

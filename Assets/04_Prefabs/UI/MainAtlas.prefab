@@ -82,8 +82,8 @@ MonoBehaviour:
     paddingTop: 6
     paddingBottom: 6
   - name: CardSlot
-    x: 1495
-    y: 906
+    x: 1376
+    y: 651
     width: 200
     height: 118
     borderLeft: 40
@@ -159,6 +159,19 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: plutonium
+    x: 1495
+    y: 851
+    width: 138
+    height: 173
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 0
+    paddingTop: 3
+    paddingBottom: 4
   - name: popupBG
     x: 737
     y: 764
@@ -172,6 +185,45 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 5
     paddingBottom: 5
+  - name: ruderpodium
+    x: 1238
+    y: 596
+    width: 137
+    height: 173
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 1
+    paddingTop: 3
+    paddingBottom: 4
+  - name: titanium
+    x: 1773
+    y: 851
+    width: 137
+    height: 173
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 1
+    paddingTop: 3
+    paddingBottom: 4
+  - name: uranium
+    x: 1634
+    y: 851
+    width: 138
+    height: 173
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 0
+    paddingTop: 3
+    paddingBottom: 4
   - name: window
     x: 1238
     y: 770

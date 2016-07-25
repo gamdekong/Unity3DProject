@@ -228,16 +228,7 @@ public class MakingCardInGrid : MonoBehaviour
         GetComponentInParent<UIScrollView>().ResetPosition();
     }
 
-
-    void MakeCardSet()
-    {
-
-
-
-
-
-    }
-
+    
     void OnEnable()
     {
         CardSet();
