@@ -19,6 +19,8 @@ public class csLookatTargetMovement : MonoBehaviour {
     public float pathLength;
     public int lastPathNum;
 
+    bool triger = false;
+
     // Use this for initialization
     void Start()
     {
@@ -58,15 +60,18 @@ public class csLookatTargetMovement : MonoBehaviour {
 
         if (transform.position.z > thePath[lastPathNum - 1].z)
         {
+            triger = true;
+        }
+
+        if(triger)
+        {
             if (GameObject.FindGameObjectWithTag("Planet"))
             {
                 GameObject planet = GameObject.FindGameObjectWithTag("Planet");
-                float dis = Vector3.Distance(transform.position, planet.transform.position);
-                Vector3 pos = Vector3.MoveTowards(transform.position, planet.transform.position, speed / 30.0f * Time.deltaTime);
-                transform.Translate(pos);
+                transform.position = Vector3.MoveTowards(transform.position, planet.transform.position, speed * Time.deltaTime);
             }
-            else
-                return;
+
+            return;
         }
 
         distance += speed * Time.deltaTime;

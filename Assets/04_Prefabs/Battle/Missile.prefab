@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   target: {fileID: 0}
-  shotSound: {fileID: 8300000, guid: 583b54eb10d20814082e28e4fc990b08, type: 3}
+  shotSound: {fileID: 8300000, guid: 5903e46a65f6e1d46bfb31ec89330910, type: 3}
   explosionSound: {fileID: 8300000, guid: b00177400ce884a1f8777420c5b09e13, type: 3}
   isRight: 0
   Speed: 500

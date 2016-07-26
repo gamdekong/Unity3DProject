@@ -8,6 +8,8 @@ using UnityEngine.Advertisements;
 
 public class UIManager : MonoBehaviour {
 
+    public GameObject dbManager;
+
     public GameObject player;
     public GameObject playerCam;
     public GameObject playerCamPos;
@@ -29,6 +31,13 @@ public class UIManager : MonoBehaviour {
     public GameObject txtDestruction;
 
     public int destructionCount = 0;
+
+    bool clear = false;
+
+    void Start()
+    {
+        dbManager = GameObject.Find("DBManager");
+    }
 
     void Update()
     {
@@ -163,6 +172,7 @@ public class UIManager : MonoBehaviour {
 
     IEnumerator WaitForClear()
     {
+        clear = true;
         player.GetComponent<iTweenEvent>().Stop();
         player.GetComponent<csPlayerStatus>().untouchable = true;
         GameObject[] missiles = GameObject.FindGameObjectsWithTag("Missile");
@@ -192,6 +202,18 @@ public class UIManager : MonoBehaviour {
         txtFuelEmpty.SetActive(false);
         btnContinue.SetActive(false);
         btnSeeAd.SetActive(false);
+    }
+
+    void Reward()
+    {
+        if(clear)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
     IEnumerator WaitForContinue()
