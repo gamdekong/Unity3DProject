@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+#if UNITY_ADS
+using UnityEngine.Advertisements;
+#endif
 
 public class UIManager : MonoBehaviour {
 
@@ -108,35 +111,54 @@ public class UIManager : MonoBehaviour {
 
     public void SeeAd()
     {
-        btnExit.SetActive(true);
-        btnFire.SetActive(true);
-        txtDestruction.SetActive(true);
-        txtSpeed.SetActive(true);
-        background.SetActive(false);
-        txtFuelEmpty.SetActive(false);
-        btnContinue.SetActive(false);
-        btnSeeAd.SetActive(false);
+        if (Advertisement.IsReady())
+        {
+            ShowOptions options = new ShowOptions();
+            options.resultCallback = HandleShowResult;
+            Advertisement.Show(null, options);
+        }
+    }
 
-        player.GetComponent<csPlayerMovement>().SetSpeed(0.0f);
-        player.transform.position = player.GetComponent<csPlayerMovement>().respawnPos;
-        player.transform.rotation = player.GetComponent<csPlayerMovement>().respawnRot;
+    private void HandleShowResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                btnExit.SetActive(true);
+                btnFire.SetActive(true);
+                txtDestruction.SetActive(true);
+                txtSpeed.SetActive(true);
+                background.SetActive(false);
+                txtFuelEmpty.SetActive(false);
+                btnContinue.SetActive(false);
+                btnSeeAd.SetActive(false);
 
-        if (player.transform.position.z > player.GetComponent<csPlayerMovement>().LastPos.z)
-            player.transform.position = player.GetComponent<csPlayerMovement>().LastPos;
+                player.GetComponent<csPlayerMovement>().SetSpeed(0.0f);
+                player.transform.position = player.GetComponent<csPlayerMovement>().respawnPos;
+                player.transform.rotation = player.GetComponent<csPlayerMovement>().respawnRot;
 
-        playerCam.transform.parent = playerCamPos.transform;
-        playerCamPos.transform.localPosition = new Vector3(0, 0, 0);
-        playerCam.transform.localPosition = new Vector3(0, 2, -5.75f);
-        playerCam.transform.localRotation = Quaternion.Euler(new Vector3(10, 0, 0));
-        GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().isDead = false;
-        GameObject.Find("FireSystem").GetComponent<csFireManager>().isDead = false;
+                if (player.transform.position.z > player.GetComponent<csPlayerMovement>().LastPos.z)
+                    player.transform.position = player.GetComponent<csPlayerMovement>().LastPos;
 
-        player.GetComponent<csPlayerStatus>().SetFuel(player.GetComponent<csPlayerStatus>().playerFuel);
-        player.GetComponent<csPlayerMovement>().fuelEmpty = false;
-        player.GetComponent<csPlayerStatus>().playonce = false;
-        player.GetComponent<csPlayerStatus>().untouchable = false;
+                playerCam.transform.parent = playerCamPos.transform;
+                playerCamPos.transform.localPosition = new Vector3(0, 0, 0);
+                playerCam.transform.localPosition = new Vector3(0, 2, -5.75f);
+                playerCam.transform.localRotation = Quaternion.Euler(new Vector3(10, 0, 0));
+                GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().isDead = false;
+                GameObject.Find("FireSystem").GetComponent<csFireManager>().isDead = false;
 
-        Time.timeScale = 1;
+                player.GetComponent<csPlayerStatus>().SetFuel(player.GetComponent<csPlayerStatus>().playerFuel);
+                player.GetComponent<csPlayerMovement>().fuelEmpty = false;
+                player.GetComponent<csPlayerStatus>().playonce = false;
+                player.GetComponent<csPlayerStatus>().untouchable = false;
+
+                Time.timeScale = 1;
+                break;
+            case ShowResult.Skipped:
+                break;
+            case ShowResult.Failed:
+                break;
+        }
     }
 
     IEnumerator WaitForClear()

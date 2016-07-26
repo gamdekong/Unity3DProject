@@ -1972,7 +1972,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 930055207}
-        m_MethodName: exitYes
+        m_MethodName: BackToMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3152,6 +3152,8 @@ MonoBehaviour:
   wrapEffect: {fileID: 232905307}
   engines: []
   respawnPos: {x: 0, y: 0, z: 0}
+  respawnRot: {x: 0, y: 0, z: 0, w: 0}
+  LastPos: {x: 0, y: 0, z: 0}
   maxSpeed: 250
   accelerateSpeed: 150
   breakingSpeed: 90
