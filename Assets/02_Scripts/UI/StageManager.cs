@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class StageManager : Singleton<StageManager>
+public class StageManager : MonoBehaviour
 {
-    public static int Chapter = 0;
-    public static int Stage = 0;
-	
+    public int Chapter = 0;
+    public int Stage = 0;
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -40,47 +39,37 @@ public class StageManager : Singleton<StageManager>
     public void Stage1()
     {
         Stage = 1;
-        SceneManager.LoadScene("LoadingScene");
+        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage2()
     {
         Stage = 2;
-        SceneManager.LoadScene("LoadingScene");
+        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage3()
     {
         Stage = 3;
-        SceneManager.LoadScene("LoadingScene");
+        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage4()
     {
         Stage = 4;
-        SceneManager.LoadScene("LoadingScene");
+        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage5()
     {
         Stage = 5;
-        SceneManager.LoadScene("LoadingScene");
+        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage6()
     {
         Stage = 6;
-        SceneManager.LoadScene("LoadingScene");
-    }
-
-    public int GetChapter()
-    {
-        return Chapter;
-    }
-
-    public int GetStage()
-    {
-        return Stage;
+        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Back()

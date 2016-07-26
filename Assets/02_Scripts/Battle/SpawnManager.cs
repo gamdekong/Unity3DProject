@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] destoryableAsteroids;
     public GameObject[] noneDestoryableAsteroids;
 
-    public GameObject StageManager;
+    public GameObject StageData;
 
     public Material skyboxMat;
     public int Chapter = 1;
@@ -29,10 +29,10 @@ public class SpawnManager : MonoBehaviour {
 
     void Awake()
     {
-        StageManager = GameObject.Find("StageManager");
+        StageData = GameObject.Find("StageData");
 
-        Chapter = StageManager.GetComponent<StageManager>().GetChapter();
-        Stage = StageManager.GetComponent<StageManager>().GetStage();
+        Chapter = StageData.GetComponent<StageData>().GetChapter();
+        Stage = StageData.GetComponent<StageData>().GetStage();
     }
 
     // Use this for initialization

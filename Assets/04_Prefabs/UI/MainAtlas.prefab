@@ -82,8 +82,8 @@ MonoBehaviour:
     paddingTop: 6
     paddingBottom: 6
   - name: CardSlot
-    x: 1376
-    y: 651
+    x: 1495
+    y: 813
     width: 200
     height: 118
     borderLeft: 40
@@ -159,9 +159,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: plutonium
+  - name: KakaoTalk_20160725_165051679
     x: 1495
-    y: 851
+    y: 932
+    width: 508
+    height: 92
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 0
+    paddingBottom: 0
+  - name: plutonium
+    x: 1238
+    y: 596
     width: 138
     height: 173
     borderLeft: 0
@@ -187,7 +200,7 @@ MonoBehaviour:
     paddingBottom: 5
   - name: ruderpodium
     x: 1238
-    y: 596
+    y: 248
     width: 137
     height: 173
     borderLeft: 0
@@ -199,8 +212,8 @@ MonoBehaviour:
     paddingTop: 3
     paddingBottom: 4
   - name: titanium
-    x: 1773
-    y: 851
+    x: 1238
+    y: 74
     width: 137
     height: 173
     borderLeft: 0
@@ -212,8 +225,8 @@ MonoBehaviour:
     paddingTop: 3
     paddingBottom: 4
   - name: uranium
-    x: 1634
-    y: 851
+    x: 1238
+    y: 422
     width: 138
     height: 173
     borderLeft: 0

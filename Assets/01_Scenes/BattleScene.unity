@@ -1257,7 +1257,7 @@ MonoBehaviour:
   - {fileID: 146720, guid: 4d7e1f129e856ea4c87038ea82074198, type: 2}
   - {fileID: 113530, guid: addc9c361b64b5f44af6585b03cdcb80, type: 2}
   StageManager: {fileID: 0}
-  skyboxMat: {fileID: 2100000, guid: 2c34f8ff2ac83e94995345c5d6a82772, type: 2}
+  skyboxMat: {fileID: 2100000, guid: 1ce746eab45682a42bbeeea21e016bbc, type: 2}
   Chapter: 4
   planets:
   - {fileID: 170910, guid: df677b9e060929f459f711e94b614c81, type: 2}
@@ -3136,6 +3136,7 @@ MonoBehaviour:
   targetingManager: {fileID: 669973967}
   fireManager: {fileID: 1347591826}
   uiManager: {fileID: 930055206}
+  dbManager: {fileID: 0}
   playonce: 0
 --- !u!114 &1073655810
 MonoBehaviour:
@@ -3489,6 +3490,7 @@ MonoBehaviour:
   MissilePositionLeft: {fileID: 882381243}
   MissilePositionRight: {fileID: 1880980425}
   Target: {fileID: 0}
+  dbManager: {fileID: 0}
   dmg: 1
   crit: 50
   critDmg: 2
