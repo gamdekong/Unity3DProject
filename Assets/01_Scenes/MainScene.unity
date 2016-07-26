@@ -9133,7 +9133,7 @@ GameObject:
   - 4: {fileID: 641386033}
   - 114: {fileID: 641386032}
   m_Layer: 0
-  m_Name: DBManger
+  m_Name: DBManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

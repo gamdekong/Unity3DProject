@@ -15,6 +15,7 @@ public class csPlayerStatus : MonoBehaviour {
     public GameObject targetingManager;
     public GameObject fireManager;
     public GameObject uiManager;
+    public GameObject dbManager;
 
     public bool playonce = false;
     bool whileCorutine = false;
@@ -25,6 +26,9 @@ public class csPlayerStatus : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        dbManager = GameObject.Find("DBManager");
+        playerFuel = dbManager.GetComponent<DBManager>().GetPlayerEnergy();
+
         fuelBar.GetComponent<csShowFuel>().maxFuel = (float)playerFuel;
         delay = fuelConsumeDelay;
         fuel = playerFuel;

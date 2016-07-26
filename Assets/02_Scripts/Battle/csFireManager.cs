@@ -9,6 +9,8 @@ public class csFireManager : MonoBehaviour {
     public GameObject MissilePositionRight;
     public GameObject Target;
 
+    public GameObject dbManager;
+
     public int dmg = 1;
     public float crit = 50.0f;
     public float critDmg = 2.0f;
@@ -17,8 +19,12 @@ public class csFireManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
-	}
+        dbManager = GameObject.Find("DBManager");
+
+        dmg = dbManager.GetComponent<DBManager>().GetPlayerDamage();
+        crit = dbManager.GetComponent<DBManager>().GetPlayerCriticalRate();
+        critDmg = dbManager.GetComponent<DBManager>().GetPlayerCriticalDamage();
+    }
     public void FireMissile()
     {
         if (isDead)
