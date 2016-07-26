@@ -4,6 +4,7 @@ using System.Collections;
 public class csLookatTargetMovement : MonoBehaviour {
 
     public GameObject TargetingManager;
+    public GameObject Planet;
 
     public float maxSpeed;
     public float accelerateSpeed;
@@ -54,6 +55,19 @@ public class csLookatTargetMovement : MonoBehaviour {
 
         if (speed > maxSpeed)
             speed = maxSpeed;
+
+        if (transform.position.z > thePath[lastPathNum - 1].z)
+        {
+            if (GameObject.FindGameObjectWithTag("Planet"))
+            {
+                GameObject planet = GameObject.FindGameObjectWithTag("Planet");
+                float dis = Vector3.Distance(transform.position, planet.transform.position);
+                Vector3 pos = Vector3.MoveTowards(transform.position, planet.transform.position, speed / 30.0f * Time.deltaTime);
+                transform.Translate(pos);
+            }
+            else
+                return;
+        }
 
         distance += speed * Time.deltaTime;
         float perc = distance / pathLength;

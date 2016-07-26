@@ -191,24 +191,27 @@ public class SpawnManager : MonoBehaviour {
                 break;
         }
 
-        if (destoryableAsteroid > 0)
+        if (Stage < 6)
         {
-            SpawnAsteroids(
-                D_asteroid_minDis,
-                D_asteroid_maxDis,
-                D_asteroid_sepDis,
-                destoryableAsteroid,
-                destoryableAsteroids);
-        }
+            if (destoryableAsteroid > 0)
+            {
+                SpawnAsteroids(
+                    D_asteroid_minDis,
+                    D_asteroid_maxDis,
+                    D_asteroid_sepDis,
+                    destoryableAsteroid,
+                    destoryableAsteroids);
+            }
 
-        if (noneDestroyableAsteroid > 0)
-        {
-            SpawnAsteroids(
-                ND_asteroid_minDis,
-                ND_asteroid_maxDis,
-                ND_asteroid_sepDis,
-                noneDestroyableAsteroid,
-                noneDestoryableAsteroids);
+            if (noneDestroyableAsteroid > 0)
+            {
+                SpawnAsteroids(
+                    ND_asteroid_minDis,
+                    ND_asteroid_maxDis,
+                    ND_asteroid_sepDis,
+                    noneDestroyableAsteroid,
+                    noneDestoryableAsteroids);
+            }
         }
 
         // Chapter

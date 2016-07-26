@@ -30,6 +30,8 @@ public class csPlayerMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        pathName = GameObject.Find("StageData").GetComponent<StageData>().GetPathName();
+
         thePath = iTweenPath.GetPath(pathName);
         lastPathNum = thePath.Length;
         pathLength = iTween.PathLength(thePath);
@@ -183,7 +185,6 @@ public class csPlayerMovement : MonoBehaviour {
         if (fuelEmpty)
             return;
 
-        if (transform.position.z < thePath[lastPathNum-1].z)
             transform.LookAt(lookatTarget.transform.position);
     }
 
