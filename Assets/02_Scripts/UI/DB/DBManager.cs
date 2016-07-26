@@ -347,7 +347,33 @@ public class DBManager : Singleton<DBManager> {
             }
         }
     }
+    public void setResource(int id, int amount)
+    {
 
+        int pastResource = GetNumOfResourceOnId(id);
+
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.myresource SET numofresource = "+(amount + pastResource)+" WHERE  resourceID ="+id;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
 
     public void setResourceOnId(int id,int amount)
     {
