@@ -8,6 +8,8 @@ public class csAsteroidStatus : MonoBehaviour {
     public GameObject root;
     public GameObject asteroidExpEffect;
     public int health = 10;
+    public int plasma;
+    public int restore;
 
     void Start()
     {
@@ -50,7 +52,9 @@ public class csAsteroidStatus : MonoBehaviour {
             particleObj.transform.position = transform.position;
             Destroy(particleObj, 1.0f);
 
-            Instantiate(root, transform.position, Quaternion.Euler(0, 0, 0));
+            GameObject rootObj = Instantiate(root, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+            rootObj.GetComponent<csRoot>().fuel = restore;
+            rootObj.GetComponent<csRoot>().plasma = plasma;
             Destroy(gameObject);
         }
     }

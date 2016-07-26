@@ -7,6 +7,7 @@ public class csPlayerStatus : MonoBehaviour {
     public int playerFuel = 20;
     public float fuelConsumeDelay = 3.0f;
     public int consumeAmount = 1;
+    public int plasma;
     public bool untouchable = false;
     public GameObject fuelBar;
     public GameObject hitEffect;
@@ -28,6 +29,7 @@ public class csPlayerStatus : MonoBehaviour {
 	void Start () {
         dbManager = GameObject.Find("DBManager");
         playerFuel = dbManager.GetComponent<DBManager>().GetPlayerEnergy();
+        consumeAmount = GameObject.Find("SpawnManager").GetComponent<SpawnManager>().fuelDamage;
 
         fuelBar.GetComponent<csShowFuel>().maxFuel = (float)playerFuel;
         delay = fuelConsumeDelay;
