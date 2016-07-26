@@ -5295,6 +5295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slider: {fileID: 891058023}
+  skyboxMat: {fileID: 2100000, guid: 1ce746eab45682a42bbeeea21e016bbc, type: 2}
+  isMain: 1
 --- !u!4 &1842582268
 Transform:
   m_ObjectHideFlags: 0

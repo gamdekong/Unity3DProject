@@ -59,22 +59,28 @@ public class SpawnManager : MonoBehaviour {
         }
 
         // Chapter
+        Color color;
         switch (Chapter)
         {
             case 1:
-                skyboxMat.SetColor("_Tint", Color.white);
+                color = new Vector4(0.72f, 0.72f, 0.72f, 1);
+                skyboxMat.SetColor("_Tint", color);
                 break;
             case 2:
-                skyboxMat.SetColor("_Tint", Color.red);
+                color = new Vector4(0.43f, 0.86f, 0.31f, 1);
+                skyboxMat.SetColor("_Tint", color);
                 break;
             case 3:
-                skyboxMat.SetColor("_Tint", Color.blue);
+                color = new Vector4(0.24f, 0.72f, 0.88f, 1);
+                skyboxMat.SetColor("_Tint", color);
                 break;
             case 4:
-                skyboxMat.SetColor("_Tint", Color.gray);
+                color = new Vector4(0.86f, 0.31f, 0.31f, 1);
+                skyboxMat.SetColor("_Tint", color);
                 break;
             case 5:
-                skyboxMat.SetColor("_Tint", Color.green);
+                color = new Vector4(0.86f, 0.31f, 0.31f, 1);
+                skyboxMat.SetColor("_Tint", color);
                 break;
         }
 

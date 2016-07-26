@@ -45,7 +45,7 @@ public class csPlayerMovement : MonoBehaviour {
         target.whileAttack = whileAttack;
         target.lastPathNum = lastPathNum;
 
-        LastPos = thePath[lastPathNum];
+        LastPos = thePath[lastPathNum - 1];
 
         delay = 1.5f;
 
