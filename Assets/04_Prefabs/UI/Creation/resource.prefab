@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba2cdc8907c14e47a948d4f733d60a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restriction: 0
+  restriction: 2
   cloneOnDrag: 0
   pressAndHoldDelay: 1
   interactable: 1
@@ -258,6 +258,7 @@ MonoBehaviour:
   numOfResource: 0
   resourceId: 0
   tier: 0
+  plazma: 0
 --- !u!114 &11482998
 MonoBehaviour:
   m_ObjectHideFlags: 1

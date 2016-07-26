@@ -22,6 +22,9 @@ public class DBManager : Singleton<DBManager> {
     // Use this for initialization
     void Awake()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+
         randomSeeds = (int)System.DateTime.Now.Ticks;
         UnityEngine.Random.seed = randomSeeds;
         
