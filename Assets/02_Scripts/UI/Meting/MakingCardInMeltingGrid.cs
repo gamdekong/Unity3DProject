@@ -65,7 +65,7 @@ public class MakingCardInMeltingGrid : MonoBehaviour
                     //obj.transform.parent = this.transform;
                     obj.name = "Resource" + i;
 
-                    Debug.Log("ddddddddddddd");
+
 
                     //sprite 설정
                     //test.text = reader.GetInt32(1).ToString();   //개수로 바꾸기

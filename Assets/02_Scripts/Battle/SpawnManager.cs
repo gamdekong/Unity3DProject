@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour {
     public int fuelDamage;
     public int rewardEXP;
     public int rewardPlasma;
-    public int[] rewardItemID = { 0, 0, 0 };
+    public int[] rewardItemID = new int[3];
 
     void Awake()
     {

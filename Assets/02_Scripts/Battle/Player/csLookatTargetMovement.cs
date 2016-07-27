@@ -68,7 +68,7 @@ public class csLookatTargetMovement : MonoBehaviour {
             if (GameObject.FindGameObjectWithTag("Planet"))
             {
                 GameObject planet = GameObject.FindGameObjectWithTag("Planet");
-                transform.position = Vector3.MoveTowards(transform.position, planet.transform.position, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, planet.transform.position, 5.0f * Time.deltaTime);
             }
 
             return;

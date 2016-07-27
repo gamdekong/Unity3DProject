@@ -9,6 +9,7 @@ using UnityEngine.Advertisements;
 public class UIManager : MonoBehaviour {
 
     public GameObject dbManager;
+    public GameObject spawnManager;
 
     public GameObject player;
     public GameObject playerCam;
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour {
     void Start()
     {
         dbManager = GameObject.Find("DBManager");
+        spawnManager = GameObject.Find("SpawnManager");
     }
 
     void Update()
@@ -113,6 +115,7 @@ public class UIManager : MonoBehaviour {
 
     public void Continue()
     {
+        Reward();
         iTweenPath.RemovePath();
         Time.timeScale = 1;
         SceneManager.LoadScene("LoadingSceneToMain");
@@ -185,7 +188,7 @@ public class UIManager : MonoBehaviour {
         {
             Destroy(asteroid);
         }
-
+        Reward();
         yield return new WaitForSeconds(5.0f);
 
         Time.timeScale = 0;
@@ -208,11 +211,71 @@ public class UIManager : MonoBehaviour {
     {
         if(clear)
         {
+            int plasma = DBManager.Instance.GetPlayerPlazma();
+            int R_plasma = spawnManager.GetComponent<SpawnManager>().rewardPlasma;
+            int[] resId = spawnManager.GetComponent<SpawnManager>().rewardItemID;
+            int exp = spawnManager.GetComponent<SpawnManager>().rewardEXP;
+            int chap = spawnManager.GetComponent<SpawnManager>().Chapter;
+
+            // 플라즈마 증가
+            plasma = plasma + player.GetComponent<csPlayerStatus>().plasma + R_plasma;
+            Debug.Log(plasma);
+            DBManager.Instance.SetPlayerPlazma(plasma);
+
+            // 자원 증가
+            for(int i=0; i<3; i++)
+            {
+                if (resId[i] == 0)
+                    break;
+                else
+                {
+                    int range;
+                    switch (chap)
+                    {
+                        case 1:
+                            range = Random.Range(1, 3);
+                            DBManager.Instance.setResource(resId[i], range);
+                            break;
+                        case 2:
+                            range = Random.Range(2, 5);
+                            DBManager.Instance.setResource(resId[i], range);
+                            break;
+                        case 3:
+                            range = Random.Range(4 - (i * 3), 7 - (i * 6));
+                            DBManager.Instance.setResource(resId[i], range);
+                            break;
+                        case 4:
+                            range = Random.Range(6 - (i * 5), 9 - (i * 6));
+                            DBManager.Instance.setResource(resId[i], range);
+                            break;
+                        case 5:
+                            if (i == 2)
+                            {
+                                range = Random.Range(0, 1);
+                            }
+                            else
+                            {
+                                range = Random.Range(8 - ( i * 6), 10 - (i * 5));
+                            }
+                            DBManager.Instance.setResource(resId[i], range);
+                            break;
+                    }
+
+                }
+            }
+
+            // 경험치 증가
+
+            DBManager.Instance.LevelUp(exp);
 
         }
         else
         {
+            int plasma = dbManager.GetComponent<DBManager>().GetPlayerPlazma();
 
+            // 플라즈마 증가
+            plasma = plasma + player.GetComponent<csPlayerStatus>().plasma;
+            dbManager.GetComponent<DBManager>().SetPlayerPlazma(plasma);
         }
     }
 
