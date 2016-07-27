@@ -56,7 +56,7 @@ public class ToggleHandler : MonoBehaviour
         // 활성화 된것(value가 true)이 아닌경우(false인 경우) return합니다.
         if (current.value == false) return;
         // 확인을 위해 메시지를 뿌립니다.
-        m_lblMessage.text = current.name;
+        //m_lblMessage.text = current.name;
         
     }
 }
