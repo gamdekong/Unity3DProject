@@ -245,7 +245,7 @@ MonoBehaviour:
     borderLeft: 20
     borderRight: 0
     borderTop: 0
-    borderBottom: 0
+    borderBottom: 20
     paddingLeft: 22
     paddingRight: 22
     paddingTop: 23
