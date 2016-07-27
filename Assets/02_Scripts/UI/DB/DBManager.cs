@@ -20,9 +20,12 @@ public class DBManager : Singleton<DBManager> {
     int tmp;
 
     // Use this for initialization
+
+
+        
     void Awake()
     {
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        
 
 
         randomSeeds = (int)System.DateTime.Now.Ticks;
@@ -115,7 +118,7 @@ public class DBManager : Singleton<DBManager> {
         /////////////////////////////////////////////////////////////////////[DB Connection Close]
 
     }
-
+    
     // Update is called once per frame
     void Update () {
 	
@@ -1289,6 +1292,221 @@ public class DBManager : Singleton<DBManager> {
             dbConnection.Close();
         }
     }
+
+
+    public void LevelUp(int exp) //얻은 경험치를 인자로 받는다.
+    {
+        int nowLevel = GetPlayerLevel();
+        int nowExp = GetPlayerExp(); //현재 경험치
+        int needExp = GetExpData(nowLevel); //현재 레벨에서 레벨업하기위한 경험치
+
+        if( (nowExp + exp ) >= needExp)  //얻은경험치와 현재경험치의 합산이 필요레벨업 경험치보다 높을경우 레벨업!
+        {
+            LevelUp2(nowLevel);            //레벨 증가
+            SetPlayerExp((nowExp + exp) - needExp);            //남은 경험치 입력
+
+            if(nowLevel >= 1 && nowLevel <= 10)
+            {
+                SetPlayerPoint(4);
+            }
+            else if (nowLevel >= 11 && nowLevel <= 30)
+            {
+                SetPlayerPoint(8);
+            }
+            else if (nowLevel >= 31 && nowLevel <= 60)
+            {
+                SetPlayerPoint(10);
+            }
+            else if (nowLevel >= 61 && nowLevel <= 100)
+            {
+                SetPlayerPoint(12);
+            }
+            else if (nowLevel >= 101 )
+            {
+                SetPlayerPoint(16);
+            }
+            //스텟 포인트 플러스  레벨에 따라 변화
+
+            if(nowLevel == 10)
+            {
+                PlusDamageStat2(30);
+                PlusEnergyStat2(30);
+            }
+            else if(nowLevel == 30)
+            {
+                PlusDamageStat2(100);
+                PlusEnergyStat2(100);
+            }
+            else if (nowLevel == 60)
+            {
+                PlusDamageStat2(200);
+                PlusEnergyStat2(200);
+            }
+            else if (nowLevel == 100)
+            {
+                PlusDamageStat2(400);
+                PlusEnergyStat2(400);
+            }
+
+
+            // 레벨에 따라 기본 스텟 포인트 플러스
+        }
+        else                    //레벨업 안함
+        {
+            SetPlayerExp(nowExp + exp);
+        }
+
+
+
+    }
+    public void PlusDamageStat2(int dama)
+    {
+        int damage = GetPlayerBasicDamage();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.basicplayerstat SET damage = " + (damage + dama);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+    public void PlusEnergyStat2(int ener)
+    {
+        int energy = GetPlayerBasicEnergy();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.basicplayerstat SET energy = " + (energy + ener);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+    public int GetPlayerPoint()
+    {
+
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT * from player";
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(7);  //포인트
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
+
+    public void SetPlayerPoint(int point)
+    {
+        int nowPoint = GetPlayerPoint();
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.Player SET stat = " + (nowPoint + point);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+
+    public void SetPlayerExp(int exp)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "UPDATE main.Player SET exp = " + exp;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+    void LevelUp2(int nowLevel)
+    {
+     
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+               
+                string sqlQuery = "UPDATE main.Player SET level = " +(nowLevel+1);
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+
+
+
+
+            }
+        }
+    }
+
+
+
 
     public void SetCardSlotStat(int energy, int damage, float rate, float cdamage)
     {
