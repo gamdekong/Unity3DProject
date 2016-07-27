@@ -50,13 +50,13 @@ public class DragAndDragTest : UIDragDropItem
                 else if (surface.transform.parent.name == "Slot1" || surface.transform.parent.name == "Slot2" || surface.transform.parent.name == "Slot3" )                     
                 {
                     //Debug.Log(surface.transform.GetChild(0));
-                    Transform targetTransfrom;
+                    Transform targetTransform;
 
-                    targetTransfrom = surface.transform;  // 슬롯이 가지고 있는 기존 자식
+                    targetTransform = surface.transform;  // 슬롯이 가지고 있는 기존 자식
 
-                    targetTransfrom.parent = mParent;  //기존 자식의 부모를  그리드로 바꾼다.
+                    targetTransform.parent = mParent;  //기존 자식의 부모를  그리드로 바꾼다.
 
-                    targetTransfrom.GetComponent<DragAndDragTest>().ResetPosition(mParent.GetChild(0));
+                    targetTransform.GetComponent<DragAndDragTest>().ResetPosition(mParent.GetChild(0));
 
                     mTrans.parent = (container.reparentTarget != null) ? container.reparentTarget : container.transform;
 
@@ -67,6 +67,7 @@ public class DragAndDragTest : UIDragDropItem
                     mTrans.localPosition = pos;
 
                     DBManager.Instance.SetCardUsing(mTrans.GetComponent<Card>().idx, true);  //  사용중으로 변경
+                    DBManager.Instance.SetCardUsing(targetTransform.GetComponent<Card>().idx, false);
                     Debug.Log(mTrans.GetComponent<Card>().idx);
 
                     GameObject.Find("UIManager").GetComponent<SetPlayerStat>().SetStat();

@@ -1631,7 +1631,6 @@ public class DBManager : Singleton<DBManager> {
 
     public void IncreaseStage()
     {
-
         int nowStage = GetPlayerStage();
         using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
         {
@@ -1640,7 +1639,7 @@ public class DBManager : Singleton<DBManager> {
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = "UPDATE main.Player SET stage = " + nowStage+1;
+                string sqlQuery = "UPDATE main.Player SET stage = " + (nowStage+1);
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
