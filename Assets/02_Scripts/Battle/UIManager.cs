@@ -219,7 +219,7 @@ public class UIManager : MonoBehaviour {
             int num = spawnManager.GetComponent<SpawnManager>().stageNum;
 
 
-            if(num < 30 && num < DBManager.Instance.GetPlayerStage())
+            if(num < 30 && num == DBManager.Instance.GetPlayerStage())
             {
                 DBManager.Instance.IncreaseStage();
             }
