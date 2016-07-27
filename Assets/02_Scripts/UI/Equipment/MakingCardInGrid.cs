@@ -83,7 +83,7 @@ public class MakingCardInGrid : MonoBehaviour
                     
 
                     //sprite 설정
-                    test.text = reader.GetInt32(6).ToString();
+                    //test.text = reader.GetInt32(6).ToString();
                     if (reader.GetInt32(6) == 1)
                     {
                         obj.GetComponent<UISprite>().spriteName = "damageCard";

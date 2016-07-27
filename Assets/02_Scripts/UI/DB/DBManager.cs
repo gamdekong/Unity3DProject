@@ -1629,7 +1629,7 @@ public class DBManager : Singleton<DBManager> {
         }
     }
 
-    public void IncreaseStage(float damageRate)
+    public void IncreaseStage()
     {
 
         int nowStage = GetPlayerStage();
