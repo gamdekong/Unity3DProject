@@ -1640,7 +1640,7 @@ public class DBManager : Singleton<DBManager> {
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = "UPDATE main.Player SET stage = " + nowStage+1;
+                string sqlQuery = "UPDATE main.Player SET stage = " + (nowStage+1);
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
