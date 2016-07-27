@@ -184,8 +184,12 @@ public class csPlayerMovement : MonoBehaviour {
     {
         if (fuelEmpty)
             return;
-
+        if (transform.position.z < LastPos.z)
             transform.LookAt(lookatTarget.transform.position);
+        else if (GameObject.FindGameObjectWithTag("Planet"))
+            transform.LookAt(GameObject.FindGameObjectWithTag("Planet").transform.position);
+        else
+            return;
     }
 
     public void WhileAttacking()

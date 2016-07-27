@@ -221,7 +221,7 @@ public class UIManager : MonoBehaviour {
 
             if(num < 30 && num < DBManager.Instance.GetPlayerStage())
             {
-
+                DBManager.Instance.IncreaseStage();
             }
 
             // 플라즈마 증가
