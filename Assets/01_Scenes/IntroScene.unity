@@ -142,12 +142,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mStarted: 1
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 850
   mHeight: 120
@@ -156,32 +151,21 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 7.0833335
-  mMatrixFrame: 6
-  mOldV0: {x: -425, y: 91, z: 0}
-  mOldV1: {x: 425, y: 211, z: 0}
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
   mApplyGradient: 0
-  mGradientTop:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  mGradientBottom:
-    r: 0.7
-    g: 0.7
-    b: 0.7
-    a: 1
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11418402, guid: 4ba4ca7d6dee4b84f93f57048ac3e67f, type: 2}
-  mSpriteName: 4b616b616f54616c6b5f32303136303732355f313635303531363739
+  mSpriteName: KakaoTalk_20160725_165051679
   mFillCenter: 1
 --- !u!1 &668737896
 GameObject:
@@ -240,12 +224,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mStarted: 1
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 850
   mHeight: 120
@@ -254,32 +233,21 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 7.0833335
-  mMatrixFrame: 6
-  mOldV0: {x: -425, y: 91, z: 0}
-  mOldV1: {x: 425, y: 211, z: 0}
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
   mApplyGradient: 0
-  mGradientTop:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  mGradientBottom:
-    r: 0.7
-    g: 0.7
-    b: 0.7
-    a: 1
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11418402, guid: 4ba4ca7d6dee4b84f93f57048ac3e67f, type: 2}
-  mSpriteName: 4b616b616f54616c6b5f32303136303732355f313635303531363739
+  mSpriteName: KakaoTalk_20160725_165051679
   mFillCenter: 1
 --- !u!1 &778082534
 GameObject:
@@ -324,7 +292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventType: 1
   eventsGoToColliders: 0
-  eventReceiverMask: {}
+  eventReceiverMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   processEventsIn: 0
   debug: 0
   useMouse: 1
@@ -340,19 +310,17 @@ MonoBehaviour:
   touchDragThreshold: 40
   touchClickThreshold: 40
   rangeDistance: -1
-  horizontalAxisName: 486f72697a6f6e74616c
-  verticalAxisName: 566572746963616c
+  horizontalAxisName: 
+  verticalAxisName: 
   horizontalPanAxisName: 
   verticalPanAxisName: 
-  scrollAxisName: 4d6f757365205363726f6c6c576865656c
+  scrollAxisName: 
   commandClick: 1
   submitKey0: 13
   submitKey1: 330
   cancelKey0: 27
   cancelKey1: 331
   autoHideCursor: 1
-  mCam: {fileID: 778082537}
-  mNextRaycast: 0
 --- !u!20 &778082537
 Camera:
   m_ObjectHideFlags: 0
@@ -492,6 +460,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logo: {fileID: 2019722081}
+  touchLabel: {fileID: 1602657658}
+  skyboxMat: {fileID: 2100000, guid: 1ce746eab45682a42bbeeea21e016bbc, type: 2}
+  delay: 2
 --- !u!65 &1511255540
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -527,10 +498,6 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  mTweens: []
-  mStarted: 1
-  mActive: 0
-  mActivated: 0
 --- !u!1 &1548957511
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,12 +555,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mStarted: 1
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 850
   mHeight: 120
@@ -602,32 +564,21 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 7.0833335
-  mMatrixFrame: 6
-  mOldV0: {x: -425, y: 91, z: 0}
-  mOldV1: {x: 425, y: 211, z: 0}
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
   mApplyGradient: 0
-  mGradientTop:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  mGradientBottom:
-    r: 0.7
-    g: 0.7
-    b: 0.7
-    a: 1
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11418402, guid: 4ba4ca7d6dee4b84f93f57048ac3e67f, type: 2}
-  mSpriteName: 4b616b616f54616c6b5f32303136303732355f313635303531363739
+  mSpriteName: KakaoTalk_20160725_165051679
   mFillCenter: 1
 --- !u!1 &1556103725
 GameObject:
@@ -641,6 +592,7 @@ GameObject:
   - 92: {fileID: 1556103728}
   - 124: {fileID: 1556103727}
   - 81: {fileID: 1556103726}
+  - 82: {fileID: 1556103731}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -709,13 +661,224 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556103725}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.94954216, z: 0, w: -0.31363958}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -216.55739, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &1556103731
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556103725}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 20f22ad88ec228c449c67ca39c9701f9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!1 &1602657658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1602657659}
+  - 114: {fileID: 1602657661}
+  - 114: {fileID: 1602657660}
+  m_Layer: 31
+  m_Name: TouchLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1602657659
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602657658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -160, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 2064413886}
+  m_RootOrder: 3
+--- !u!114 &1602657660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602657658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2747e3775af504da1a4d5a46c5a1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 0
+  style: 2
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ignoreTimeScale: 1
+  delay: 0
+  duration: 1
+  steeperCurves: 0
+  tweenGroup: 0
+  onFinished: []
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
+  from: 0
+  to: 1
+--- !u!114 &1602657661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602657658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  rightAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  bottomAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  topAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  updateAnchors: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mPivot: 4
+  mWidth: 600
+  mHeight: 50
+  mDepth: 1
+  autoResizeBoxCollider: 0
+  hideIfOffScreen: 0
+  keepAspectRatio: 0
+  aspectRatio: 12
+  keepCrispWhenShrunk: 1
+  mTrueTypeFont: {fileID: 0}
+  mFont: {fileID: 11400000, guid: 29056518aafb01b49a5b08faf8e30cff, type: 2}
+  mText: '-  Touch To Start  -'
+  mFontSize: 60
+  mFontStyle: 0
+  mAlignment: 0
+  mEncoding: 1
+  mMaxLineCount: 0
+  mEffectStyle: 2
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 2, y: 2}
+  mOverflow: 0
+  mMaterial: {fileID: 0}
+  mApplyGradient: 1
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  mSpacingX: 0
+  mSpacingY: 0
+  mUseFloatSpacing: 0
+  mFloatSpacingX: 0
+  mFloatSpacingY: 0
+  mOverflowEllipsis: 0
+  mOverflowWidth: 0
+  mModifier: 0
+  mShrinkToFit: 0
+  mMaxLineWidth: 0
+  mMaxLineHeight: 0
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!1 &1666396946
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,12 +936,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mStarted: 1
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 850
   mHeight: 120
@@ -787,32 +945,21 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 7.0833335
-  mMatrixFrame: 6
-  mOldV0: {x: -425, y: 91, z: 0}
-  mOldV1: {x: 425, y: 211, z: 0}
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
   mApplyGradient: 0
-  mGradientTop:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  mGradientBottom:
-    r: 0.7
-    g: 0.7
-    b: 0.7
-    a: 1
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11418402, guid: 4ba4ca7d6dee4b84f93f57048ac3e67f, type: 2}
-  mSpriteName: 4b616b616f54616c6b5f32303136303732355f313635303531363739
+  mSpriteName: KakaoTalk_20160725_165051679
   mFillCenter: 1
 --- !u!1 &1994193053
 GameObject:
@@ -871,12 +1018,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mStarted: 1
-  mColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 850
   mHeight: 120
@@ -885,32 +1027,21 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 7.0833335
-  mMatrixFrame: 6
-  mOldV0: {x: -425, y: 91, z: 0}
-  mOldV1: {x: 425, y: 211, z: 0}
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
   mApplyGradient: 0
-  mGradientTop:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  mGradientBottom:
-    r: 0.7
-    g: 0.7
-    b: 0.7
-    a: 1
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11418402, guid: 4ba4ca7d6dee4b84f93f57048ac3e67f, type: 2}
-  mSpriteName: 4b616b616f54616c6b5f32303136303732355f313635303531363739
+  mSpriteName: KakaoTalk_20160725_165051679
   mFillCenter: 1
 --- !u!1 &2019722081
 GameObject:
@@ -960,6 +1091,7 @@ MonoBehaviour:
   method: 0
   style: 0
   animationCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -974,7 +1106,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ignoreTimeScale: 1
+  ignoreTimeScale: 0
   delay: 0
   duration: 2
   steeperCurves: 0
@@ -982,17 +1114,9 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  mStarted: 0
-  mStartTime: 0
-  mDuration: 0
-  mAmountPerDelta: 1000
-  mFactor: 0
-  mTemp: []
   from: {x: 3, y: 3, z: 3}
   to: {x: 1, y: 1, z: 1}
   updateTable: 0
-  mTrans: {fileID: 0}
-  mTable: {fileID: 0}
 --- !u!1 &2064413882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1178,6 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mStarted: 1
   showInPanelTool: 1
   generateNormals: 0
   widgetsAreStatic: 0
@@ -1072,19 +1195,7 @@ MonoBehaviour:
   mDepth: 0
   mSortingOrder: 0
   mSortingLayerName: 
-  mRebuild: 0
-  mResized: 0
   mClipOffset: {x: 0, y: 0}
-  mMatrixFrame: -1
-  mAlphaFrameID: -1
-  mLayer: 31
-  mMin: {x: -376, y: -211.5}
-  mMax: {x: 376, y: 211.5}
-  mHalfPixelOffset: 0
-  mSortWidgets: 0
-  mUpdateScroll: 0
-  mParentPanel: {fileID: 0}
-  mForced: 0
 --- !u!114 &2064413885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,7 +1216,6 @@ MonoBehaviour:
   fitHeight: 1
   adjustByDPI: 0
   shrinkPortraitUI: 0
-  mTrans: {fileID: 2064413886}
 --- !u!4 &2064413886
 Transform:
   m_ObjectHideFlags: 0
@@ -1120,5 +1230,6 @@ Transform:
   - {fileID: 778082535}
   - {fileID: 2019722082}
   - {fileID: 1511255538}
+  - {fileID: 1602657659}
   m_Father: {fileID: 0}
   m_RootOrder: 2

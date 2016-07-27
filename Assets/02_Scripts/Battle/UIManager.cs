@@ -86,7 +86,7 @@ public class UIManager : MonoBehaviour {
 
         btnExit.SetActive(true);
         btnFire.SetActive(true);
-        btnReset.SetActive(true);
+        //btnReset.SetActive(true);
 
         exitTitle.SetActive(false);
         background.SetActive(false);
@@ -216,6 +216,13 @@ public class UIManager : MonoBehaviour {
             int[] resId = spawnManager.GetComponent<SpawnManager>().rewardItemID;
             int exp = spawnManager.GetComponent<SpawnManager>().rewardEXP;
             int chap = spawnManager.GetComponent<SpawnManager>().Chapter;
+            int num = spawnManager.GetComponent<SpawnManager>().stageNum;
+
+
+            if(num < 30 && num < DBManager.Instance.GetPlayerStage())
+            {
+
+            }
 
             // 플라즈마 증가
             plasma = plasma + player.GetComponent<csPlayerStatus>().plasma + R_plasma;

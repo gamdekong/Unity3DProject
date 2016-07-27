@@ -18,12 +18,14 @@ public class csPlayerStatus : MonoBehaviour {
     public GameObject uiManager;
     public GameObject dbManager;
 
+    public AudioClip warningSFX;
+
     public bool playonce = false;
     bool whileCorutine = false;
     int fuel;
     int consume;
     float delay;
-    float blinkDelay = 0.5f;
+    float blinkDelay = 1.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -72,7 +74,7 @@ public class csPlayerStatus : MonoBehaviour {
         }
         if (!whileCorutine)
         {
-            if (fuel < 5 && blinkDelay >= 0.5f)
+            if (fuel < (playerFuel / 4) && blinkDelay >= 1.5f)
             {
                 if (fuel == 0)
                 {
@@ -80,17 +82,14 @@ public class csPlayerStatus : MonoBehaviour {
                     return;
                 }
 
-                if (hitEffect.activeInHierarchy)
-                    hitEffect.SetActive(false);
-                else
-                    hitEffect.SetActive(true);
+                StartCoroutine(ShowEffect());
 
                 blinkDelay = 0;
             }
-            else if (fuel > 5)
+            else if (fuel > (playerFuel / 4))
             {
                 hitEffect.SetActive(false);
-                blinkDelay = 0.5f;
+                blinkDelay = 1.5f;
             }
             else
             {
@@ -111,9 +110,9 @@ public class csPlayerStatus : MonoBehaviour {
             fuel = playerFuel;
     }
 
-    public void DamageToFuel(int damage)
+    public void DamageToFuel()
     {
-        fuel -= damage;
+        fuel -= playerFuel / 10;
     }
 
     public void SetFuel(int value)
@@ -125,6 +124,8 @@ public class csPlayerStatus : MonoBehaviour {
     {
         whileCorutine = true;
         hitEffect.SetActive(true);
+
+        AudioManager.Instance().PlaySfx(warningSFX);
 
         yield return new WaitForSeconds(0.5f);
 

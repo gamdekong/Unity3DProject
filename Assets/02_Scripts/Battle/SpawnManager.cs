@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] noneDestoryableAsteroids;
 
     public GameObject StageData;
+    public int stageNum;
 
     public Material skyboxMat;
     public int Chapter = 1;
@@ -57,26 +58,32 @@ public class SpawnManager : MonoBehaviour {
                     case 1:
                         SetStatus(60, 1, 0, 0, 2400, 50, 400, 115);
                         pathName = "Path1";
+                        stageNum = 1;
                         break;
                     case 2:
                         SetStatus(67, 2, 0, 0, 2693, 60, 700, 125);
                         pathName = "Path2";
+                        stageNum = 2;
                         break;
                     case 3:
                         SetStatus(75, 3, 0, 0, 2996, 72, 1000, 135);
                         pathName = "Path3";
+                        stageNum = 3;
                         break;
                     case 4:
                         SetStatus(83, 4, 0, 0, 3311, 86, 1300, 145);
                         pathName = "Path4";
+                        stageNum = 4;
                         break;
                     case 5:
                         SetStatus(97, 5, 0, 0, 3897, 104, 1500, 0);
                         pathName = "Path5";
+                        stageNum = 5;
                         break;
                     case 6:
                         SetStatus(0, 0, 0, 1, 5631, 124, 2000, 0);
                         pathName = "Path6";
+                        stageNum = 6;
                         break;
                 }
                 break;
@@ -86,26 +93,32 @@ public class SpawnManager : MonoBehaviour {
                     case 1:
                         SetStatus(128, 6, 14, 1, 5135, 147, 1800, 115);
                         pathName = "Path1";
+                        stageNum = 7;
                         break;
                     case 2:
                         SetStatus(221, 7, 15, 2, 8822, 173, 2100, 125);
                         pathName = "Path2";
+                        stageNum = 8;
                         break;
                     case 3:
                         SetStatus(253, 8, 17, 2, 10123, 204, 2400, 135);
                         pathName = "Path3";
+                        stageNum = 9;
                         break;
                     case 4:
                         SetStatus(287, 9, 18, 2, 11473, 241, 2700, 145);
                         pathName = "Path4";
+                        stageNum = 10;
                         break;
                     case 5:
                         SetStatus(322, 10, 19, 2, 12873, 285, 3000, 0);
                         pathName = "Path5";
+                        stageNum = 11;
                         break;
                     case 6:
                         SetStatus(0, 0, 0, 2, 17905, 336, 3500, 0);
                         pathName = "Path6";
+                        stageNum = 12;
                         break;
                 }
                 break;
@@ -115,26 +128,32 @@ public class SpawnManager : MonoBehaviour {
                     case 1:
                         SetStatus(396, 11, 21, 2, 15828, 390, 3300, 115, 114);
                         pathName = "Path1";
+                        stageNum = 13;
                         break;
                     case 2:
                         SetStatus(435, 12, 23, 2, 17386, 452, 3600, 125, 124);
                         pathName = "Path2";
+                        stageNum = 14;
                         break;
                     case 3:
                         SetStatus(475, 13, 26, 2, 19000, 524, 3900, 135, 134);
                         pathName = "Path3";
+                        stageNum = 15;
                         break;
                     case 4:
                         SetStatus(517, 14, 28, 2, 20673, 608, 4200, 145, 145);
                         pathName = "Path4";
+                        stageNum = 16;
                         break;
                     case 5:
                         SetStatus(560, 15, 30, 2, 22404, 705, 4500, 0);
                         pathName = "Path5";
+                        stageNum = 17;
                         break;
                     case 6:
                         SetStatus(0, 0, 0, 2, 43267, 818, 5000, 0);
                         pathName = "Path6";
+                        stageNum = 18;
                         break;
                 }
                 break;
@@ -144,26 +163,32 @@ public class SpawnManager : MonoBehaviour {
                     case 1:
                         SetStatus(1038, 18, 31, 2, 37363, 933, 4800, 115, 114);
                         pathName = "Path1";
+                        stageNum = 19;
                         break;
                     case 2:
                         SetStatus(1117, 19, 31, 3, 40208, 1063, 5100, 125, 124);
                         pathName = "Path2";
+                        stageNum = 20;
                         break;
                     case 3:
                         SetStatus(1199, 20, 32, 3, 43152, 1212, 5400, 135, 134);
                         pathName = "Path3";
+                        stageNum = 21;
                         break;
                     case 4:
                         SetStatus(1283, 21, 32, 3, 46198, 1382, 5700, 145, 144);
                         pathName = "Path4";
+                        stageNum = 22;
                         break;
                     case 5:
                         SetStatus(1371, 22, 33, 3, 49348, 1576, 6000, 0);
                         pathName = "Path5";
+                        stageNum = 23;
                         break;
                     case 6:
                         SetStatus(0, 0, 0, 4, 65757, 1796, 6500, 0);
                         pathName = "Path6";
+                        stageNum = 24;
                         break;
                 }
                 break;
@@ -173,26 +198,32 @@ public class SpawnManager : MonoBehaviour {
                     case 1:
                         SetStatus(1555, 23, 30, 4, 55974, 2030, 6300, 115, 114, 113);
                         pathName = "Path1";
+                        stageNum = 25;
                         break;
                     case 2:
                         SetStatus(1652, 24, 30, 4, 59456, 2294, 6600, 125, 124, 123);
                         pathName = "Path2";
+                        stageNum = 26;
                         break;
                     case 3:
                         SetStatus(1752, 26, 31, 4, 63054, 2592, 6900, 135, 134, 133);
                         pathName = "Path3";
+                        stageNum = 27;
                         break;
                     case 4:
                         SetStatus(1855, 27, 31, 4, 66773, 2929, 7200, 145, 144, 143);
                         pathName = "Path4";
+                        stageNum = 28;
                         break;
                     case 5:
                         SetStatus(1962, 28, 31, 4, 70616, 3309, 7500, 0);
                         pathName = "Path5";
+                        stageNum = 29;
                         break;
                     case 6:
                         SetStatus(0, 0, 0, 4, 93232, 3740, 8000, 0);
                         pathName = "Path6";
+                        stageNum = 30;
                         break;
                 }
                 break;
@@ -202,26 +233,32 @@ public class SpawnManager : MonoBehaviour {
                     case 1:
                         SetStatus(2186, 29, 29, 4, 78686, 4188, 7800, 114, 113);
                         pathName = "Path1";
+                        stageNum = 1;
                         break;
                     case 2:
                         SetStatus(2303, 30, 31, 4, 82920, 4691, 8100, 124, 123);
                         pathName = "Path2";
+                        stageNum = 1;
                         break;
                     case 3:
                         SetStatus(2550, 31, 34, 4, 91815, 5254, 7800, 134, 133);
                         pathName = "Path3";
+                        stageNum = 1;
                         break;
                     case 4:
                         SetStatus(2678, 32, 36, 4, 96419, 5884, 8700, 144, 143);
                         pathName = "Path4";
+                        stageNum = 1;
                         break;
                     case 5:
                         SetStatus(2810, 33, 38, 4, 101171, 6590, 9000, 0);
                         pathName = "Path5";
+                        stageNum = 1;
                         break;
                     case 6:
                         SetStatus(0, 0, 0, 4, 132593, 7381, 9500, 0);
                         pathName = "Path6";
+                        stageNum = 1;
                         break;
                 }
                 break;

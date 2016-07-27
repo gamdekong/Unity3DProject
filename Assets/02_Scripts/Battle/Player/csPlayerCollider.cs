@@ -15,7 +15,7 @@ public class csPlayerCollider : MonoBehaviour {
             GameObject player = GameObject.Find("Player");
 
             player.SendMessage("ShowEffect", SendMessageOptions.DontRequireReceiver);
-            player.SendMessage("DamageToFuel", 1, SendMessageOptions.DontRequireReceiver);
+            player.SendMessage("DamageToFuel", SendMessageOptions.DontRequireReceiver);
             playerCam.SendMessage("PlayCameraShake", SendMessageOptions.DontRequireReceiver);
         }
     }
