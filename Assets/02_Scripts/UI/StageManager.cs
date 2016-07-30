@@ -5,6 +5,7 @@ public class StageManager : MonoBehaviour
 {
     public int Chapter = 0;
     public int Stage = 0;
+    public int Diffculty = 0;
 
 	// Update is called once per frame
 	void Update () {
@@ -39,42 +40,55 @@ public class StageManager : MonoBehaviour
     public void Stage1()
     {
         Stage = 1;
-        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage2()
     {
         Stage = 2;
-        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage3()
     {
         Stage = 3;
-        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage4()
     {
         Stage = 4;
-        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage5()
     {
         Stage = 5;
-        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
     }
 
     public void Stage6()
     {
         Stage = 6;
-        GameObject.Find("StageData").GetComponent<StageData>().SetData(Chapter, Stage);
+    }
+
+    public void Easy()
+    {
+        Diffculty = 0;
+        StageData.Instance.SetData(Chapter, Stage, Diffculty);
+    }
+
+    public void Normal()
+    {
+        Diffculty = 1;
+        StageData.Instance.SetData(Chapter, Stage, Diffculty);
+    }
+
+    public void Hard()
+    {
+        Diffculty = 2;
+        StageData.Instance.SetData(Chapter, Stage, Diffculty);
     }
 
     public void Back()
     {
         Chapter = 0;
         Stage = 0;
+        Diffculty = 0;
     }
 }

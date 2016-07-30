@@ -7,11 +7,13 @@ public class StageData : Singleton<StageData> {
     private static int Chapter;
     private static int Stage;
     private static string PathName;
+    private static int Diffculty;
 
-    public void SetData(int chap, int stage)
+    public void SetData(int chap, int stage, int diff)
     {
         Chapter = chap;
         Stage = stage;
+        Diffculty = diff;
 
         switch(stage)
         {
