@@ -172,6 +172,32 @@ MonoBehaviour:
     paddingRight: 2
     paddingTop: 0
     paddingBottom: 0
+  - name: Plasma
+    x: 118
+    y: 40
+    width: 50
+    height: 50
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 1
+    paddingRight: 1
+    paddingTop: 1
+    paddingBottom: 1
+  - name: plazma2
+    x: 1696
+    y: 799
+    width: 132
+    height: 132
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: plutonium
     x: 1238
     y: 596
@@ -243,8 +269,8 @@ MonoBehaviour:
     width: 256
     height: 254
     borderLeft: 20
-    borderRight: 0
-    borderTop: 0
+    borderRight: 20
+    borderTop: 20
     borderBottom: 20
     paddingLeft: 22
     paddingRight: 22

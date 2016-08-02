@@ -792,6 +792,41 @@ public class DBManager : Singleton<DBManager> {
         }
     }
 
+    public int GetCardTier(int cardIdx)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = "SELECT tier FROM mycard where idx =" + cardIdx;
+
+                dbCmd.CommandText = sqlQuery;
+
+
+
+                using (IDataReader reader = dbCmd.ExecuteReader())
+                {
+
+                    //Debug.Log(reader.GetInt32(0) + " - " + reader.GetString(1));
+                    reader.Read();
+                    return reader.GetInt32(0);  //tier
+
+
+                    //모두 출력후 디비 닫기
+                    dbConnection.Close();
+                    reader.Close();
+
+                    // return reader.FieldCount;
+
+                }
+
+            }
+        }
+    }
+
     public int GetPlayerEnergy()
     {
         using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
@@ -1280,6 +1315,31 @@ public class DBManager : Singleton<DBManager> {
 
 
                 string sqlQuery = "UPDATE main.myresource SET numofresource = 0 WHERE  resourceID =" + id;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
+
+    public void DeletePlayerCard(int idx)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "Delete from main.mycard where idx =" + idx;
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
 

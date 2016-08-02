@@ -9,7 +9,7 @@ public class MakingCardInMeltingGrid : MonoBehaviour
 
     //카드 종류 20가지 입력
     
-    public GameObject slot1;
+  
     public GameObject prefab;
   
     
@@ -217,7 +217,19 @@ public class MakingCardInMeltingGrid : MonoBehaviour
                 continue;
             Destroy(child.gameObject);
         }
-        if(slot1.transform.childCount > 0)
-            Destroy(slot1.transform.GetChild(0).gameObject);
+       
+    }
+
+    public void Delete()
+    {
+        Transform[] childs = transform.GetComponentsInChildren<Transform>();
+        Debug.Log(childs[0]);
+
+        foreach (Transform child in childs)
+        {
+            if (child.name == "UIGrid")
+                continue;
+            Destroy(child.gameObject);
+        }
     }
 }
