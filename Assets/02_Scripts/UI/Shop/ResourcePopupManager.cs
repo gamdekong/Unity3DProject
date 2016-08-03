@@ -16,8 +16,8 @@ public class ResourcePopupManager : MonoBehaviour {
 
     public UISprite sprite;
 
-    int tier;
-    int amount;
+    public int tier;
+    public int amount;
     int plazmaPerTier;
     public int type;
 

@@ -14,6 +14,12 @@ public class MakeCard : MonoBehaviour {
     int numOfPlutonium;
     int numOfPlazma;
 
+    int titaniumResult;
+    int uraniumResult;
+    int HydrogenResult;
+    int plutoniumResult;
+    int plazmaResult;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -45,33 +51,53 @@ public class MakeCard : MonoBehaviour {
 
             if (card.GetComponent<CardInfo>().needTitanium > numOfTitanium)
             {
-                popup.GetComponent<UIPlayTween>().Play(true);
-                Debug.Log("ddd)");
+                popup.SetActive(true);
+                popup.GetComponent<TweenScale>().ResetToBeginning();
+                popup.GetComponent<TweenScale>().Play(true);
+
                 return;
             }
             if (card.GetComponent<CardInfo>().needUranium > numOfUranium)
             {
-                popup.GetComponent<UIPlayTween>().Play(true);
+                popup.SetActive(true);
+                popup.GetComponent<TweenScale>().ResetToBeginning();
+                popup.GetComponent<TweenScale>().Play(true);
                 return;
             }
             if (card.GetComponent<CardInfo>().needHydrogen > numOfHydrogen)
             {
-                popup.GetComponent<UIPlayTween>().Play(true);
+                popup.SetActive(true);
+                popup.GetComponent<TweenScale>().ResetToBeginning();
+                popup.GetComponent<TweenScale>().Play(true);
                 return;
             }
             if (card.GetComponent<CardInfo>().needPlutonium > numOfPlutonium)
             {
-                popup.GetComponent<UIPlayTween>().Play(true);
+                popup.SetActive(true);
+                popup.GetComponent<TweenScale>().ResetToBeginning();
+                popup.GetComponent<TweenScale>().Play(true);
                 return;
             }
 
             if (card.GetComponent<CardInfo>().needPrice > numOfPlazma)
             {
-                popup.GetComponent<UIPlayTween>().Play(true);
+                popup.SetActive(true);
+                popup.GetComponent<TweenScale>().ResetToBeginning();
+                popup.GetComponent<TweenScale>().Play(true);
                 return;
             }
 
+            titaniumResult = numOfTitanium - card.GetComponent<CardInfo>().needTitanium;
+            uraniumResult = numOfUranium - card.GetComponent<CardInfo>().needUranium;
+            HydrogenResult = numOfHydrogen - card.GetComponent<CardInfo>().needHydrogen;
+            plutoniumResult = numOfPlutonium - card.GetComponent<CardInfo>().needPlutonium;
+            plazmaResult = numOfPlazma - card.GetComponent<CardInfo>().needPrice;
 
+            DBManager.Instance.setTitaniumOnTier(needTier, titaniumResult);
+            DBManager.Instance.setUraniumOnTier(needTier, uraniumResult);
+            DBManager.Instance.setHydrogenOnTier(needTier, HydrogenResult);
+            DBManager.Instance.setPlutoniumOnTier(needTier, plutoniumResult);
+            DBManager.Instance.SetPlayerPlazma(plazmaResult);
 
 
 

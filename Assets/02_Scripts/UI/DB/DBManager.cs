@@ -380,6 +380,110 @@ public class DBManager : Singleton<DBManager> {
             dbConnection.Close();
         }
     }
+    public void setTitaniumOnTier(int tier, int amount)
+    {
+        
+
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.myresource SET numofresource = " + amount + " WHERE  resourceID =11" + tier;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
+    public void setUraniumOnTier(int tier, int amount)
+    {
+
+
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.myresource SET numofresource = " + amount + " WHERE  resourceID =12" + tier;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
+    public void setHydrogenOnTier(int tier, int amount)
+    {
+
+
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.myresource SET numofresource = " + amount + " WHERE  resourceID =13" + tier;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
+    public void setPlutoniumOnTier(int tier, int amount)
+    {
+
+
+        using (IDbConnection dbConnection = new SqliteConnection(m_ConnectionString))
+        {
+            // 디비에 연결
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+
+
+                string sqlQuery = "UPDATE main.myresource SET numofresource = " + amount + " WHERE  resourceID =14" + tier;
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+
+                dbConnection.Close();
+
+
+
+
+            }
+            dbConnection.Close();
+        }
+    }
 
     public void setResourceOnId(int id,int amount)
     {

@@ -5,8 +5,15 @@ public class MeltResource : MonoBehaviour {
 
 
     public GameObject popup;
-    public GameObject scrolView;
+    public GameObject scrolView1;
+    public GameObject scrolView2;
+    public GameObject scrolView3;
+    public GameObject scrolView4;
+    public GameObject scrolView5;
     public GameObject grid;
+
+    
+
 
     private int totalResourceAmount;
 
@@ -36,13 +43,41 @@ public class MeltResource : MonoBehaviour {
 
        // grid.GetComponent<MakingCardInMeltingGrid>().Delete();
        // grid.GetComponent<MakingCardInMeltingGrid>().CardSet();
-        scrolView.SetActive(false);
+       // scrolView.SetActive(false);
         //Wait();
-        scrolView.SetActive(true);
 
-        //grid.GetComponent<UIGrid>().Reposition();
+        if(popup.GetComponent<MeltingResultResource>().tier ==5)
+        {
+            scrolView5.SetActive(false);
+            scrolView5.SetActive(true);
+            scrolView5.GetComponent<UIScrollView>().ResetPosition();
+        }
+        else if (popup.GetComponent<MeltingResultResource>().tier == 4)
+        {
+            scrolView4.SetActive(false);
+            scrolView4.SetActive(true);
+            scrolView4.GetComponent<UIScrollView>().ResetPosition();
+        }
+        else if (popup.GetComponent<MeltingResultResource>().tier == 3)
+        {
+            scrolView3.SetActive(false);
+            scrolView3.SetActive(true);
+            scrolView3.GetComponent<UIScrollView>().ResetPosition();
+        }
+        else if (popup.GetComponent<MeltingResultResource>().tier == 2)
+        {
+            scrolView2.SetActive(false);
+            scrolView2.SetActive(true);
+            scrolView2.GetComponent<UIScrollView>().ResetPosition();
+        }
+        else if (popup.GetComponent<MeltingResultResource>().tier == 1)
+        {
+            scrolView1.SetActive(false);
+            scrolView1.SetActive(true);
+            scrolView1.GetComponent<UIScrollView>().ResetPosition();
 
-        //scrolView.GetComponent<UIScrollView>().ResetPosition();
+        }
+
 
     }
 

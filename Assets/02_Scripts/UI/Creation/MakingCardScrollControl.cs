@@ -5,8 +5,9 @@ public class MakingCardScrollControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+        
+
+    }
 
     public void ScrollViewReSet()
     {

@@ -104,7 +104,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 150, y: 200, z: 0}
+  m_Size: {x: 180, y: 230, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11415418
 MonoBehaviour:
@@ -187,7 +187,7 @@ MonoBehaviour:
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11430264, guid: 303a0fd8e676a6743bbee4db0ffde6f2, type: 2}
   mText: 
-  mFontSize: 19
+  mFontSize: 20
   mFontStyle: 0
   mAlignment: 1
   mEncoding: 1
@@ -244,13 +244,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 150
-  mHeight: 200
+  mWidth: 180
+  mHeight: 230
   mDepth: 3
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.75
+  aspectRatio: 0.7826087
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -319,7 +319,7 @@ MonoBehaviour:
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11479030, guid: d3dbf739df91ebf458b51c62f5d976f4, type: 2}
   mText: 
-  mFontSize: 20
+  mFontSize: 25
   mFontStyle: 0
   mAlignment: 1
   mEncoding: 1

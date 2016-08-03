@@ -86,7 +86,7 @@ public class MakingECardInMetingGrid : MonoBehaviour
                         + "극대화 데미지 + " + reader.GetFloat(5) * 100 + "%\n"
                         + "쉴드 증가량 + " + reader.GetInt32(2);
 
-                    label2.text = "\n\n\n\n\n\n\n\n\n       등급 : " + reader.GetInt32(8) + "티어";
+                    label2.text = "\n\n\n\n\n\n\n\n       등급 : " + reader.GetInt32(8) + "티어";
 
 
 
