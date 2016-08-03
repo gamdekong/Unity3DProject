@@ -6,13 +6,16 @@ public class csPlayerMovement : MonoBehaviour {
     public GameObject lookatTarget;
     public GameObject wrapEffect;
     public GameObject[] engines;
+    public GameObject playerModel;
     public Vector3 respawnPos;
     public Quaternion respawnRot;
     public Vector3 LastPos;
+    public Vector3 axis = Vector3.forward;
     Vector3 startPoint;
     
     public float maxSpeed = 20.0f;
     public float accelerateSpeed = 2.0f;
+    public float swtichSpeed = 2.0f;
     public float breakingSpeed = 1.0f;
     public float restoreSpeedDelay = 2.0f;
     public string pathName;
@@ -30,6 +33,7 @@ public class csPlayerMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        playerModel = GameObject.FindGameObjectWithTag("PlayerModel");
         pathName = GameObject.Find("StageData").GetComponent<StageData>().GetPathName();
 
         thePath = iTweenPath.GetPath(pathName);
@@ -53,7 +57,7 @@ public class csPlayerMovement : MonoBehaviour {
 
         wrapEffect.SetActive(false);
 
-        startPoint = thePath[0];
+        startPoint = Vector3.zero;
 
         engines = GameObject.FindGameObjectsWithTag("Engine");
     }
@@ -80,9 +84,10 @@ public class csPlayerMovement : MonoBehaviour {
 
     void playerMove()
     {
-        if(speed <= 0)
+        // 엔진부 on/off
+        if (speed <= 0)
         {
-            foreach(GameObject engine in engines)
+            foreach (GameObject engine in engines)
             {
                 engine.SetActive(false);
             }
@@ -94,7 +99,7 @@ public class csPlayerMovement : MonoBehaviour {
                 engine.SetActive(true);
             }
         }
-
+        // 귀환
         if (fuelEmpty)
         {
 
@@ -112,61 +117,59 @@ public class csPlayerMovement : MonoBehaviour {
 
             return;
         }
-
+        // 공격후 재 점화시간
         if (delay > 0)
         {
             delay -= Time.deltaTime;
             whileAttack = true;
         }
-
         if (delay < 0)
             whileAttack = false;
-
+        // 가속 및 감속
         if (whileAttack)
             speed = breakingSpeed;
         else if (speed < maxSpeed)
             speed += accelerateSpeed * Time.deltaTime;
-
+        // 최고 속력 제한
         if (speed > maxSpeed)
             speed = maxSpeed;
-
-        if (transform.position.z > thePath[lastPathNum - 1].z)
+        // 행성 일정거리 접근 시 속도 제한
+        if (GameObject.FindGameObjectWithTag("Planet"))
         {
-            if(GameObject.FindGameObjectWithTag("Planet"))
+            GameObject planet = GameObject.FindGameObjectWithTag("Planet");
+            float dis = Vector3.Distance(transform.position, planet.transform.position);
+
+            if (dis > 300)
             {
-                GameObject planet = GameObject.FindGameObjectWithTag("Planet");
-                float dis = Vector3.Distance(transform.position, planet.transform.position);
-                
-                if(dis > 300)
-                {
-                    transform.Translate(Vector3.forward * speed / 5.0f * Time.deltaTime);
-                }
-                else if(dis < 300 && dis > 150)
-                {
-                    transform.Translate(Vector3.forward * speed / 10.0f * Time.deltaTime);
-                }
-                else if(dis > 150 && dis > 100)
-                {
-                    transform.Translate(Vector3.forward * speed / 20.0f * Time.deltaTime);
-                }
-                else
-                {
-                    transform.Translate(Vector3.forward * speed / 30.0f * Time.deltaTime);
-                }
+                transform.Translate(playerModel.transform.forward * speed / 5.0f * Time.deltaTime);
+            }
+            else if (dis < 300 && dis > 150)
+            {
+                transform.Translate(playerModel.transform.forward * speed / 10.0f * Time.deltaTime);
+            }
+            else if (dis > 150 && dis > 100)
+            {
+                transform.Translate(playerModel.transform.forward * speed / 20.0f * Time.deltaTime);
             }
             else
-                transform.Translate(Vector3.forward * speed / 5.0f * Time.deltaTime);
-            return;
+            {
+                transform.Translate(playerModel.transform.forward * speed / 60.0f * Time.deltaTime);
+            }
         }
-                     
-        distance += speed * Time.deltaTime;
+        else
+        {
+            // 행성이 없을시 전진
+            transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
+        }
 
-        float perc = distance / pathLength;
-        iTween.PutOnPath(gameObject, thePath, perc);
+        //distance += speed * Time.deltaTime;
+
+        //float perc = distance / pathLength;
+        //iTween.PutOnPath(gameObject, thePath, perc);
     }
 
     void SetWarpEffect()
-    {   
+    {
         if(speed > breakingSpeed)
         {
             wrapEffect.SetActive(true);
@@ -182,14 +185,15 @@ public class csPlayerMovement : MonoBehaviour {
 
     void playerRotate()
     {
-        if (fuelEmpty)
-            return;
-        if (transform.position.z < LastPos.z)
-            transform.LookAt(lookatTarget.transform.position);
-        else if (GameObject.FindGameObjectWithTag("Planet"))
-            transform.LookAt(GameObject.FindGameObjectWithTag("Planet").transform.position);
-        else
-            return;
+        //if (fuelEmpty)
+        //    return;
+
+        //if (transform.position.z < LastPos.z)
+        //    transform.LookAt(lookatTarget.transform.position);
+        //else if (GameObject.FindGameObjectWithTag("Planet"))
+        //    transform.LookAt(GameObject.FindGameObjectWithTag("Planet").transform.position);
+        //else
+        //    return;
     }
 
     public void WhileAttacking()

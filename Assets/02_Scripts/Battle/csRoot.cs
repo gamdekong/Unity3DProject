@@ -36,7 +36,7 @@ public class csRoot : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.transform.tag == "Player")
+        if (col.transform.tag == "PlayerModel")
         {
             AudioManager.Instance().PlaySfx(rootSound);
             player.SendMessage("GetFuel", fuel, SendMessageOptions.DontRequireReceiver);
