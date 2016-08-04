@@ -5,6 +5,7 @@ public class csMissile : MonoBehaviour {
 
     public GameObject player;
     public GameObject target;
+    public GameObject targetingManager;
     public AudioClip shotSound;
     public AudioClip explosionSound;
     public bool isRight;
@@ -24,6 +25,7 @@ public class csMissile : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = GameObject.Find("Player");
+        targetingManager = GameObject.Find("TargetingSystem");
 
         transform.FindChild("missile").GetComponent<csMissileCollider>().damage = damage;
         transform.FindChild("missile").GetComponent<csMissileCollider>().criticalRate = criticalRate;
@@ -67,8 +69,12 @@ public class csMissile : MonoBehaviour {
         Vector3 Pos;
         if (target == null)
         {
-            Pos = Vector3.forward * Time.deltaTime * MaxSpeed;
-            transform.Translate(Pos);
+            if(targetingManager.GetComponent<TargetingManager>().AimingTarget)
+                target = targetingManager.GetComponent<TargetingManager>().AimingTarget;
+            else
+            {
+                transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+            }
             return;
         }
 

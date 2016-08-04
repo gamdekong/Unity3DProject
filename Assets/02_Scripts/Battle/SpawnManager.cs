@@ -43,6 +43,7 @@ public class SpawnManager : MonoBehaviour {
 
         Chapter = StageData.GetComponent<StageData>().GetChapter();
         Stage = StageData.GetComponent<StageData>().GetStage();
+
     }
 
     // Use this for initialization
@@ -272,7 +273,7 @@ public class SpawnManager : MonoBehaviour {
                     D_asteroid_minDis,
                     D_asteroid_maxDis,
                     D_asteroid_sepDis,
-                    destoryableAsteroid,
+                    Random.Range(destoryableAsteroid, destoryableAsteroid * 3),
                     destoryableAsteroids);
             }
 
@@ -282,7 +283,7 @@ public class SpawnManager : MonoBehaviour {
                     ND_asteroid_minDis,
                     ND_asteroid_maxDis,
                     ND_asteroid_sepDis,
-                    noneDestroyableAsteroid,
+                    Random.Range(noneDestroyableAsteroid, noneDestroyableAsteroid * 2),
                     noneDestoryableAsteroids);
             }
         }
@@ -313,7 +314,7 @@ public class SpawnManager : MonoBehaviour {
                 break;
         }
 
-        Vector3 planetPos = new Vector3(0, 0, 7800);
+        Vector3 planetPos = new Vector3(0, 0, 5000);
         Quaternion planetRotation = Quaternion.Euler(0, 0, 0);
         GameObject planetObj;
         // Stage

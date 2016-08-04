@@ -6,6 +6,7 @@ public class csPlayerCamManager : MonoBehaviour {
     public GameObject player;
     public GameObject target;
     public GameObject lookatPos;
+    public GameObject playerModel;
     public float followSpeed = 5.0f;
     public float rotateSpeed = 5.0f;
 
@@ -23,6 +24,7 @@ public class csPlayerCamManager : MonoBehaviour {
 
         playerMaxSpeed = player.GetComponent<csPlayerMovement>().maxSpeed;
         playerBSpeed = player.GetComponent<csPlayerMovement>().breakingSpeed;
+        playerModel = GameObject.FindGameObjectWithTag("PlayerModel");
     }
 
     void Update()
@@ -44,7 +46,7 @@ public class csPlayerCamManager : MonoBehaviour {
         }
         else
         {
-            lookatPos.transform.localRotation = myLocalRotation;
+            lookatPos.transform.localRotation = playerModel.transform.localRotation;
         }
         transform.localRotation = Quaternion.Lerp(transform.localRotation, lookatPos.transform.localRotation, 0.8f * Time.deltaTime);
     }

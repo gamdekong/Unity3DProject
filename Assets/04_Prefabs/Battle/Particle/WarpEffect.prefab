@@ -113,10 +113,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119606}
-  m_LocalRotation: {x: -0.0000000141994745, y: 0.9961947, z: -0.08715575, w: -0.00000016230072}
-  m_LocalPosition: {x: 0, y: 0, z: 110}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_LocalEulerAnglesHint: {x: 10, y: 180, z: 0}
+  m_LocalRotation: {x: -0.000000028290883, y: 1, z: 0, w: -0.00000016044555}
+  m_LocalPosition: {x: 0, y: 0, z: 2.109}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 481622}
   - {fileID: 446172}
@@ -212,7 +212,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 7
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1696,7 +1696,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 7
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3180,7 +3180,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 7
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3456,8 +3456,8 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: 3
-    angle: 25
+    radius: 3.25
+    angle: 8.33
     length: 10
     boxX: 1
     boxY: 1
@@ -4664,7 +4664,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 7
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:

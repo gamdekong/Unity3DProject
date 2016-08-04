@@ -126,9 +126,14 @@ public class csPlayerMovement : MonoBehaviour {
         if (delay < 0)
             whileAttack = false;
         // 가속 및 감속
-        if (whileAttack)
-            speed = breakingSpeed;
-        else if (speed < maxSpeed)
+        //if (whileAttack)
+        //{
+        //    if (speed > breakingSpeed)
+        //        speed -= accelerateSpeed * Time.deltaTime;
+        //    else
+        //        speed = breakingSpeed;
+        //}
+        //else if (speed < maxSpeed)
             speed += accelerateSpeed * Time.deltaTime;
         // 최고 속력 제한
         if (speed > maxSpeed)
