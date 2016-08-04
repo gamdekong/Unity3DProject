@@ -114,7 +114,7 @@ public class TargetingManager : MonoBehaviour {
 
             if (targetPlanet != null && AimingTarget == null)
             {
-                if (planetDis < MaxTargetingDistance)
+                if (planetDis < MaxTargetingDistance + 150)
                     AimingTarget = targetPlanet;
             }
         }

@@ -41,6 +41,8 @@ public class csPlayerMovement : MonoBehaviour {
         pathLength = iTween.PathLength(thePath);
         target = lookatTarget.GetComponent<csLookatTargetMovement>();
 
+        GetComponentInChildren<csLine>().nodes = thePath;
+
         target.maxSpeed = maxSpeed;
         target.accelerateSpeed = accelerateSpeed;
         target.breakingSpeed = breakingSpeed;
