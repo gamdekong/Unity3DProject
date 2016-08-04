@@ -101,7 +101,9 @@ public class MakeCard : MonoBehaviour {
             DBManager.Instance.setPlutoniumOnTier(needTier, plutoniumResult);
             DBManager.Instance.SetPlayerPlazma(plazmaResult);
 
-
+            makingBar.SetActive(true);
+            makingBar.GetComponent<TweenScale>().Play(true);
+            makingBar.GetComponent<MakingBar>().MakingBarStart(card.GetComponent<CardInfo>().type);
 
 
 
@@ -115,8 +117,11 @@ public class MakeCard : MonoBehaviour {
 
             DBManager.Instance.MakeCard(card);
 
+
             makingBar.SetActive(true);
             makingBar.GetComponent<TweenScale>().Play(true);
+            makingBar.GetComponent<MakingBar>().MakingBarStart(card.GetComponent<CardInfo>().type);
+
         }
     }
 }

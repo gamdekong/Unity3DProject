@@ -7,6 +7,8 @@ using System.IO;
 
 public class DBManager : Singleton<DBManager> {
 
+    public SuccessCardTween succes;
+
     private string m_ConnectionString;
     int randomSeeds;
 
@@ -2684,7 +2686,12 @@ public class DBManager : Singleton<DBManager> {
             // 디비에 연결
             dbConnection.Open();
 
-          
+            succes.atkI = power;
+            succes.energyI = energy;
+            succes.rateI = criticalRate;
+            succes.damageI = criticalDamage;
+            succes.tierI = cardTier;
+            succes.type = type;
 
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
