@@ -11,6 +11,12 @@ public class DragAndDropMakingCard : UIDragDropItem
     public Transform CardGrid;
     public Transform Slot;
 
+    public GameObject Tier5;
+    public GameObject Tier4;
+    public GameObject Tier3;
+    public GameObject Tier2;
+    public GameObject Tier1;
+
     /// <summary>
     /// Drop a 3D game object onto the surface.
     /// </summary>
@@ -41,20 +47,50 @@ public class DragAndDropMakingCard : UIDragDropItem
                     pos.z = 0f;
                     mTrans.localPosition = pos;
 
+                    surface.GetComponent<CreationCardSlotManager>().SetNumOfMyResourcse(GetComponent<CardInfo>().tier);
+
                    
 
 
                 }
                 else if (surface.transform.parent.name == "makingslot")
                 {
+                   
                     //Debug.Log(surface.transform.GetChild(0));
                     Transform targetTransfrom;
 
                     targetTransfrom = surface.transform;  // 슬롯이 가지고 있는 기존 자식
 
-                    targetTransfrom.parent = mParent;  //기존 자식의 부모를  그리드로 바꾼다.
+                    //targetTransfrom.parent = mParent;  //기존 자식의 부모를  그리드로 바꾼다.
 
-                    
+                    if(targetTransfrom.GetComponent<CardInfo>().tier == 5)
+                    {
+                        targetTransfrom.parent = Tier5.transform;
+                        targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier5.transform.GetChild(0));
+                    }
+                    else if (targetTransfrom.GetComponent<CardInfo>().tier == 4)
+                    {
+                        targetTransfrom.parent = Tier4.transform;
+                        targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier4.transform.GetChild(0));
+                    }
+                    else if (targetTransfrom.GetComponent<CardInfo>().tier == 3)
+                    {
+                        targetTransfrom.parent = Tier3.transform;
+                        targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier3.transform.GetChild(0));
+                    }
+                    else if (targetTransfrom.GetComponent<CardInfo>().tier == 2)
+                    {
+                        targetTransfrom.parent = Tier2.transform;
+                        targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier2.transform.GetChild(0));
+                    }
+                    else if (targetTransfrom.GetComponent<CardInfo>().tier == 1)
+                    {
+                        targetTransfrom.parent = Tier1.transform;
+                        targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier1.transform.GetChild(0));
+                    }
+
+
+
 
 
                     targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(mParent.GetChild(0));
@@ -76,13 +112,31 @@ public class DragAndDropMakingCard : UIDragDropItem
                     pos.z = 0f;
                     mTrans.localPosition = pos;
 
+                    
+                    GameObject.Find("makingslot").GetComponent<CreationCardSlotManager>().SetNumOfMyResourcse(GetComponent<CardInfo>().tier);
 
-                   
                 }
                 else
                 {
+                    if(container.reparentTarget != null)
+                    {
+                        if (mTrans.GetComponent<CardInfo>().tier == 5)
+                            mTrans.parent = Tier5.transform;
+                        else if (mTrans.GetComponent<CardInfo>().tier == 4)
+                            mTrans.parent = Tier4.transform;
+                        else if (mTrans.GetComponent<CardInfo>().tier == 3)
+                            mTrans.parent = Tier3.transform;
+                        else if (mTrans.GetComponent<CardInfo>().tier == 2)
+                            mTrans.parent = Tier2.transform;
+                        else if (mTrans.GetComponent<CardInfo>().tier == 1)
+                            mTrans.parent = Tier1.transform;
+                    }
+                    else
+                    {
+                        mTrans.parent = container.transform;
+                    }
 
-                    mTrans.parent = (container.reparentTarget != null) ? container.reparentTarget : container.transform;
+                    //mTrans.parent = (container.reparentTarget != null) ? container.reparentTarget : container.transform;
 
                     Vector3 pos = mTrans.localPosition;
                     pos.z = 0f;
