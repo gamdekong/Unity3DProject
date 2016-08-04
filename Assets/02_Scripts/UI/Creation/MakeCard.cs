@@ -8,6 +8,8 @@ public class MakeCard : MonoBehaviour {
 
     public GameObject popup;
 
+    public GameObject makingBar;
+
     int numOfTitanium;
     int numOfUranium;
     int numOfHydrogen;
@@ -112,6 +114,9 @@ public class MakeCard : MonoBehaviour {
             card.GetComponent<DragAndDropMakingCard>().ResetPosition(grid.transform.GetChild(0));
 
             DBManager.Instance.MakeCard(card);
+
+            makingBar.SetActive(true);
+            makingBar.GetComponent<TweenScale>().Play(true);
         }
     }
 }
