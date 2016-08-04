@@ -13,6 +13,7 @@ TagManager:
   - Path
   - Root
   - Engine
+  - PlayerModel
   layers:
   - Default
   - TransparentFX
