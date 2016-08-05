@@ -22,6 +22,7 @@ public class csPlayerMovement : MonoBehaviour {
     public bool whileAttack = false;
     public bool fuelEmpty = false;
 
+    float max;
     float delay;
     float speed;
     float distance;
@@ -33,6 +34,8 @@ public class csPlayerMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        max = maxSpeed;
+
         playerModel = GameObject.FindGameObjectWithTag("PlayerModel");
         pathName = GameObject.Find("StageData").GetComponent<StageData>().GetPathName();
 
@@ -41,7 +44,10 @@ public class csPlayerMovement : MonoBehaviour {
         pathLength = iTween.PathLength(thePath);
         target = lookatTarget.GetComponent<csLookatTargetMovement>();
 
-        GetComponentInChildren<csLine>().nodes = thePath;
+        foreach(csLine line in GetComponentsInChildren<csLine>())
+        {
+            line.nodes = thePath;
+        }
 
         target.maxSpeed = maxSpeed;
         target.accelerateSpeed = accelerateSpeed;
@@ -128,43 +134,49 @@ public class csPlayerMovement : MonoBehaviour {
         if (delay < 0)
             whileAttack = false;
         // 가속 및 감속
-        //if (whileAttack)
-        //{
-        //    if (speed > breakingSpeed)
-        //        speed -= accelerateSpeed * Time.deltaTime;
-        //    else
-        //        speed = breakingSpeed;
-        //}
-        //else if (speed < maxSpeed)
+        if (whileAttack)
+        {
+            if (speed > breakingSpeed)
+                speed -= accelerateSpeed * Time.deltaTime;
+            else
+                speed = breakingSpeed;
+        }
+        else if (speed < max)
             speed += accelerateSpeed * Time.deltaTime;
         // 최고 속력 제한
-        if (speed > maxSpeed)
-            speed = maxSpeed;
+        if (speed > max)
+            speed = max;
         // 행성 일정거리 접근 시 속도 제한
         if (GameObject.FindGameObjectWithTag("Planet"))
         {
             GameObject planet = GameObject.FindGameObjectWithTag("Planet");
             float dis = Vector3.Distance(transform.position, planet.transform.position);
 
-            if (dis > 300)
+            if (dis > 400)
             {
-                transform.Translate(playerModel.transform.forward * speed / 5.0f * Time.deltaTime);
+                max = maxSpeed;
+                transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
             }
-            else if (dis < 300 && dis > 150)
+            else if (dis < 400 && dis > 200)
             {
-                transform.Translate(playerModel.transform.forward * speed / 10.0f * Time.deltaTime);
+                max = maxSpeed / 10.0f;
+                transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
             }
-            else if (dis > 150 && dis > 100)
+            else if (dis > 200 && dis > 100)
             {
-                transform.Translate(playerModel.transform.forward * speed / 20.0f * Time.deltaTime);
+                max = maxSpeed / 20.0f;
+                transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
             }
             else
             {
-                transform.Translate(playerModel.transform.forward * speed / 60.0f * Time.deltaTime);
+                max = maxSpeed / 60.0f;
+                wrapEffect.SetActive(false);
+                transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
             }
         }
         else
         {
+            max = maxSpeed;
             // 행성이 없을시 전진
             transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
         }

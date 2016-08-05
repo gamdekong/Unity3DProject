@@ -226,7 +226,6 @@ public class UIManager : MonoBehaviour {
 
             // 플라즈마 증가
             plasma = plasma + player.GetComponent<csPlayerStatus>().plasma + R_plasma;
-            Debug.Log(plasma);
             DBManager.Instance.SetPlayerPlazma(plasma);
 
             // 자원 증가

@@ -65,7 +65,7 @@ public class TargetingManager : MonoBehaviour {
             else if(AimingTarget && AimingTarget.tag == "Asteroid")
             {
                 float targetDis = Vector3.Distance(AimingTarget.transform.position, player.transform.position);
-                if(targetDis < MinTargetingDistance)
+                if(targetDis < MinTargetingDistance || AimingTarget.GetComponent<csAsteroidStatus>().LockOn == false)
                 {
                     Destroy(aim);
                     AimingTarget = null;
@@ -92,7 +92,8 @@ public class TargetingManager : MonoBehaviour {
  
                 if (asteroid.transform.position.z < player.transform.position.z ||
                     asteroidDis > MaxTargetingDistance ||
-                    asteroidDis < MinTargetingDistance)
+                    asteroidDis < MinTargetingDistance ||
+                    asteroid.GetComponent<csAsteroidStatus>().LockOn == false)
                     continue;
 
                 if(AimingTarget == null)

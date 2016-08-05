@@ -5,13 +5,16 @@ public class csLine : MonoBehaviour {
 
     public LineRenderer line;
     public GameObject planet;
+    public GameObject playerModel;
     public Vector3[] nodes;
     Vector3 node = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
         line = GetComponent<LineRenderer>();
-	}
+        playerModel = GameObject.FindGameObjectWithTag("PlayerModel");
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,15 +25,15 @@ public class csLine : MonoBehaviour {
 
         if (planet)
         {
-            line.SetPosition(0, transform.position);
+            line.SetPosition(0, playerModel.transform.position);
             foreach(Vector3 tmp in nodes)
             {
-                if(tmp.z > node.z && tmp.z > transform.position.z)
+                if(tmp.z > node.z && tmp.z > playerModel.transform.position.z)
                 {
                     if(node == Vector3.zero)
                         node = tmp;
 
-                    if (Vector3.Distance(tmp, transform.position) < Vector3.Distance(node, transform.position))
+                    if (Vector3.Distance(tmp, playerModel.transform.position) < Vector3.Distance(node, playerModel.transform.position))
                     {
                         node = tmp;
                     }

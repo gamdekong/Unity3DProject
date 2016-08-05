@@ -14,7 +14,7 @@ public class csMissile : MonoBehaviour {
     public int damage;
     public float criticalRate;
     public float criticalDamage;
-    public float delay = 5;
+    public float delay = 3;
     float propelTime = 0.01f;
     float MaxPropelTime = 0.15f;
     float rotatePropelTime;
@@ -51,11 +51,15 @@ public class csMissile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        delay -= Time.deltaTime;
         MissileControl3();
 
         if (delay <= 0)
+        {
+            GameObject particleObj = Instantiate(GetComponentInChildren<csMissileCollider>().nomalExp) as GameObject;
+            particleObj.transform.position = transform.position;
+            Destroy(particleObj, 1.8f);
             Destroy(gameObject);
+        }
 	}
 
     public void MissileControl3()
@@ -69,12 +73,8 @@ public class csMissile : MonoBehaviour {
         Vector3 Pos;
         if (target == null)
         {
-            if(targetingManager.GetComponent<TargetingManager>().AimingTarget)
-                target = targetingManager.GetComponent<TargetingManager>().AimingTarget;
-            else
-            {
-                transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-            }
+            delay -= Time.deltaTime;
+            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
             return;
         }
 
@@ -133,12 +133,12 @@ public class csMissile : MonoBehaviour {
                     Vector3 Axis = Vector3.Cross(Dir, transform.forward);
 
                     Quaternion NewRotation = Quaternion.AngleAxis(Time.deltaTime * Speed * correctionValue, Axis) * transform.rotation;
-                    transform.rotation = Quaternion.Lerp(transform.rotation, NewRotation, 60.0f * Time.deltaTime);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, NewRotation, 120.0f * Time.deltaTime);
                 }
             }
         }
 
-        Pos = Vector3.forward * Time.deltaTime * Speed;           
+        Pos = Vector3.forward * Time.deltaTime * Speed;
 
         transform.Translate(Pos);
     } 
