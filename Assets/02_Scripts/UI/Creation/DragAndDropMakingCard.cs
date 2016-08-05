@@ -39,6 +39,41 @@ public class DragAndDropMakingCard : UIDragDropItem
                 // Container found -- parent this object to the container
                 if (surface.name == "makingslot")
                 {
+                    if(surface.transform.childCount > 0 )
+                    {
+                        Transform targetTransfrom;
+
+                        targetTransfrom = surface.transform.GetChild(0);
+
+                        if (targetTransfrom.GetComponent<CardInfo>().tier == 5)
+                        {
+                            targetTransfrom.parent = Tier5.transform;
+                            targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier5.transform.GetChild(0));
+                        }
+                        else if (targetTransfrom.GetComponent<CardInfo>().tier == 4)
+                        {
+                            targetTransfrom.parent = Tier4.transform;
+                            targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier4.transform.GetChild(0));
+                        }
+                        else if (targetTransfrom.GetComponent<CardInfo>().tier == 3)
+                        {
+                            targetTransfrom.parent = Tier3.transform;
+                            targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier3.transform.GetChild(0));
+                        }
+                        else if (targetTransfrom.GetComponent<CardInfo>().tier == 2)
+                        {
+                            targetTransfrom.parent = Tier2.transform;
+                            targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier2.transform.GetChild(0));
+                        }
+                        else if (targetTransfrom.GetComponent<CardInfo>().tier == 1)
+                        {
+                            targetTransfrom.parent = Tier1.transform;
+                            targetTransfrom.GetComponent<DragAndDropMakingCard>().ResetPosition(Tier1.transform.GetChild(0));
+                        }
+
+                    }
+
+
                     mTrans.parent = (container.reparentTarget != null) ? container.reparentTarget : container.transform;
 
                     //Vector3 pos = mTrans.localPosition;

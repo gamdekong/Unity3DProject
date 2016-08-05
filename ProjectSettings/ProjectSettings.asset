@@ -89,7 +89,7 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  bundleIdentifier: com.RuliBird.Zeal
+  bundleIdentifier: com.gamdekong.dog
   bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
@@ -160,8 +160,8 @@ PlayerSettings:
   AndroidTargetDevice: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/unity_work/gitTest/gamdekong.keystore
+  AndroidKeyaliasName: gamdekong
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
@@ -464,7 +464,7 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  cloudProjectId: 2ef7d582-b219-4c2c-8607-f7ab27b27249
+  cloudProjectId: 52f03e69-a7b7-45d4-8187-946d4d907448
   projectName: Zeal
-  organizationId: rulibird
+  organizationId: woonhak
   cloudEnabled: 0
