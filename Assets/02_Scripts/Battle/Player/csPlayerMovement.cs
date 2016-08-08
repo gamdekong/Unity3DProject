@@ -152,17 +152,17 @@ public class csPlayerMovement : MonoBehaviour {
             GameObject planet = GameObject.FindGameObjectWithTag("Planet");
             float dis = Vector3.Distance(transform.position, planet.transform.position);
 
-            if (dis > 400)
+            if (dis > 600)
             {
                 max = maxSpeed;
                 transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
             }
-            else if (dis < 400 && dis > 200)
+            else if (dis < 600 && dis > 300)
             {
-                max = maxSpeed / 10.0f;
+                max = maxSpeed / 5.0f;
                 transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
             }
-            else if (dis > 200 && dis > 100)
+            else if (dis > 300 && dis > 100)
             {
                 max = maxSpeed / 20.0f;
                 transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
@@ -180,7 +180,7 @@ public class csPlayerMovement : MonoBehaviour {
             // 행성이 없을시 전진
             transform.Translate(playerModel.transform.forward * speed * Time.deltaTime);
         }
-
+        transform.position = playerModel.transform.position;
         //distance += speed * Time.deltaTime;
 
         //float perc = distance / pathLength;

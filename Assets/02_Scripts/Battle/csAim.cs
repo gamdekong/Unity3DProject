@@ -25,20 +25,20 @@ public class csAim : MonoBehaviour {
             {
                 if (dis < 400 && dis > 350)
                 {
-                    scale.x = 60;
-                    scale.y = 60;
+                    scale.x = 8;
+                    scale.y = 8;
                     transform.localScale = scale;
                 }
                 else if (dis < 350 && dis > 250)
                 {
-                    scale.x = 45;
-                    scale.y = 45;
+                    scale.x = 6;
+                    scale.y = 6;
                     transform.localScale = scale;
                 }
                 else if (dis < 250 && dis > 0)
                 {
-                    scale.x = 30;
-                    scale.y = 30;
+                    scale.x = 4;
+                    scale.y = 4;
                     transform.localScale = scale;
                 }
             }
@@ -46,20 +46,20 @@ public class csAim : MonoBehaviour {
             {
                 if (dis < 600 && dis > 400)
                 {
-                    scale.x = 160;
-                    scale.y = 160;
+                    scale.x = 10;
+                    scale.y = 10;
                     transform.localScale = scale;
                 }
                 else if (dis < 400 && dis > 300)
                 {
-                    scale.x = 140;
-                    scale.y = 140;
+                    scale.x = 8;
+                    scale.y = 8;
                     transform.localScale = scale;
                 }
                 else if (dis < 300 && dis > 0)
                 {
-                    scale.x = 100;
-                    scale.y = 100;
+                    scale.x = 6;
+                    scale.y = 6;
                     transform.localScale = scale;
                 }
             }

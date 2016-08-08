@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour {
     public GameObject spawnManager;
 
     public GameObject player;
+    public GameObject playerModel;
     public GameObject playerCam;
     public GameObject playerCamPos;
     public GameObject fuelBar;
@@ -30,15 +31,18 @@ public class UIManager : MonoBehaviour {
 
     public GameObject txtSpeed;
     public GameObject txtDestruction;
+    public GameObject txtReward;
 
     public int destructionCount = 0;
 
     bool clear = false;
+    bool isReward;
 
     void Start()
     {
         dbManager = GameObject.Find("DBManager");
         spawnManager = GameObject.Find("SpawnManager");
+        playerModel = GameObject.FindGameObjectWithTag("PlayerModel");
     }
 
     void Update()
@@ -77,7 +81,9 @@ public class UIManager : MonoBehaviour {
     }
     public void exitYes()
     {
-        Application.Quit();
+        iTweenPath.RemovePath();
+        Time.timeScale = 1;
+        SceneManager.LoadScene("LoadingSceneToMain");
     }
 
     public void exitNo()
@@ -125,6 +131,18 @@ public class UIManager : MonoBehaviour {
     {
         if (Advertisement.IsReady())
         {
+            isReward = false;
+            ShowOptions options = new ShowOptions();
+            options.resultCallback = HandleShowResult;
+            Advertisement.Show(null, options);
+        }
+    }
+
+    public void SeeAd_Reward()
+    {
+        if (Advertisement.IsReady())
+        {
+            isReward = true;
             ShowOptions options = new ShowOptions();
             options.resultCallback = HandleShowResult;
             Advertisement.Show(null, options);
@@ -136,34 +154,44 @@ public class UIManager : MonoBehaviour {
         switch (result)
         {
             case ShowResult.Finished:
-                btnExit.SetActive(true);
-                btnFire.SetActive(true);
-                txtDestruction.SetActive(true);
-                txtSpeed.SetActive(true);
-                background.SetActive(false);
-                txtFuelEmpty.SetActive(false);
-                btnContinue.SetActive(false);
-                btnSeeAd.SetActive(false);
+                if (!isReward)
+                {
+                    btnExit.SetActive(true);
+                    btnFire.SetActive(true);
+                    txtDestruction.SetActive(true);
+                    txtSpeed.SetActive(true);
+                    background.SetActive(false);
+                    txtFuelEmpty.SetActive(false);
+                    btnContinue.SetActive(false);
+                    btnSeeAd.SetActive(false);
 
-                player.GetComponent<csPlayerMovement>().SetSpeed(0.0f);
-                player.transform.position = player.GetComponent<csPlayerMovement>().respawnPos;
-                player.transform.rotation = player.GetComponent<csPlayerMovement>().respawnRot;
+                    player.GetComponent<csPlayerMovement>().SetSpeed(0.0f);
+                    player.transform.position = player.GetComponent<csPlayerMovement>().respawnPos;
+                    player.transform.rotation = player.GetComponent<csPlayerMovement>().respawnRot;
 
-                if (player.transform.position.z > player.GetComponent<csPlayerMovement>().LastPos.z)
-                    player.transform.position = player.GetComponent<csPlayerMovement>().LastPos;
+                    if (player.transform.position.z > player.GetComponent<csPlayerMovement>().LastPos.z)
+                        player.transform.position = player.GetComponent<csPlayerMovement>().LastPos;
 
-                playerCam.transform.parent = playerCamPos.transform;
-                playerCamPos.transform.localPosition = new Vector3(0, 0, 0);
-                playerCam.transform.localPosition = new Vector3(0, 2, -5.75f);
-                playerCam.transform.localRotation = Quaternion.Euler(new Vector3(10, 0, 0));
-                GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().isDead = false;
-                GameObject.Find("FireSystem").GetComponent<csFireManager>().isDead = false;
+                    playerCam.transform.parent = playerCamPos.transform;
+                    playerCamPos.transform.localPosition = new Vector3(0, 0, 0);
+                    playerCam.transform.localPosition = new Vector3(0, 2, -5.75f);
+                    playerCam.transform.localRotation = Quaternion.Euler(new Vector3(10, 0, 0));
+                    GameObject.Find("TargetingSystem").GetComponent<TargetingManager>().isDead = false;
+                    GameObject.Find("FireSystem").GetComponent<csFireManager>().isDead = false;
 
-                player.GetComponent<csPlayerStatus>().SetFuel(player.GetComponent<csPlayerStatus>().playerFuel);
-                player.GetComponent<csPlayerMovement>().fuelEmpty = false;
-                player.GetComponent<csPlayerStatus>().playonce = false;
-                player.GetComponent<csPlayerStatus>().untouchable = false;
+                    player.GetComponent<csPlayerStatus>().SetFuel(player.GetComponent<csPlayerStatus>().playerFuel);
+                    player.GetComponent<csPlayerMovement>().fuelEmpty = false;
+                    player.GetComponent<csPlayerStatus>().playonce = false;
+                    player.GetComponent<csPlayerStatus>().untouchable = false;
+                    playerModel.GetComponent<csPlayerCollider>().hit = false;
+                }
+                else
+                {
+                    for(int i =0; i<2;i++)
+                        Reward();
 
+                    BackToMain();
+                }
                 Time.timeScale = 1;
                 break;
             case ShowResult.Skipped:
@@ -218,16 +246,20 @@ public class UIManager : MonoBehaviour {
             int chap = spawnManager.GetComponent<SpawnManager>().Chapter;
             int num = spawnManager.GetComponent<SpawnManager>().stageNum;
 
-
-            if(num < 30 && num == DBManager.Instance.GetPlayerStage())
+            if (num < 30 && num == DBManager.Instance.GetPlayerStage())
             {
                 DBManager.Instance.IncreaseStage();
             }
 
             // 플라즈마 증가
-            plasma = plasma + player.GetComponent<csPlayerStatus>().plasma + R_plasma;
-            DBManager.Instance.SetPlayerPlazma(plasma);
+            R_plasma += player.GetComponent<csPlayerStatus>().plasma;
 
+            // 결과 텍스트
+            string str = "경험치 : " + exp + " 획득 \n" + "플라즈마 : " + R_plasma + " 획득 \n";
+            txtReward.GetComponent<Text>().text = str;
+
+            plasma = plasma + R_plasma;
+            DBManager.Instance.SetPlayerPlazma(plasma);
             // 자원 증가
             for(int i=0; i<3; i++)
             {
@@ -266,15 +298,14 @@ public class UIManager : MonoBehaviour {
                             DBManager.Instance.setResource(resId[i], range);
                             break;
                     }
-
                 }
             }
 
             // 경험치 증가
 
             DBManager.Instance.LevelUp(exp);
-
         }
+
         else
         {
             int plasma = dbManager.GetComponent<DBManager>().GetPlayerPlazma();

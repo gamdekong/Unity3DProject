@@ -145,6 +145,7 @@ public class TargetingManager : MonoBehaviour {
                 else
                     aimObj.transform.localScale = new Vector3(planetAimScaleX, planetAimScaleY, 1);
 
+                aimObj.transform.parent = AimingTarget.transform;
                 aimObj.transform.LookAt(player.transform);
             }
             GameObject.Find("FireSystem").GetComponent<csFireManager>().Target = AimingTarget;

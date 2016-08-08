@@ -18,8 +18,12 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] destoryableAsteroids;
     public GameObject[] noneDestoryableAsteroids;
 
+    public GameObject player;
+    public GameObject targetingManager;
     public GameObject StageData;
     public int stageNum;
+    float spawndelay = 1.5f;
+    float delay;
 
     public Material skyboxMat;
     public int Chapter = 1;
@@ -39,7 +43,10 @@ public class SpawnManager : MonoBehaviour {
 
     void Awake()
     {
+        delay = spawndelay;
         StageData = GameObject.Find("StageData");
+        player = GameObject.Find("Player");
+        targetingManager = GameObject.Find("TargetingSystem");
 
         Chapter = StageData.GetComponent<StageData>().GetChapter();
         Stage = StageData.GetComponent<StageData>().GetStage();
@@ -273,7 +280,7 @@ public class SpawnManager : MonoBehaviour {
                     D_asteroid_minDis,
                     D_asteroid_maxDis,
                     D_asteroid_sepDis,
-                    Random.Range(destoryableAsteroid, destoryableAsteroid * 3),
+                    Random.Range(destoryableAsteroid / 2, destoryableAsteroid * 2),
                     destoryableAsteroids);
             }
 
@@ -283,7 +290,7 @@ public class SpawnManager : MonoBehaviour {
                     ND_asteroid_minDis,
                     ND_asteroid_maxDis,
                     ND_asteroid_sepDis,
-                    Random.Range(noneDestroyableAsteroid, noneDestroyableAsteroid * 2),
+                    Random.Range(noneDestroyableAsteroid / 2, noneDestroyableAsteroid * 2),
                     noneDestoryableAsteroids);
             }
         }
@@ -349,6 +356,18 @@ public class SpawnManager : MonoBehaviour {
 
         RenderSettings.skybox = skyboxMat;
     }
+
+    void Update()
+    {
+        if(delay > 0)
+        {
+            delay -= Time.deltaTime;
+        }
+        else
+        {
+            SpawnAsteroids();
+        }
+    }
 	
 	void SpawnAsteroids(float minDis, float maxDis, float sepDis, int maxCount, GameObject[] asteroids)
     {
@@ -404,13 +423,99 @@ public class SpawnManager : MonoBehaviour {
                 if(canMake)
                 {
                     j--;
-                    GameObject asteroid = Instantiate(asteroids[asteroidNum], asteroidPos, asteroidAngle) as GameObject;
-                    if (asteroid.layer == 8)
+                    GameObject asteroid = Instantiate(asteroids[asteroidNum], asteroidPos, Quaternion.Euler(Vector3.zero)) as GameObject;
+                    if (asteroid.tag == "Asteroid")
                     {
-                        asteroid.GetComponent<csAsteroidStatus>().health = AsteroidHP;
-                        asteroid.GetComponent<csAsteroidStatus>().plasma = Plasma;
-                        asteroid.GetComponent<csAsteroidStatus>().restore = RestoreValue;
+                        asteroid.transform.rotation = asteroidAngle;
                     }
+                    else
+                    {
+                        asteroidNum++;
+                        string str = "Asteroid_" + asteroidNum;
+                        GameObject child = asteroid.transform.FindChild(str).gameObject;
+                        child.transform.rotation = asteroidAngle;
+                        if (child.layer == 8)
+                        {
+                            child.GetComponent<csAsteroidStatus>().health = AsteroidHP;
+                            child.GetComponent<csAsteroidStatus>().plasma = Plasma;
+                            child.GetComponent<csAsteroidStatus>().restore = RestoreValue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void SpawnAsteroids()
+    {
+        pathNodes = iTweenPath.GetPath(pathName);
+        int pathLegth = pathNodes.Length;
+        Vector3 respawnPos;
+
+        if(player == null || targetingManager.GetComponent<TargetingManager>().isDead)
+        {
+            return;
+        }
+        else
+        {
+            if(player.transform.position.z < pathNodes[pathLegth - 1].z)
+            {
+                respawnPos = player.transform.position;
+                respawnPos.z += 500;
+                respawnPos.x += Random.Range(-150, 150);
+                respawnPos.y += Random.Range(-150, 150);
+
+                int asteroidNum = Random.Range(0, destoryableAsteroids.Length - 1);
+                Quaternion asteroidAngle = Quaternion.Euler(new Vector3(Random.Range(-45, 45), Random.Range(-45, 45), Random.Range(-45, 45)));
+
+                GameObject asteroid = Instantiate(destoryableAsteroids[asteroidNum], respawnPos, Quaternion.Euler(Vector3.zero)) as GameObject;
+                asteroid.GetComponent<csAsteroidMove>().attackPlayer = true;
+                asteroidNum++;
+                string str = "Asteroid_" + asteroidNum;
+                GameObject child = asteroid.transform.FindChild(str).gameObject;
+                child.transform.rotation = asteroidAngle;
+                if (child.layer == 8)
+                {
+                    child.GetComponent<csAsteroidStatus>().health = AsteroidHP;
+                    child.GetComponent<csAsteroidStatus>().plasma = Plasma;
+                    child.GetComponent<csAsteroidStatus>().restore = 0;
+                }
+
+                delay = spawndelay;
+            }
+            else
+            {
+                if(player.transform.position.z < (pathNodes[pathLegth - 1].z + 1050))
+                {
+
+                }
+                else
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        respawnPos = player.transform.position;
+                        respawnPos.z += 500;
+                        respawnPos.x += Random.Range(-300, 300);
+                        respawnPos.y += Random.Range(-300, 300);
+
+                        int asteroidNum = Random.Range(0, destoryableAsteroids.Length - 1);
+                        Quaternion asteroidAngle = Quaternion.Euler(new Vector3(Random.Range(-45, 45), Random.Range(-45, 45), Random.Range(-45, 45)));
+
+                        GameObject asteroid = Instantiate(destoryableAsteroids[asteroidNum], respawnPos, Quaternion.Euler(Vector3.zero)) as GameObject;
+                        asteroid.GetComponent<csAsteroidMove>().attackPlayer = true;
+                        asteroid.GetComponent<csAsteroidMove>().speed = asteroid.GetComponent<csAsteroidMove>().speed * Random.Range(2.0f,4.0f);
+                        asteroidNum++;
+                        string str = "Asteroid_" + asteroidNum;
+                        GameObject child = asteroid.transform.FindChild(str).gameObject;
+                        child.transform.rotation = asteroidAngle;
+                        if (child.layer == 8)
+                        {
+                            child.GetComponent<csAsteroidStatus>().health = AsteroidHP;
+                            child.GetComponent<csAsteroidStatus>().plasma = Plasma;
+                            child.GetComponent<csAsteroidStatus>().restore = 0;
+                        }
+                    }
+                    delay = spawndelay / 2;
                 }
             }
         }

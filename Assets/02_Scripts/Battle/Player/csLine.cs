@@ -26,23 +26,23 @@ public class csLine : MonoBehaviour {
         if (planet)
         {
             line.SetPosition(0, playerModel.transform.position);
-            foreach(Vector3 tmp in nodes)
-            {
-                if(tmp.z > node.z && tmp.z > playerModel.transform.position.z)
-                {
-                    if(node == Vector3.zero)
-                        node = tmp;
+            //foreach(Vector3 tmp in nodes)
+            //{
+            //    if(tmp.z > node.z && tmp.z > playerModel.transform.position.z)
+            //    {
+            //        if(node == Vector3.zero)
+            //            node = tmp;
 
-                    if (Vector3.Distance(tmp, playerModel.transform.position) < Vector3.Distance(node, playerModel.transform.position))
-                    {
-                        node = tmp;
-                    }
-                }
-                else
-                {
-                    node = Vector3.zero;
-                }
-            }
+            //        if (Vector3.Distance(tmp, playerModel.transform.position) < Vector3.Distance(node, playerModel.transform.position))
+            //        {
+            //            node = tmp;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        node = Vector3.zero;
+            //    }
+            //}
             if(node == Vector3.zero)
             {
                 line.SetPosition(1, planet.transform.position);

@@ -4,6 +4,7 @@ using System.Collections;
 public class csPlayerCollider : MonoBehaviour {
 
     public GameObject hitEffect;
+    public bool hit = false;
 
     void OnTriggerEnter(Collider col)
     {
@@ -14,9 +15,15 @@ public class csPlayerCollider : MonoBehaviour {
             GameObject playerCam = GameObject.FindGameObjectWithTag("PlayerCam");
             GameObject player = GameObject.Find("Player");
 
-            player.SendMessage("ShowEffect", SendMessageOptions.DontRequireReceiver);
-            player.SendMessage("DamageToFuel", SendMessageOptions.DontRequireReceiver);
-            playerCam.SendMessage("PlayCameraShake", SendMessageOptions.DontRequireReceiver);
+            if (player.GetComponent<csPlayerStatus>().fuelBar.GetComponent<csShowFuel>().fuelValue > 0 && hit == false)
+            {
+                player.SendMessage("ShowEffect", SendMessageOptions.DontRequireReceiver);
+                player.SendMessage("DamageToFuel", SendMessageOptions.DontRequireReceiver);
+                playerCam.SendMessage("PlayCameraShake", SendMessageOptions.DontRequireReceiver);
+            }
+
+            if (player.GetComponent<csPlayerStatus>().fuelBar.GetComponent<csShowFuel>().fuelValue <= 0)
+                hit = true;
         }
     }
 

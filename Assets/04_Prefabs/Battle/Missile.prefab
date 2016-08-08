@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expSFX: {fileID: 0}
-  nomalExp: {fileID: 100010, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
+  nomalExp: {fileID: 100004, guid: eeb7c600ad40f634aae52304f134431e, type: 2}
   CritExp: {fileID: 100004, guid: a89abc0d2591545288f4c041059ae633, type: 2}
   damage: 1
   criticalRate: 0
@@ -469,6 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   target: {fileID: 0}
+  targetingManager: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 5903e46a65f6e1d46bfb31ec89330910, type: 3}
   explosionSound: {fileID: 8300000, guid: b00177400ce884a1f8777420c5b09e13, type: 3}
   isRight: 0
