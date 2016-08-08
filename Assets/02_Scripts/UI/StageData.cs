@@ -54,4 +54,9 @@ public class StageData : Singleton<StageData> {
     {
         return Stage;
     }
+
+    public int GetDiffculty()
+    {
+        return Diffculty;
+    }
 }
