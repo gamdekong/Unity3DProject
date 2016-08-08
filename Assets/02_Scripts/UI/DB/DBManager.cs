@@ -8,6 +8,7 @@ using System.IO;
 public class DBManager : Singleton<DBManager> {
 
     private SuccessCardTween succes;
+    private SuccessCardTween succes2;
 
     private string m_ConnectionString;
     int randomSeeds;
@@ -1865,13 +1866,21 @@ public class DBManager : Singleton<DBManager> {
         }
     }
    
-    public void MakeCard(Transform card)
+    public void MakeCard(Transform card,int typ)
     {
 
 
 
-
-        succes = GameObject.Find("UIManager").GetComponent<BuyResource>().uiManager;
+        if(typ == 1)
+        {
+            Debug.Log("type1");
+            succes = GameObject.Find("UIManager").GetComponent<BuyResource>().uiManager;
+        }
+        else if(typ == 2)
+        {
+            succes2 = GameObject.Find("UIManager").GetComponent<BuyResource>().uiManager2;
+        }
+        
         CardInfo cardinfo = card.GetComponent<CardInfo>();
         cardId = cardinfo.cardId;
         type = cardinfo.type;
@@ -2707,13 +2716,26 @@ public class DBManager : Singleton<DBManager> {
             // 디비에 연결
             dbConnection.Open();
 
-            succes.atkI = power;
-            succes.energyI = energy;
-            succes.rateI = criticalRate;
-            succes.damageI = criticalDamage;
-            succes.tierI = cardTier;
-            succes.type = type;
+            if (typ == 1)
+            {
 
+                Debug.Log("type1");
+                succes.atkI = power;
+                succes.energyI = energy;
+                succes.rateI = criticalRate;
+                succes.damageI = criticalDamage;
+                succes.tierI = cardTier;
+                succes.type = type;
+            }
+            else if(typ == 2)
+            {
+                succes2.atkI = power;
+                succes2.energyI = energy;
+                succes2.rateI = criticalRate;
+                succes2.damageI = criticalDamage;
+                succes2.tierI = cardTier;
+                succes2.type = type;
+            }
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {

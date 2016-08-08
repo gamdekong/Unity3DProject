@@ -10,6 +10,8 @@ public class MakeCard : MonoBehaviour {
     public GameObject grid4;
     public GameObject grid5;
 
+    public CardInfo cardTmp;
+
     public GameObject popup;
 
     public GameObject makingBar;
@@ -43,6 +45,14 @@ public class MakeCard : MonoBehaviour {
         if (slot.transform.childCount > 0)
         {
             Transform card = slot.transform.GetChild(0).transform;
+
+            cardTmp.cardId = card.GetComponent<CardInfo>().cardId;
+            cardTmp.type = card.GetComponent<CardInfo>().type;
+            cardTmp.tier = card.GetComponent<CardInfo>().tier;
+            cardTmp.AminInt = card.GetComponent<CardInfo>().AminInt;
+            cardTmp.EminInt = card.GetComponent<CardInfo>().EminInt;
+            cardTmp.DminF = card.GetComponent<CardInfo>().DminF;
+            cardTmp.RminF = card.GetComponent<CardInfo>().RminF;
 
             int needTier = card.GetComponent<CardInfo>().tier;
 
@@ -158,7 +168,7 @@ public class MakeCard : MonoBehaviour {
 
             
 
-            DBManager.Instance.MakeCard(card);
+            DBManager.Instance.MakeCard(card,1);
 
 
             makingBar.SetActive(true);

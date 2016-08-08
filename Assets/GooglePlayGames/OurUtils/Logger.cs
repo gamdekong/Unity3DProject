@@ -71,7 +71,8 @@ namespace GooglePlayGames.OurUtils
         {
             if (warningLogEnabled)
             {
-                Debug.LogWarning(ToLogMessage("***", "ERROR", msg));
+
+
             }
         }
 

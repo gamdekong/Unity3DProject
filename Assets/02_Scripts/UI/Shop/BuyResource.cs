@@ -5,6 +5,7 @@ public class BuyResource : MonoBehaviour {
     public GameObject popup;
     public GameObject alertPopup;
     public SuccessCardTween uiManager;
+    public SuccessCardTween uiManager2;
 
     int totalPlazma;
 
