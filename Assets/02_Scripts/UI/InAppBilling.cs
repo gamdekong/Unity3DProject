@@ -8,11 +8,13 @@ public class InAppBilling : MonoBehaviour, IStoreListener
     private static IStoreController storeController;
     private static IExtensionProvider extensionProvider;
 
+    private int pla;
+
     #region 상품ID
     // 상품ID는 구글 개발자 콘솔에 등록한 상품ID와 동일하게.
-    public const string productId1 = "plazma30000";
-    public const string productId2 = "plazma150000";
-    public const string productId3 = "plazma300000";
+    public const string productId1 = "item01";
+    public const string productId2 = "item02";
+    public const string productId3 = "item03";
     //    public const string productId4 = "com.gikimi.iaptest.item004";
     //    public const string productId5 = "com.gikimi.iaptest.item005";
     #endregion
@@ -157,6 +159,10 @@ public class InAppBilling : MonoBehaviour, IStoreListener
         {
             case productId1:
                 Debug.Log("구매1");
+                 pla = DBManager.Instance.GetPlayerPlazma();
+                DBManager.Instance.SetPlayerPlazma(pla + 30000);
+
+
 
                 // ex) gem 10개 지급
 
@@ -164,12 +170,16 @@ public class InAppBilling : MonoBehaviour, IStoreListener
 
             case productId2:
                 Debug.Log("구매2");
+                 pla = DBManager.Instance.GetPlayerPlazma();
+                DBManager.Instance.SetPlayerPlazma(pla + 150000);
                 // ex) gem 50개 지급
 
                 break;
 
             case productId3:
                 Debug.Log("구매3");
+                 pla = DBManager.Instance.GetPlayerPlazma();
+                DBManager.Instance.SetPlayerPlazma(pla + 300000);
                 // ex) gem 100개 지급
 
                 break;

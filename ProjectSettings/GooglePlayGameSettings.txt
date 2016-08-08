@@ -1,0 +1,10 @@
+lastUpgrade=00934
+proj.pluginVersion=0.9.34
+proj.AppId=288258970790
+and.BundleId=com.gamdekong.Destroyer
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSIDs
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3cstring+name%3d%22app_id%22%3e288258970790%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22package_name%22%3ecom.gamdekong.Destroyer%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement__.%22%3eCgkIpqnL7LEIEAIQAQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement__100000_%22%3eCgkIpqnL7LEIEAIQAg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement__300000_%22%3eCgkIpqnL7LEIEAIQAw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement__500000_%22%3eCgkIpqnL7LEIEAIQBA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement__1000000_%22%3eCgkIpqnL7LEIEAIQBQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22leaderboard__%22%3eCgkIpqnL7LEIEAIQBg%3c%2fstring%3e%0d%0a%3c%2fresources%3e%0d%0a
+and.ClientId=
+proj.requireGPlus=false
+android.SetupDone=true

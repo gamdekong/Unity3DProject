@@ -7,7 +7,7 @@ using System.IO;
 
 public class DBManager : Singleton<DBManager> {
 
-    public SuccessCardTween succes;
+    private SuccessCardTween succes;
 
     private string m_ConnectionString;
     int randomSeeds;
@@ -1407,6 +1407,27 @@ public class DBManager : Singleton<DBManager> {
             }
             dbConnection.Close();
         }
+        int plaz = GetPlayerPlazma();
+
+        if(plaz >= 100000)
+        {
+            GameObject.Find("UIManager").GetComponent<csGooglePlay>().doAchievementOne2();
+        }
+        if (plaz >= 300000)
+        {
+            GameObject.Find("UIManager").GetComponent<csGooglePlay>().doAchievementOne3();
+        }
+        if (plaz >= 500000)
+        {
+            GameObject.Find("UIManager").GetComponent<csGooglePlay>().doAchievementOne4();
+        }
+        if (plaz >= 1000000)
+        {
+            GameObject.Find("UIManager").GetComponent<csGooglePlay>().doAchievementOne5();
+
+        }
+        GameObject.Find("UIManager").GetComponent<csGooglePlay>().doLeaderboardPoint();
+
     }
 
     public void DeletePlayerResource(int id)
@@ -1848,9 +1869,9 @@ public class DBManager : Singleton<DBManager> {
     {
 
 
-       
 
 
+        succes = GameObject.Find("UIManager").GetComponent<BuyResource>().uiManager;
         CardInfo cardinfo = card.GetComponent<CardInfo>();
         cardId = cardinfo.cardId;
         type = cardinfo.type;

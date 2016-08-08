@@ -4,6 +4,7 @@ using System.Collections;
 public class BuyResource : MonoBehaviour {
     public GameObject popup;
     public GameObject alertPopup;
+    public SuccessCardTween uiManager;
 
     int totalPlazma;
 

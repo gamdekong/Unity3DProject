@@ -4,7 +4,11 @@ using System.Collections;
 public class MakeCard : MonoBehaviour {
 
     public GameObject slot;
-    public GameObject grid;
+    public GameObject grid1;
+    public GameObject grid2;
+    public GameObject grid3;
+    public GameObject grid4;
+    public GameObject grid5;
 
     public GameObject popup;
 
@@ -106,14 +110,53 @@ public class MakeCard : MonoBehaviour {
             makingBar.GetComponent<MakingBar>().MakingBarStart(card.GetComponent<CardInfo>().type);
 
 
+            if( needTier == 5)
+            {
+                card.parent = grid5.transform;
+                Vector3 pos = card.localPosition;
+                pos.z = 0f;
+                card.localPosition = pos;
 
-            card.parent = grid.transform;
+                card.GetComponent<DragAndDropMakingCard>().ResetPosition(grid5.transform.GetChild(0));
+            }
+            else if (needTier == 4)
+            {
+                card.parent = grid4.transform;
+                Vector3 pos = card.localPosition;
+                pos.z = 0f;
+                card.localPosition = pos;
 
-            Vector3 pos = card.localPosition;
-            pos.z = 0f;
-            card.localPosition = pos;
+                card.GetComponent<DragAndDropMakingCard>().ResetPosition(grid4.transform.GetChild(0));
+            }
+            else if (needTier == 3)
+            {
+                card.parent = grid3.transform;
+                Vector3 pos = card.localPosition;
+                pos.z = 0f;
+                card.localPosition = pos;
 
-            card.GetComponent<DragAndDropMakingCard>().ResetPosition(grid.transform.GetChild(0));
+                card.GetComponent<DragAndDropMakingCard>().ResetPosition(grid3.transform.GetChild(0));
+            }
+            else if (needTier == 2)
+            {
+                card.parent = grid2.transform;
+                Vector3 pos = card.localPosition;
+                pos.z = 0f;
+                card.localPosition = pos;
+
+                card.GetComponent<DragAndDropMakingCard>().ResetPosition(grid2.transform.GetChild(0));
+            }
+            else if (needTier == 1)
+            {
+                card.parent = grid1.transform; Vector3 pos = card.localPosition;
+                pos.z = 0f;
+                card.localPosition = pos;
+
+                card.GetComponent<DragAndDropMakingCard>().ResetPosition(grid1.transform.GetChild(0));
+            }
+            
+
+            
 
             DBManager.Instance.MakeCard(card);
 

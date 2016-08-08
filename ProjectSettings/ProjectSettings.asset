@@ -89,15 +89,15 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  bundleIdentifier: com.gamdekong.dog
-  bundleVersion: 1.0
+  bundleIdentifier: com.gamdekong.Destroyer
+  bundleVersion: 1.01
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 733a0ab6cc7185e4d9baeb167dcd4b02
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 15
   AndroidPreferredInstallLocation: 1
   aotOptions: 
