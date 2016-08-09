@@ -43,8 +43,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 7ac1bee7974c9dc478680e392948daa1, type: 2}
   mSprites:
   - name: line1
-    x: 2022
-    y: 1948
+    x: 901
+    y: 924
     width: 1
     height: 100
     borderLeft: 0
@@ -55,48 +55,9 @@ MonoBehaviour:
     paddingRight: 49
     paddingTop: 0
     paddingBottom: 0
-  - name: line2
-    x: 1921
-    y: 1948
-    width: 100
-    height: 100
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: line3
-    x: 1921
-    y: 1847
-    width: 100
-    height: 100
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: line4
-    x: 1921
-    y: 1845
-    width: 100
-    height: 1
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 50
-    paddingBottom: 49
   - name: space
     x: 0
-    y: 180
+    y: 357
     width: 900
     height: 667
     borderLeft: 0
@@ -109,9 +70,9 @@ MonoBehaviour:
     paddingBottom: 0
   - name: space2
     x: 0
-    y: 848
-    width: 1920
-    height: 1200
+    y: 276
+    width: 128
+    height: 80
     borderLeft: 0
     borderRight: 0
     borderTop: 0

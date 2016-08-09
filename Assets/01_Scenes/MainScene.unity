@@ -29397,7 +29397,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606595845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93, y: 115, z: 0}
+  m_LocalPosition: {x: -93, y: 211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -51611,7 +51611,7 @@ MonoBehaviour:
   grid3: {fileID: 588841288}
   grid4: {fileID: 2069107788}
   grid5: {fileID: 60514314}
-  cardTmp: {fileID: 0}
+  cardTmp: {fileID: 1093319657}
   popup: {fileID: 1491452644}
   makingBar: {fileID: 148031539}
 --- !u!114 &987238686
@@ -51683,7 +51683,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2e69e6ef505518d46bcc62e5c6e49be3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f0bd7259bb43bba42974b99328882d28, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -51796,7 +51796,7 @@ MonoBehaviour:
   popup: {fileID: 1430155393}
   alertPopup: {fileID: 252557228}
   uiManager: {fileID: 724222050}
-  uiManager2: {fileID: 0}
+  uiManager2: {fileID: 2100666633}
 --- !u!114 &987238695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52764,7 +52764,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1005327271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93, y: 235, z: 0}
+  m_LocalPosition: {x: 25, y: -109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -63642,7 +63642,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1211915772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93, y: -121, z: 0}
+  m_LocalPosition: {x: -210, y: -109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -92103,7 +92103,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1856832599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93, y: -1, z: 0}
+  m_LocalPosition: {x: -93, y: 62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -105847,7 +105847,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483391
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

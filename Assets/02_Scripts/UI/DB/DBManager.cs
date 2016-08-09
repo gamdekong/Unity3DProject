@@ -1427,7 +1427,7 @@ public class DBManager : Singleton<DBManager> {
             GameObject.Find("UIManager").GetComponent<csGooglePlay>().doAchievementOne5();
 
         }
-        GameObject.Find("UIManager").GetComponent<csGooglePlay>().doLeaderboardPoint();
+        
 
     }
 
@@ -1536,7 +1536,7 @@ public class DBManager : Singleton<DBManager> {
                 PlusEnergyStat2(400);
             }
 
-
+            GameObject.Find("UIManager").GetComponent<csGooglePlay>().doLeaderboardPoint();
             // 레벨에 따라 기본 스텟 포인트 플러스
         }
         else                    //레벨업 안함

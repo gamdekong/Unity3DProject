@@ -42,22 +42,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: d801e68a6f37f474da43349a8e6303a7, type: 2}
   mSprites:
-  - name: abc
-    x: 0
-    y: 558
-    width: 736
-    height: 466
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
   - name: button_clicked
-    x: 0
-    y: 26
+    x: 958
+    y: 1984
     width: 64
     height: 64
     borderLeft: 12
@@ -69,8 +56,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Button_normal
-    x: 65
-    y: 38
+    x: 958
+    y: 1931
     width: 52
     height: 52
     borderLeft: 7
@@ -82,8 +69,8 @@ MonoBehaviour:
     paddingTop: 6
     paddingBottom: 6
   - name: CardSlot
-    x: 1495
-    y: 813
+    x: 737
+    y: 1599
     width: 200
     height: 118
     borderLeft: 40
@@ -96,7 +83,7 @@ MonoBehaviour:
     paddingBottom: 1
   - name: creationBG
     x: 0
-    y: 91
+    y: 1582
     width: 736
     height: 466
     borderLeft: 0
@@ -109,7 +96,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: criticalDamageCard
     x: 737
-    y: 433
+    y: 1718
     width: 220
     height: 330
     borderLeft: 0
@@ -121,8 +108,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: CriticalRateCard
-    x: 958
-    y: 433
+    x: 0
+    y: 1251
     width: 220
     height: 330
     borderLeft: 0
@@ -134,8 +121,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: damageCard
-    x: 737
-    y: 102
+    x: 221
+    y: 1251
     width: 220
     height: 330
     borderLeft: 0
@@ -147,8 +134,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: energyCard
-    x: 958
-    y: 102
+    x: 442
+    y: 1251
     width: 220
     height: 330
     borderLeft: 0
@@ -160,8 +147,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: KakaoTalk_20160725_165051679
-    x: 1495
-    y: 932
+    x: 0
+    y: 1158
     width: 508
     height: 92
     borderLeft: 0
@@ -173,8 +160,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Plasma
-    x: 118
-    y: 40
+    x: 958
+    y: 1880
     width: 50
     height: 50
     borderLeft: 0
@@ -186,8 +173,8 @@ MonoBehaviour:
     paddingTop: 1
     paddingBottom: 1
   - name: plazma2
-    x: 1696
-    y: 799
+    x: 554
+    y: 1025
     width: 132
     height: 132
     borderLeft: 0
@@ -199,8 +186,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: plutonium
-    x: 1238
-    y: 596
+    x: 0
+    y: 984
     width: 138
     height: 173
     borderLeft: 0
@@ -211,22 +198,9 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 3
     paddingBottom: 4
-  - name: popupBG
-    x: 737
-    y: 764
-    width: 500
-    height: 260
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 5
-    paddingBottom: 5
   - name: ruderpodium
-    x: 1238
-    y: 248
+    x: 278
+    y: 984
     width: 137
     height: 173
     borderLeft: 0
@@ -238,8 +212,8 @@ MonoBehaviour:
     paddingTop: 3
     paddingBottom: 4
   - name: titanium
-    x: 1238
-    y: 74
+    x: 416
+    y: 984
     width: 137
     height: 173
     borderLeft: 0
@@ -251,8 +225,8 @@ MonoBehaviour:
     paddingTop: 3
     paddingBottom: 4
   - name: uranium
-    x: 1238
-    y: 422
+    x: 139
+    y: 984
     width: 138
     height: 173
     borderLeft: 0
@@ -264,8 +238,8 @@ MonoBehaviour:
     paddingTop: 3
     paddingBottom: 4
   - name: window
-    x: 1238
-    y: 770
+    x: 663
+    y: 1327
     width: 256
     height: 254
     borderLeft: 20

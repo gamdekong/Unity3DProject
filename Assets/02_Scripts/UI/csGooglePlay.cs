@@ -191,7 +191,7 @@ public class csGooglePlay : MonoBehaviour
         leader_board_id = "SOCIALTEST_HIGH_SCORE";
 #endif
 
-        Social.ReportScore(DBManager.Instance.GetPlayerPlazma(), leader_board_id,
+        Social.ReportScore(DBManager.Instance.GetPlayerLevel(), leader_board_id,
             (bool success) =>
             {
 #if UNITY_ANDROID
