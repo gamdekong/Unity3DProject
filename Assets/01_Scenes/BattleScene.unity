@@ -674,15 +674,15 @@ MonoBehaviour:
   pathName: Path4
   pathColor: {r: 1, g: 0.984787, b: 0.44852942, a: 1}
   nodes:
-  - {x: 0, y: 5, z: -21.304707}
-  - {x: -480, y: 266, z: 300}
+  - {x: 0, y: 0, z: 0}
+  - {x: -480, y: 266, z: 600}
   - {x: 421, y: 50, z: 1300}
   - {x: 103, y: -326, z: 2300}
-  - {x: -202, y: -231, z: 3300}
-  - {x: -111, y: -401, z: 4300}
-  - {x: -157, y: -135, z: 5300}
-  - {x: 197, y: -252, z: 6300}
-  - {x: 0, y: 0, z: 7300}
+  - {x: -202, y: -231, z: 2600}
+  - {x: -111, y: -401, z: 3000}
+  - {x: -157, y: -135, z: 3300}
+  - {x: 197, y: -252, z: 3600}
+  - {x: 0, y: 0, z: 4000}
   nodeCount: 9
   initialized: 1
   initialName: New Path 1
@@ -1669,11 +1669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428824086d26b2e43a366dcf73eadc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destoryableAsteroid: 6
+  destoryableAsteroid: 3
   D_asteroid_minDis: 20
   D_asteroid_maxDis: 200
   D_asteroid_sepDis: 45
-  noneDestroyableAsteroid: 40
+  noneDestroyableAsteroid: 30
   ND_asteroid_minDis: 40
   ND_asteroid_maxDis: 600
   ND_asteroid_sepDis: 25
@@ -1698,7 +1698,6 @@ MonoBehaviour:
   - {fileID: 113530, guid: addc9c361b64b5f44af6585b03cdcb80, type: 2}
   player: {fileID: 0}
   targetingManager: {fileID: 0}
-  StageData: {fileID: 0}
   stageNum: 0
   skyboxMat: {fileID: 2100000, guid: 1ce746eab45682a42bbeeea21e016bbc, type: 2}
   Chapter: 4
@@ -1712,6 +1711,7 @@ MonoBehaviour:
   planetExpEffect: {fileID: 100012, guid: bf2d0b8833ec1440d97c8a40024ea2fe, type: 2}
   planetExpSound: {fileID: 8300000, guid: b00177400ce884a1f8777420c5b09e13, type: 3}
   Stage: 5
+  Diff: 1
   fuelDamage: 0
   rewardEXP: 0
   rewardPlasma: 0
@@ -2525,14 +2525,14 @@ MonoBehaviour:
   pathColor: {r: 0.581643, g: 1, b: 0.44852942, a: 1}
   nodes:
   - {x: 0, y: 5, z: -21.304707}
-  - {x: 43, y: -114, z: 300}
-  - {x: 227, y: 92, z: 1300}
-  - {x: 61, y: 368, z: 2300}
-  - {x: -48, y: -467, z: 3300}
-  - {x: -297, y: -308, z: 4300}
-  - {x: -375, y: 40, z: 5300}
-  - {x: 463, y: 463, z: 6300}
-  - {x: 0, y: 0, z: 7300}
+  - {x: 43, y: -114, z: 800}
+  - {x: 227, y: 92, z: 1500}
+  - {x: 61, y: 368, z: 1900}
+  - {x: -48, y: -467, z: 2200}
+  - {x: -297, y: -308, z: 2800}
+  - {x: -375, y: 40, z: 3100}
+  - {x: 463, y: 463, z: 3600}
+  - {x: 0, y: 0, z: 4000}
   nodeCount: 9
   initialized: 1
   initialName: New Path 1
@@ -2626,15 +2626,15 @@ MonoBehaviour:
   pathName: Path2
   pathColor: {r: 1, g: 0.44852942, b: 0.551217, a: 1}
   nodes:
-  - {x: 0, y: 5, z: -21.304707}
-  - {x: 144, y: -325, z: 300}
-  - {x: 81, y: 150, z: 1300}
-  - {x: 59, y: 352, z: 2300}
-  - {x: -253, y: 118, z: 3300}
-  - {x: 210, y: 58, z: 4300}
-  - {x: 55, y: -59, z: 5300}
-  - {x: 404, y: -121, z: 6300}
-  - {x: 0, y: 0, z: 7300}
+  - {x: 0, y: 0, z: 0}
+  - {x: 144, y: -325, z: 600}
+  - {x: 81, y: 150, z: 1000}
+  - {x: 59, y: 352, z: 1500}
+  - {x: -253, y: 118, z: 2100}
+  - {x: 210, y: 58, z: 2639.9807}
+  - {x: 105.4104, y: -59, z: 3305.233}
+  - {x: 481.8474, y: -121, z: 3694.0315}
+  - {x: 0, y: 26.510254, z: 4000}
   nodeCount: 9
   initialized: 1
   initialName: New Path 1
@@ -3565,6 +3565,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 930055208}
   - 114: {fileID: 930055207}
+  - 114: {fileID: 930055209}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -3617,6 +3618,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &930055209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930055206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6511436ecc7c9c44eafce997f7b44935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935148678
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,15 +4535,15 @@ MonoBehaviour:
   pathName: Path3
   pathColor: {r: 0.44852942, g: 0.47515205, b: 1, a: 1}
   nodes:
-  - {x: 0, y: 5, z: -21.304707}
-  - {x: -189, y: 224, z: 300}
+  - {x: 0, y: 0, z: 0}
+  - {x: -189, y: 224, z: 800}
   - {x: 272, y: -346, z: 1300}
-  - {x: -303, y: -494, z: 2300}
-  - {x: 371, y: 169, z: 3300}
-  - {x: -59, y: -164, z: 4300}
-  - {x: 209, y: 99, z: 5300}
-  - {x: -451, y: -62, z: 6300}
-  - {x: 0, y: 0, z: 7300}
+  - {x: -303, y: -494, z: 2000}
+  - {x: 371, y: 169, z: 2400}
+  - {x: -59, y: -164, z: 2800}
+  - {x: 209, y: 99, z: 3300}
+  - {x: -451, y: -62, z: 3700}
+  - {x: 0, y: 0, z: 4000}
   nodeCount: 9
   initialized: 1
   initialName: New Path 1
@@ -5117,6 +5129,26 @@ Prefab:
       propertyPath: m_Name
       value: Path_2
       objectReference: {fileID: 0}
+    - target: {fileID: 11416830, guid: 308f586195b55b04183c0731c529cead, type: 2}
+      propertyPath: nodes.Array.data[5].z
+      value: 2639.9807
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416830, guid: 308f586195b55b04183c0731c529cead, type: 2}
+      propertyPath: nodes.Array.data[6].z
+      value: 3305.233
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416830, guid: 308f586195b55b04183c0731c529cead, type: 2}
+      propertyPath: nodes.Array.data[6].x
+      value: 105.4104
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416830, guid: 308f586195b55b04183c0731c529cead, type: 2}
+      propertyPath: nodes.Array.data[7].x
+      value: 481.8474
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416830, guid: 308f586195b55b04183c0731c529cead, type: 2}
+      propertyPath: nodes.Array.data[7].z
+      value: 3694.0315
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 308f586195b55b04183c0731c529cead, type: 2}
   m_IsPrefabParent: 0
@@ -5253,7 +5285,7 @@ MonoBehaviour:
   pathName: Path1
   pathColor: {r: 0.44852942, g: 0.9771804, b: 1, a: 1}
   nodes:
-  - {x: 0, y: 5, z: -21.304707}
+  - {x: 0, y: 0, z: 0}
   - {x: -64.07391, y: 54.61023, z: 500}
   - {x: 197.56293, y: -323.38733, z: 1000}
   - {x: -349.44284, y: -54.94519, z: 1500}
@@ -6476,8 +6508,8 @@ MonoBehaviour:
   pathName: Path6
   pathColor: {r: 1, g: 0.5055781, b: 0.44852942, a: 1}
   nodes:
-  - {x: 0, y: 5, z: -21.304707}
-  - {x: 0, y: 0, z: 1000}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 500}
   nodeCount: 2
   initialized: 1
   initialName: New Path 1

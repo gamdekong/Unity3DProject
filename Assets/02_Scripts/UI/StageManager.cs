@@ -69,19 +69,19 @@ public class StageManager : MonoBehaviour
 
     public void Easy()
     {
-        Diffculty = 0;
+        Diffculty = 1;
         StageData.Instance.SetData(Chapter, Stage, Diffculty);
     }
 
     public void Normal()
     {
-        Diffculty = 1;
+        Diffculty = 12;
         StageData.Instance.SetData(Chapter, Stage, Diffculty);
     }
 
     public void Hard()
     {
-        Diffculty = 2;
+        Diffculty = 3;
         StageData.Instance.SetData(Chapter, Stage, Diffculty);
     }
 

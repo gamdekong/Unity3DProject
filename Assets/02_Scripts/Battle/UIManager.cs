@@ -245,6 +245,7 @@ public class UIManager : MonoBehaviour {
             int exp = spawnManager.GetComponent<SpawnManager>().rewardEXP;
             int chap = spawnManager.GetComponent<SpawnManager>().Chapter;
             int num = spawnManager.GetComponent<SpawnManager>().stageNum;
+            int[,] resRange = spawnManager.GetComponent<SpawnManager>().rewardItemRange;
 
             if (num < 30 && num == DBManager.Instance.GetPlayerStage())
             {
@@ -268,36 +269,8 @@ public class UIManager : MonoBehaviour {
                 else
                 {
                     int range;
-                    switch (chap)
-                    {
-                        case 1:
-                            range = Random.Range(1, 3);
-                            DBManager.Instance.setResource(resId[i], range);
-                            break;
-                        case 2:
-                            range = Random.Range(2, 5);
-                            DBManager.Instance.setResource(resId[i], range);
-                            break;
-                        case 3:
-                            range = Random.Range(4 - (i * 3), 7 - (i * 6));
-                            DBManager.Instance.setResource(resId[i], range);
-                            break;
-                        case 4:
-                            range = Random.Range(6 - (i * 5), 9 - (i * 6));
-                            DBManager.Instance.setResource(resId[i], range);
-                            break;
-                        case 5:
-                            if (i == 2)
-                            {
-                                range = Random.Range(0, 1);
-                            }
-                            else
-                            {
-                                range = Random.Range(8 - ( i * 6), 10 - (i * 5));
-                            }
-                            DBManager.Instance.setResource(resId[i], range);
-                            break;
-                    }
+                    range = Random.Range(resRange[i,0], resRange[i,1]);
+                    DBManager.Instance.setResource(resId[i], range);
                 }
             }
 
