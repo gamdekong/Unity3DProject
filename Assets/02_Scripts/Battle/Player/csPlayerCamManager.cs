@@ -78,6 +78,16 @@ public class csPlayerCamManager : MonoBehaviour {
         StartCoroutine(CameraShakeProcess(0.25f, 0.16f));
     }
 
+    public void AsteroidPlayCameraShake()
+    {
+        StartCoroutine(CameraShakeProcess(0.25f, 0.02f));
+    }
+
+    public void PlanetPlayCameraShake()
+    {
+        StartCoroutine(CameraShakeProcess(1.0f, 0.04f));
+    }
+
     IEnumerator CameraShakeProcess(float shakeTime, float shakeSense)
     {
         float deltaTime = 0.0f;

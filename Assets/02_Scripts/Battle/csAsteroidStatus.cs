@@ -6,6 +6,7 @@ public class csAsteroidStatus : MonoBehaviour {
     GameObject player;
     GameObject UIManager;
     TargetingManager targetingManager;
+    csPlayerCamManager playerCam;
     public GameObject root;
     public GameObject asteroidExpEffect;
     public int health = 10;
@@ -18,6 +19,7 @@ public class csAsteroidStatus : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         UIManager = GameObject.Find("UIManager");
         targetingManager = GameObject.Find("TargetingSystem").GetComponent<TargetingManager>();
+        playerCam = GameObject.Find("PlayerCamPos").GetComponent<csPlayerCamManager>();
     }
 
 	// Update is called once per frame
@@ -47,7 +49,8 @@ public class csAsteroidStatus : MonoBehaviour {
         {
             //UIManager.GetComponent<UIManager>().SendMessage("Vibration");
             targetingManager.AimingTarget = null;
-            Handheld.Vibrate();
+            //Handheld.Vibrate();
+            playerCam.AsteroidPlayCameraShake();
 
             gameObject.SetActive(false);
             UIManager.GetComponent<UIManager>().destructionCount += 1;

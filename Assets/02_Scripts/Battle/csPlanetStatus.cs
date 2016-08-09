@@ -6,11 +6,13 @@ public class csPlanetStatus : MonoBehaviour {
     public int health = 100;
     public GameObject planetExpEffect;
     GameObject UIManager;
+    csPlayerCamManager playerCam;
     public AudioClip expSFX;  
 
 	// Use this for initialization
 	void Start () {
         UIManager = GameObject.Find("UIManager");
+        playerCam = GameObject.Find("PlayerCamPos").GetComponent<csPlayerCamManager>();
     }
 	
 	// Update is called once per frame
@@ -25,8 +27,9 @@ public class csPlanetStatus : MonoBehaviour {
 
         if (health <= 0)
         {
-            UIManager.GetComponent<UIManager>().SendMessage("Vibration");
+            //UIManager.GetComponent<UIManager>().SendMessage("Vibration");
             //Handheld.Vibrate();
+            playerCam.PlanetPlayCameraShake();
 
             gameObject.SetActive(false);
 

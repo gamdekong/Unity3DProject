@@ -44,6 +44,8 @@ public class csJoyStick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler,
         }
         else
         {
+            joystickHandle.SetActive(true);
+            joystickPos.SetActive(true);
             joystickPos.transform.position = eventData.position;
         }
     }
@@ -76,6 +78,8 @@ public class csJoyStick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler,
         }
         else
         {
+            joystickHandle.SetActive(false);
+            joystickPos.SetActive(false);
             joystickHandle.transform.localPosition = defaultJoysticPos;
             joystickPos.transform.localPosition = defaultHandlePos;
             axis = Vector3.zero;
