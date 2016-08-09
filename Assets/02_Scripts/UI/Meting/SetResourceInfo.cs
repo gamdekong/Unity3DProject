@@ -5,8 +5,8 @@ public class SetResourceInfo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+        GetComponent<UIPlayTween>().tweenTarget = GameObject.Find("UIManager").GetComponent<MeltResource>().resourceMelting;
+    }
 	
 	// Update is called once per frame
 	void Update () {

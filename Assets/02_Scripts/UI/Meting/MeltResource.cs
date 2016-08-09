@@ -12,7 +12,10 @@ public class MeltResource : MonoBehaviour {
     public GameObject scrolView5;
     public GameObject grid;
 
-    
+    public GameObject cardMelting;
+    public GameObject resourceMelting;
+
+
 
 
     private int totalResourceAmount;

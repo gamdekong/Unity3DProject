@@ -2,10 +2,14 @@
 using System.Collections;
 
 public class SetCardInfo : MonoBehaviour {
+
+    
     
     
 	// Use this for initialization
 	void Start () {
+
+        GetComponent<UIPlayTween>().tweenTarget = GameObject.Find("UIManager").GetComponent<MeltResource>().cardMelting;
 	
 	}
 	
