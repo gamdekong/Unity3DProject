@@ -21,6 +21,7 @@ public class csJoyStick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler,
         player = GameObject.Find("Player").GetComponent<csPlayerMovement>();
         playerModel = GameObject.FindGameObjectWithTag("PlayerModel");
         targetingManager = GameObject.Find("TargetingSystem").GetComponent<TargetingManager>();
+        defaultHandlePos = joystickHandle.transform.position;
     }
 
     // Update is called once per frame
@@ -41,12 +42,6 @@ public class csJoyStick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler,
         if (targetingManager.isDead)
         {
             return;
-        }
-        else
-        {
-            joystickHandle.SetActive(true);
-            joystickPos.SetActive(true);
-            joystickPos.transform.position = eventData.position;
         }
     }
 
@@ -78,10 +73,7 @@ public class csJoyStick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler,
         }
         else
         {
-            joystickHandle.SetActive(false);
-            joystickPos.SetActive(false);
-            joystickHandle.transform.localPosition = defaultJoysticPos;
-            joystickPos.transform.localPosition = defaultHandlePos;
+            joystickHandle.transform.position = defaultHandlePos;
             axis = Vector3.zero;
         }
     }

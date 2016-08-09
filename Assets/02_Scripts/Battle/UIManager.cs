@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour {
     public GameObject btnReset;
     public GameObject btnContinue;
     public GameObject btnSeeAd;
+    public GameObject joyPos;
+    public GameObject joyHandle;
+    public GameObject joyStick;
 
     public GameObject txtSpeed;
     public GameObject txtDestruction;
@@ -68,6 +71,9 @@ public class UIManager : MonoBehaviour {
         btnFire.SetActive(false);
         btnReset.SetActive(false);
         hitEffect.SetActive(false);
+        joyPos.SetActive(false);
+        joyStick.SetActive(false);
+        joyHandle.SetActive(false);
 
         exitTitle.SetActive(true);
         background.SetActive(true);
@@ -92,6 +98,9 @@ public class UIManager : MonoBehaviour {
 
         btnExit.SetActive(true);
         btnFire.SetActive(true);
+        joyPos.SetActive(true);
+        joyStick.SetActive(true);
+        joyHandle.SetActive(true);
         //btnReset.SetActive(true);
 
         exitTitle.SetActive(false);
@@ -164,6 +173,9 @@ public class UIManager : MonoBehaviour {
                     txtFuelEmpty.SetActive(false);
                     btnContinue.SetActive(false);
                     btnSeeAd.SetActive(false);
+                    joyPos.SetActive(true);
+                    joyStick.SetActive(true);
+                    joyHandle.SetActive(true);
 
                     player.GetComponent<csPlayerMovement>().SetSpeed(0.0f);
                     player.transform.position = player.GetComponent<csPlayerMovement>().respawnPos;
@@ -217,9 +229,6 @@ public class UIManager : MonoBehaviour {
             Destroy(asteroid);
         }
         Reward();
-        yield return new WaitForSeconds(5.0f);
-
-        Time.timeScale = 0;
 
         btnExit.SetActive(false);
         btnFire.SetActive(false);
@@ -227,6 +236,13 @@ public class UIManager : MonoBehaviour {
         hitEffect.SetActive(false);
         txtDestruction.SetActive(false);
         txtSpeed.SetActive(false);
+        joyPos.SetActive(false);
+        joyStick.SetActive(false);
+        joyHandle.SetActive(false);
+
+        yield return new WaitForSeconds(5.0f);
+
+        Time.timeScale = 0;
 
         clearTitle.SetActive(true);
         background.SetActive(true);
@@ -303,6 +319,9 @@ public class UIManager : MonoBehaviour {
         hitEffect.SetActive(false);
         txtDestruction.SetActive(false);
         txtSpeed.SetActive(false);
+        joyPos.SetActive(false);
+        joyStick.SetActive(false);
+        joyHandle.SetActive(false);
 
         for (int i = 0; i<100; i++)
         {
